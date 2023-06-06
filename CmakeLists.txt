@@ -2,11 +2,11 @@ cmake_minimum_required(VERSION 3.10)
 
 project(JieEngine)
 
-link_libraries(-lmingw32 -lSDL2main -lSDL2)
+link_libraries(-lmingw32 -lSDL2main -lSDL2 )
 
 add_executable(${CMAKE_PROJECT_NAME} 
 Main.cpp
 Player.cpp Player.h
 Freak.cpp Freak.h
-Component.h MWindow.h Animal.h Still.h
+Component.h MWindow.h Animal.h Still.h JieEngineTest.h
 )

@@ -4,18 +4,16 @@
 #include "Component.h"
 
 class Still : public Component {
-    private:
-        SDL_Surface * Surface;
     public:
-        Still(std::string FileUrl,SDL_Surface * WindowSurface){
-            Surface = SDL_LoadBMP(FileUrl.c_str());
+        void SetStill(const char * FileUrl,SDL_Point Position,short ImageInciseNumber,short PlaySpeed,SDL_Surface * WindowSurface){
             this->WindowSurface = WindowSurface;
-        }
-        ~Still(){
-            SDL_FreeSurface(Surface);
-        }
-        void Update() override {
+            this->ImageSurface = SDL_LoadBMP(FileUrl);
             
+            this->Position = Position;
+            
+            this->ImageInciseNumber = ImageInciseNumber;
+            this->PlaySpeed = PlaySpeed;
+            this->InciseImage();
         }
 };
 

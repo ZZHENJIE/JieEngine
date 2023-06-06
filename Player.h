@@ -5,17 +5,20 @@
 
 class Player : public Animal{
     public:
-        Player(SDL_Rect Position,SDL_Surface * Surface,SDL_Surface * WindowSurface){
-            this->Position.x = Position.x;
-            this->Position.y = Position.y;
-            this->Position.w = Position.w;
-            this->Position.h = Position.h;
-
+        Player(const char * FileUrl,SDL_Point Position,short ImageInciseNumber,short PlaySpeed,SDL_Surface * WindowSurface){
             this->WindowSurface = WindowSurface;
-            this->Surface = Surface;
-            this->Speed = 1;
+            this->ImageSurface = SDL_LoadBMP(FileUrl);
+            
+            this->Position = Position;
+
+            this->ImageInciseNumber = ImageInciseNumber;
+            this->PlaySpeed = PlaySpeed;
+
+            this->InciseImage();
         }
+
         void Update() override;
+        const char * GetClass() override;
 };
 
 

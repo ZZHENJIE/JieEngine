@@ -6,8 +6,30 @@
 
 class Animal : public Component{
     protected:
-        SDL_Surface * Surface;
-        short Speed;
+        short Speed = 3;
+    public:
+        void Move(int Direction){
+            switch(Direction){
+                case 0:{
+                    Up();
+                    break;
+                }
+                case 1:{
+                    Left();
+                    break;
+                }
+                case 2:{
+                    Right();
+                    break;
+                }
+            }
+        }
+        void Detect(Still still){
+
+        }
+        const char * GetClass() override{
+            return "Animal";
+        }
         virtual void Up(){
             this->Position.y -= Speed;
         }
@@ -19,33 +41,6 @@ class Animal : public Component{
         }
         virtual void Right(){
             this->Position.x += Speed;
-        }
-    public:
-        ~Animal(){
-            SDL_FreeSurface(Surface);
-        };
-        void Move(int Direction){
-            switch(Direction){
-                case 0:{
-                    Up();
-                    break;
-                }
-                case 1:{
-                    Down();
-                    break;
-                }
-                case 2:{
-                    Left();
-                    break;
-                }
-                case 3:{
-                    Right();
-                    break;
-                }
-            }
-        }
-        void Detect(Still still){
-            
         }
 };
 
