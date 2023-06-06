@@ -1,28 +1,20 @@
-#include "MWindow.h"
-#include "Player.h"
+#include "Window.h"
+#include "./TestGame/OneMapBackground.h"
+#include "./TestGame/OneMapStruct.h"
 
-#define WINDOW_W 500
-#define WINDOW_H 500
+int main(int argc, char * argv[]){
 
-int main(int argc, char * argv[])
-{
-    SDL_Init(SDL_INIT_VIDEO);
+    Window * MWindow = new Window("JieEngine测试",NULL,600,500);
 
-    MWindow * Window = new MWindow("JieEngine",WINDOW_W,WINDOW_H);
+    MapBackground * OneMapbackground = new OneMapBackground(".\\Resource\\Background.bmp",MWindow->GetWindowSurface());
 
-    Animal * player = new Player("Player.bmp",{50,50},4,5,Window->GetWindowSurface());
+    MapStruct * OneMapstruct = new OneMapStruct(MWindow->GetWindowSurface());
 
-    Window->SetAnimalStillNumber(1,0);
+    Map * One = new Map(OneMapbackground,OneMapstruct,MWindow->GetWindowSurface());
 
-    Window->AddAnima(player);
+    MWindow->SetMap(One);
 
-    while(true){
-        if(Window->ListenEvent() == SDL_QUIT){
-            break;
-        }
-    }
-
-    SDL_Quit();
+    MWindow->ListenEvent();
 
     return 0;
 }

@@ -5,43 +5,43 @@
 #include "Still.h"
 
 class Animal : public Component{
-    protected:
-        short Speed = 3;
     public:
-        void Move(int Direction){
-            switch(Direction){
-                case 0:{
-                    Up();
-                    break;
-                }
-                case 1:{
-                    Left();
-                    break;
-                }
-                case 2:{
-                    Right();
-                    break;
-                }
-            }
-        }
-        void Detect(Still still){
-
-        }
-        const char * GetClass() override{
+        /*
+            获取类名
+        */
+        virtual const char * GetClass(){
             return "Animal";
         }
-        virtual void Up(){
-            this->Position.y -= Speed;
+        /*
+            每帧更新函数
+        */
+        virtual void Update() = 0;
+        /*
+            设置动物移动速度
+        */
+        void SetMoveSpeed(short Speed){
+            this->MoveSpeed = Speed;
         }
-        virtual void Down(){
-            this->Position.y += Speed;
+        /*
+            默认向左移动函数
+        */
+        virtual void MoveLeft(){
+            this->Position.x -= MoveSpeed;
         }
-        virtual void Left(){
-            this->Position.x -= Speed;
+        /*
+            默认向右移动函数
+        */
+        virtual void MoveRight(){
+            this->Position.x += MoveSpeed;
         }
-        virtual void Right(){
-            this->Position.x += Speed;
+        /*
+            默认碰撞检测函数
+        */
+        virtual void Detect(Still still){
+            
         }
+    protected:
+        short MoveSpeed = 3;
 };
 
 #endif

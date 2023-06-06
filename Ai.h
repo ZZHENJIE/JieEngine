@@ -1,21 +1,20 @@
-#ifndef STILL_H
-#define STILL_H
+#ifndef AI_H
+#define AI_H
 
-#include "Component.h"
-#include "Animation.h"
+#include "Animal.h"
 
-class Still : public Component{
+class Ai : public Animal{
     public:
         /*
             获取类名
         */
         virtual const char * GetClass(){
-            return "Still";
+            return "Ai";
         }
         /*
             构造函数 参数为 动画素材路径 动画分割数量 播放速度(数值越大越慢) 显示位置 WindowSurface
         */
-        Still(const char * FileUrl,short ImageInciseNumber,short PlaySpeed,SDL_Point Position,SDL_Surface * WindowSurface){
+        Ai(const char * FileUrl,short ImageInciseNumber,short PlaySpeed,SDL_Point Position,SDL_Surface * WindowSurface){
             this->ObjectAnimation = new Animation(FileUrl,ImageInciseNumber,PlaySpeed,Position,WindowSurface);
             this->Position = Position;
             this->WindowSurface = WindowSurface;
@@ -23,7 +22,7 @@ class Still : public Component{
         /*
             构造函数 参数为 图片素材路径 显示位置 WindowSurface
         */
-        Still(const char * FileUrl,SDL_Point Position,SDL_Surface * WindowSurface){
+        Ai(const char * FileUrl,SDL_Point Position,SDL_Surface * WindowSurface){
             this->ObjectAnimation = new Animation(FileUrl,Position,WindowSurface);
             this->Position = Position;
             this->WindowSurface = WindowSurface;
