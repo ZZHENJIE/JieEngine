@@ -28,7 +28,7 @@
 4. Clone该项目 然后直接Cmake编译运行 看看示例游戏能不能跑起来
 
 ### Ubuntu
-1. 安装GCC G++ 使用该命令 `sudo apt-get install gcc & sudo apt-get install g++`
-2. 安装SDL2开发环境 使用该命令 `sudo apt-get install libsdl2-2.0 & sudo apt-get install libsdl2-dev`
+1. 安装GCC G++ 使用该命令 `sudo apt-get install gcc g++`
+2. 安装SDL2开发环境 使用该命令 `sudo apt-get install libsdl2-2.0 libsdl2-dev`
 3. 安装Cmake 使用该命令 `sudo apt-get install cmake`
 4. Clone该项目 然后直接Cmake编译运行 看看示例游戏能不能跑起来
