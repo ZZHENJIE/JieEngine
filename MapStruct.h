@@ -3,8 +3,7 @@
 
 #include "JieEngine.h"
 #include "Still.h"
-#include "Ai.h"
-#include "Player.h"
+#include "Animal.h"
 
 class MapStruct : public JieEngine{
     public:
@@ -24,8 +23,10 @@ class MapStruct : public JieEngine{
         virtual void WindowEvent(SDL_Event Event) = 0;
     protected:
         Still * MapStillArray;
-        Ai * MapAiArray;
-        Player * PlayerObject;
+        short StillCount = 0;
+        Animal * MapAiArray;
+        short AiCount = 0;
+        Animal * PlayerObject;
 };
 
 #endif 

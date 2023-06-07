@@ -8,7 +8,7 @@ add_executable(${CMAKE_PROJECT_NAME}
 JieEngine.h Window.h Map.h 
 MapBackground.h MapStruct.h Ui.h 
 Component.h Animal.h Animation.h 
-Still.h Ai.h Player.h
+Still.h
 
 Main.cpp
 
@@ -16,4 +16,7 @@ Main.cpp
 ./TestGame/OneMapBackground.cpp
 ./TestGame/OneMapStruct.h
 ./TestGame/OneMapStruct.cpp
+./TestGame/Player.h
+./TestGame/Player.cpp
+./TestGame/Barrier.h
 )

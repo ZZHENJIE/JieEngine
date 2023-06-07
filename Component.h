@@ -16,10 +16,11 @@ class Component : public JieEngine{
             每帧更新函数
         */
         virtual void Update() = 0;
+
+        SDL_Point Position;
+        SDL_Point Size;
     protected:
-        SDL_Point Position; //控件位置
-        SDL_Point Size;     //控件大小
-        Animation * ObjectAnimation; //控件动画
+        Animation * ObjectAnimation;
 };
 
 #endif

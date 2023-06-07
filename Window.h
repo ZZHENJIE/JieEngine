@@ -20,6 +20,7 @@ class Window : public JieEngine{
             this->MWindow = SDL_CreateWindow(WindowTitle,SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,Window_W,Window_H,SDL_WINDOW_SHOWN);
             SDL_SetWindowIcon(this->MWindow,SDL_LoadBMP(WindowIcon));
             this->WindowSurface = SDL_GetWindowSurface(this->MWindow);
+            
         }
         /*
             窗口事件监听函数
@@ -76,7 +77,7 @@ class Window : public JieEngine{
         SDL_Window * MWindow;
         SDL_Event Event;
         Map * CurrentMap;
-        uint32_t FPS = 60;
+        uint32_t FPS = 75;
         uint32_t Begin = 0;
 };
 

@@ -2,6 +2,9 @@
 #define ONEMAPSTRUCT_H
 
 #include "../MapStruct.h"
+#include "Player.h"
+#include "Barrier.h"
+#include <time.h>
 
 class OneMapStruct :public MapStruct{
     public:

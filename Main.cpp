@@ -4,9 +4,9 @@
 
 int main(int argc, char * argv[]){
 
-    Window * MWindow = new Window("JieEngine测试",NULL,600,500);
+    Window * MWindow = new Window("JieEngine测试",".\\Resource\\Logo.bmp",WINDOW_W,WINDOW_H);
 
-    MapBackground * OneMapbackground = new OneMapBackground(".\\Resource\\Background.bmp",MWindow->GetWindowSurface());
+    MapBackground * OneMapbackground = new OneMapBackground(MWindow->GetWindowSurface());
 
     MapStruct * OneMapstruct = new OneMapStruct(MWindow->GetWindowSurface());
 

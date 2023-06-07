@@ -14,7 +14,7 @@ class OneMapBackground :public MapBackground{
         /*
             构造函数
         */
-        OneMapBackground(const char * ImageUrl,SDL_Surface * WindowSurface);
+        OneMapBackground(SDL_Surface * WindowSurface);
         /*
             每帧更新函数
         */
@@ -23,6 +23,10 @@ class OneMapBackground :public MapBackground{
             接收事件 除了退出事件 其它事件都接收的到
         */
         void WindowEvent(SDL_Event Event);
+    private:
+        SDL_Surface * BackgroundImage1;
+        SDL_Rect BackgroundImage1Position;
+        SDL_Rect BackgroundImage1PositionTemp;
 };
 
 #endif
