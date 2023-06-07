@@ -10,8 +10,7 @@ MapBackground.h MapStruct.h Ui.h
 Component.h Animal.h Animation.h 
 Still.h
 
-Main.cpp
-
+./TestGame/Main.cpp
 ./TestGame/OneMapBackground.h
 ./TestGame/OneMapBackground.cpp
 ./TestGame/OneMapStruct.h

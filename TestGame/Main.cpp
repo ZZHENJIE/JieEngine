@@ -1,6 +1,6 @@
-#include "Window.h"
-#include "./TestGame/OneMapBackground.h"
-#include "./TestGame/OneMapStruct.h"
+#include "../Window.h"
+#include "OneMapBackground.h"
+#include "OneMapStruct.h"
 
 int main(int argc, char * argv[]){
 
