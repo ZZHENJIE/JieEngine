@@ -1,8 +1,8 @@
 #ifndef JIEENGINE_H
 #define JIEENGINE_H
 
-#define WINDOWW 600
-#define WINDOWH 500
+#define WINDOW_W 1280
+#define WINDOW_H 960
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>

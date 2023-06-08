@@ -1,5 +1,5 @@
-#ifndef WINDOW_H
-#define WINDOW_H
+#ifndef WINDOW_H_F
+#define WINDOW_H_F
 
 #include "JieEngine.h"
 #include "Map.h"
@@ -19,7 +19,7 @@ class Window : public JieEngine{
             SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_EVERYTHING);
             Mix_Init(MIX_INIT_MP3 | MIX_INIT_OGG);
             IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
-            this->MWindow = SDL_CreateWindow(WindowTitle,SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,WINDOWW,WINDOWH,SDL_WINDOW_SHOWN);
+            this->MWindow = SDL_CreateWindow(WindowTitle,SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,WINDOW_W,WINDOW_H,SDL_WINDOW_SHOWN);
             if(WindowIcon != nullptr){
                 SDL_SetWindowIcon(this->MWindow,IMG_Load(WindowIcon));
             }
