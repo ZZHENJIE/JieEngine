@@ -2,8 +2,6 @@
 #define MAPSTRUCT_H
 
 #include "JieEngine.h"
-#include "Still.h"
-#include "Animal.h"
 
 class MapStruct : public JieEngine{
     public:
@@ -21,6 +19,10 @@ class MapStruct : public JieEngine{
             接收事件 除了退出事件 其它事件都接收的到
         */
         virtual void WindowEvent(SDL_Event Event) = 0;
+        /*
+            释放资源函数
+        */
+        virtual void Free() = 0;
 };
 
 #endif 

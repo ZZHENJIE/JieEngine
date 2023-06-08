@@ -12,6 +12,12 @@ class MainMapStruct : public MapStruct{
             return "MainMapStruct";
         }
         /*
+            构造函数 参数为 WindowSurface
+        */
+        MainMapStruct(SDL_Surface * WindowSurface){
+            this->WindowSurface = WindowSurface;
+        }
+        /*
             每帧更新函数
         */
         void Update(){
@@ -21,7 +27,13 @@ class MainMapStruct : public MapStruct{
             接收事件 除了退出事件 其它事件都接收的到
         */
         void WindowEvent(SDL_Event Event){
-            
+
+        }
+        /*
+            释放资源函数
+        */
+        void Free(){
+
         }
 };
 

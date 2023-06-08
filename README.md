@@ -25,13 +25,16 @@
 
 ### Windows
 1. 配置Mingw环境 [下载地址](https://github.com/niXman/mingw-builds-binaries/releases)
-2. 配置SDL2环境 [下载地址](https://github.com/libsdl-org/SDL/releases)
+2. 配置SDL2环境
+    * SDL2本体[下载地址](https://github.com/libsdl-org/SDL/releases)
+    * SDL2-Mixer[下载地址](https://github.com/libsdl-org/SDL_mixer/releases)
+    * SDL2-Image[下载地址](https://github.com/libsdl-org/SDL_image/releases)
 3. 安装Cmake [下载地址](https://cmake.org/download/)
 4. Clone该项目 然后直接Cmake编译运行 看看能不能跑起来
 
 ### Ubuntu
 1. 安装GCC G++ 使用该命令 `sudo apt-get install gcc g++`
-2. 安装SDL2开发环境 使用该命令 `sudo apt-get install libsdl2-2.0 libsdl2-dev`
+2. 安装SDL2开发环境 使用该命令 `sudo apt-get install libsdl2-2.0 libsdl2-dev libsdl2-mixer-dev libsdl2-image-dev`
 3. 安装Cmake 使用该命令 `sudo apt-get install cmake`
 4. Clone该项目 然后直接Cmake编译运行 看看能不能跑起来
 

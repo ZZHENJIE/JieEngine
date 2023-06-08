@@ -15,7 +15,7 @@ class Animation : public JieEngine{
             动画构造函数 参数为 动画图片 图片分割数量 播放速度(数值越大越慢) 显示位置 WindowSurface
         */
         Animation(const char * FileUrl,short ImageInciseNumber,short PlaySpeed,SDL_Point * ShowPosition,SDL_Surface * WindowSurface){
-            this->Image = SDL_LoadBMP(FileUrl);
+            this->Image = IMG_Load(FileUrl);
             this->ImageInciseNumber = ImageInciseNumber;
             this->PlaySpeed = PlaySpeed;
             this->WindowSurface = WindowSurface;
@@ -33,7 +33,7 @@ class Animation : public JieEngine{
         */
         Animation(const char * FileUrl,SDL_Point * ShowPosition,SDL_Surface * WindowSurface){
             this->IsAnimation = false;
-            this->Image = SDL_LoadBMP(FileUrl);
+            this->Image = IMG_Load(FileUrl);
             this->WindowSurface = WindowSurface;
             this->ShowPosition = ShowPosition;
             this->PositionArray = new SDL_Point[1];
@@ -46,26 +46,26 @@ class Animation : public JieEngine{
             获取组件Size
         */
         SDL_Point GetComponentSize(){
-            return Size;
+            return this->Size;
         }
         /*
             每帧更新函数
         */
         void Update(){
-            SDL_Rect TempImageSurfacePosition = {PositionArray[AnimationCount].x,PositionArray[AnimationCount].y,Size.x,Size.y};
-            SDL_Rect TempWindowSurfacePosition = {ShowPosition->x,ShowPosition->y,Size.x,Size.y};
+            SDL_Rect TempImageSurfacePosition = {this->PositionArray[AnimationCount].x,this->PositionArray[AnimationCount].y,this->Size.x,this->Size.y};
+            SDL_Rect TempWindowSurfacePosition = {this->ShowPosition->x,this->ShowPosition->y,this->Size.x,this->Size.y};
             SDL_BlitSurface(Image,&TempImageSurfacePosition,WindowSurface,&TempWindowSurfacePosition);
 
-            if(IsPlay && IsAnimation){
-                if(AnimationPlaySpeedCount % PlaySpeed == 0){
-                    if(AnimationCount == ImageInciseNumber - 1){
-                        AnimationCount = 0;
+            if(this->IsPlay && this->IsAnimation){
+                if(this->AnimationPlaySpeedCount % this->PlaySpeed == 0){
+                    if(this->AnimationCount == this->ImageInciseNumber - 1){
+                        this->AnimationCount = 0;
                     }else{
-                        AnimationCount++;
+                        this->AnimationCount++;
                     }
-                    AnimationPlaySpeedCount = 0;
+                    this->AnimationPlaySpeedCount = 0;
                 }
-                AnimationPlaySpeedCount ++;
+                this->AnimationPlaySpeedCount ++;
             }
         }
         /*
@@ -80,18 +80,24 @@ class Animation : public JieEngine{
         void Stop(){
             this->IsPlay = false;
         }
-
+        /*
+            释放资源函数
+        */
+        void Free(){
+            SDL_FreeSurface(this->Image);
+            delete[] PositionArray;
+        }
     private:
         short ImageInciseNumber = 0;
         short PlaySpeed = 0;
         short AnimationCount = 0;
         short AnimationPlaySpeedCount = 0;
         bool IsPlay = true;
+        bool IsAnimation = true;
         SDL_Surface * Image;
         SDL_Point * PositionArray;
         SDL_Point Size;
         SDL_Point * ShowPosition;
-        bool IsAnimation = true;
 };
 
 #endif

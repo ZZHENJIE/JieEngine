@@ -29,6 +29,7 @@ class Animal : public Component{
             this->Position = Position;
             this->WindowSurface = WindowSurface;
         }
+        short MoveSpeed = 2;//动物移动速度
         /*
             设置动物移动速度
         */
@@ -56,9 +57,13 @@ class Animal : public Component{
         */
         virtual void Update() = 0;
         /*
+            释放资源函数 记得加 this->ObjectAnimation->Free(); 哦
+        */
+        virtual void Free() = 0;
+        /*
             默认碰撞检测函数
         */
-        void Detect(Component * component){
+        virtual bool IsCollideDetect(Component * component){
             SDL_Rect ThisRect = {Position.x,Position.y,Size.x,Size.y};
             SDL_Rect ComponentRect = {component->Position.x,component->Position.y,component->Size.x,component->Size.y};
             SDL_Rect CollideRect;
@@ -100,10 +105,11 @@ class Animal : public Component{
                     }
                     this->Collide(component,CollideRect,2);
                 }
+                return true;
+            }else{
+                return false;
             }
         }
-    protected:
-        short MoveSpeed = 2;
 };
 
 #endif

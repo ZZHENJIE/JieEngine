@@ -35,6 +35,13 @@ class Map : public JieEngine{
             this->Mapbackground->Update();
             this->Mapstruct->Update();
         };
+        /*
+            释放资源函数
+        */
+        void Free (){
+            this->Mapbackground->Free();
+            this->Mapstruct->Free();
+        }
     private:
         MapBackground * Mapbackground;
         MapStruct * Mapstruct;

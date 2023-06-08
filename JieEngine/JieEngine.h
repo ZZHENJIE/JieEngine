@@ -1,10 +1,12 @@
 #ifndef JIEENGINE_H
 #define JIEENGINE_H
 
-#define WINDOW_W 600
-#define WINDOW_H 500
+#define WINDOWW 600
+#define WINDOWH 500
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL_image.h>
 #include <iostream>
 
 using namespace std;
@@ -21,6 +23,12 @@ class JieEngine{
             WindowSurface 因为SDL内每添加一个东西到屏幕上都必须要有 WindowSurface
         */
         SDL_Surface * WindowSurface;
+        /*
+            释放WindowSurface 函数
+        */
+        void FreeWindowSurface(){
+            SDL_FreeSurface(this->WindowSurface);
+        }
         /*
             一个函数即可设置SDL_Rect的值 减少代码重复 更简洁
         */

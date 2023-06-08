@@ -34,6 +34,10 @@ class Still : public Component{
             每帧更新函数 记得加 this->ObjectAnimation->Update(); 哦
         */
         virtual void Update() = 0;
+        /*
+            释放资源函数 记得加 this->ObjectAnimation->Free(); 哦
+        */
+        virtual void Free() = 0;
 };
 
 #endif

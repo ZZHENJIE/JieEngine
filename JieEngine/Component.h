@@ -16,6 +16,10 @@ class Component : public JieEngine{
             每帧更新函数
         */
         virtual void Update() = 0;
+        /*
+            释放资源函数 记得加 this->ObjectAnimation->Free(); 哦
+        */
+        virtual void Free() = 0;
 
         SDL_Point Position;
         SDL_Point Size;
