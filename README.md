@@ -1,6 +1,6 @@
 # 杰引擎 JieEngine
 
-![](https://raw.githubusercontent.com/ZZHENJIE/JieEngine-TestGame/master/Resource/Logo.bmp)
+![](https://raw.githubusercontent.com/ZZHENJIE/JieEngine-TestGame/master/Resource/Logo.png)
 
 ![](https://www.libsdl.org/media/SDL_logo.png)
 
