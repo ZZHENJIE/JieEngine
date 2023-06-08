@@ -1,5 +1,7 @@
 # 杰引擎 JieEngine
 
+![](https://raw.githubusercontent.com/ZZHENJIE/JieEngine-TestGame/master/Resource/Logo.bmp)
+
 ![](https://www.libsdl.org/media/SDL_logo.png)
 
 本引擎是使用[SDL2图形库](https://www.libsdl.org/)实现的 只支持2D游戏 运行该项目是示例游戏
@@ -32,3 +34,5 @@
 2. 安装SDL2开发环境 使用该命令 `sudo apt-get install libsdl2-2.0 libsdl2-dev`
 3. 安装Cmake 使用该命令 `sudo apt-get install cmake`
 4. Clone该项目 然后直接Cmake编译运行 看看能不能跑起来
+
+## [示例游戏](https://github.com/ZZHENJIE/JieEngine-TestGame)
