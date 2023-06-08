@@ -7,17 +7,7 @@ project(JieEngine)
 link_libraries(-lSDL2main -lSDL2) # Linux(Ubuntu)
 
 add_executable(${CMAKE_PROJECT_NAME}
-JieEngine.h Window.h Map.h 
-MapBackground.h MapStruct.h Ui.h 
-Component.h Animal.h Animation.h 
-Still.h
+./JieEngine/
 
-./TestGame/Main.cpp
-./TestGame/OneMapBackground.h
-./TestGame/OneMapBackground.cpp
-./TestGame/OneMapStruct.h
-./TestGame/OneMapStruct.cpp
-./TestGame/Player.h
-./TestGame/Player.cpp
-./TestGame/Barrier.h
+MainMapBackground.h MainMapStruct.h Main.cpp
 )
