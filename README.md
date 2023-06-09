@@ -38,4 +38,6 @@
 3. 安装Cmake 使用该命令 `sudo apt-get install cmake`
 4. Clone该项目 然后直接Cmake编译运行 看看能不能跑起来
 
+## [文档](https://www.zzjmbox.tk/)
+
 ## [示例游戏](https://github.com/ZZHENJIE/JieEngine-TestGame)

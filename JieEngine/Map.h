@@ -38,7 +38,7 @@ class Map : public JieEngine{
         /*
             释放资源函数
         */
-        void Free (){
+        void Free(){
             this->Mapbackground->Free();
             this->Mapstruct->Free();
         }

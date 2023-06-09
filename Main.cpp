@@ -17,7 +17,5 @@ int main(int argc, char *argv[])
 
     MWindow->ListenEvent();
 
-    MWindow->Free();
-
     return 0;
 }
