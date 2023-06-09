@@ -23,7 +23,6 @@ class Component : public JieEngine{
 
         SDL_Point Position;
         SDL_Point Size;
-    protected:
         Animation * ObjectAnimation;
 };
 
