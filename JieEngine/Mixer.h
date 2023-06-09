@@ -21,7 +21,7 @@ class Mixer{
         /*
             构造函数 参数 文件路经 声道
         */
-        Mixer(char * FileUrl,unsigned short Channel){
+        Mixer(const char * FileUrl,unsigned short Channel){
             this->Sound = Decrypt::DecryptMixer(FileUrl);
             this->Channel = Channel;
         }

@@ -15,7 +15,7 @@ class Window : public JieEngine{
         /*
             构造函数 参数为 窗口标题 窗口图标
         */
-        Window(const char * WindowTitle,char * WindowIcon){
+        Window(const char * WindowTitle,const char * WindowIcon){
             SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_EVERYTHING);
             Mix_Init(MIX_INIT_MP3 | MIX_INIT_OGG);
             IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);

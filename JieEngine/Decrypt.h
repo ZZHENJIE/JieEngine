@@ -8,9 +8,7 @@
 
 class Decrypt{
     public:
-        static SDL_Surface * DecryptImage(char * FileUrl){
-
-            strcat(FileUrl,".JieEngine");
+        static SDL_Surface * DecryptImage(const char * FileUrl){
 
             SDL_RWops * io = SDL_RWFromFile(FileUrl, "rb");
 
@@ -30,9 +28,7 @@ class Decrypt{
             return nullptr;
         }
 
-        static Mix_Chunk * DecryptMixer(char * FileUrl){
-
-            strcat(FileUrl,".JieEngine");
+        static Mix_Chunk * DecryptMixer(const char * FileUrl){
 
             SDL_RWops * io = SDL_RWFromFile(FileUrl, "rb");
 

@@ -14,7 +14,7 @@ class Animation : public JieEngine{
         /*
             动画构造函数 参数为 动画图片 图片分割数量 播放速度(数值越大越慢) 显示位置 WindowSurface
         */
-        Animation(char * FileUrl,short ImageInciseNumber,short PlaySpeed,SDL_Point * ShowPosition,SDL_Surface * WindowSurface){
+        Animation(const char * FileUrl,short ImageInciseNumber,short PlaySpeed,SDL_Point * ShowPosition,SDL_Surface * WindowSurface){
             this->Image = Decrypt::DecryptImage(FileUrl);
             this->ImageInciseNumber = ImageInciseNumber;
             this->PlaySpeed = PlaySpeed;
@@ -31,7 +31,7 @@ class Animation : public JieEngine{
         /*
             静态图片构造函数 参数为 动画图片 显示位置 WindowSurface
         */
-        Animation(char * FileUrl,SDL_Point * ShowPosition,SDL_Surface * WindowSurface){
+        Animation(const char * FileUrl,SDL_Point * ShowPosition,SDL_Surface * WindowSurface){
             this->IsAnimation = false;
             this->Image = Decrypt::DecryptImage(FileUrl);
             this->WindowSurface = WindowSurface;
