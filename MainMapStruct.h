@@ -1,7 +1,7 @@
 #ifndef MAINMAPSTRUCT_H
 #define MAINMAPSTRUCT_H
 
-#include "JieEngine/MapStruct.h"
+#include "include/MapStruct.h"
 
 class MainMapStruct : public MapStruct{
     public:

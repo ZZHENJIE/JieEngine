@@ -1,7 +1,7 @@
 #ifndef MAINMAPBACKGROUND_H
 #define MAINMAPBACKGROUND_H
 
-#include "JieEngine/MapBackground.h"
+#include "include/MapBackground.h"
 
 class MainMapBackground : public MapBackground{
     public:
