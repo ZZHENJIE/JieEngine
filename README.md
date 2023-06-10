@@ -36,8 +36,8 @@
 1. 安装GCC G++ 使用该命令 `sudo apt-get install gcc g++`
 2. 安装SDL2开发环境 使用该命令 `sudo apt-get install libsdl2-2.0 libsdl2-dev libsdl2-mixer-dev libsdl2-image-dev`
 3. 安装Cmake 使用该命令 `sudo apt-get install cmake`
-4. 把解密静态库移动到lib目录 命令`sudo mv ./lib/libDecrypt.a /usr/lib/x86_64-linux-gnu/`
-5. Clone该项目 然后直接Cmake编译运行 看看能不能跑起来
+4. Clone该项目 把解密静态库移动到lib目录 命令`sudo mv ./lib/libDecrypt.a /usr/lib/x86_64-linux-gnu/`
+5. 然后直接Cmake编译运行 看看能不能跑起来
 
 ## [文档](https://www.zzjmbox.tk/)
 
