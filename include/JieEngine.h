@@ -1,10 +1,9 @@
 #ifndef JIEENGINE_H
 #define JIEENGINE_H
 
-#define WINDOW_W 1280
-#define WINDOW_H 960
+#define WINDOW_W 800
+#define WINDOW_H 600
 
-#include <SDL2/SDL.h>
 #include <iostream>
 #include "Decrypt.h"
 
