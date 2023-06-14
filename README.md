@@ -29,15 +29,28 @@
     * SDL2本体[下载地址](https://github.com/libsdl-org/SDL/releases)
     * SDL2-Mixer[下载地址](https://github.com/libsdl-org/SDL_mixer/releases)
     * SDL2-Image[下载地址](https://github.com/libsdl-org/SDL_image/releases)
+    * SDL2-TTF[下载地址](https://github.com/libsdl-org/SDL_ttf/releases)
 3. 安装Cmake [下载地址](https://cmake.org/download/)
-4. Clone该项目 把解密静态库移动到lib目录,为Mingw/x86_64-w64-mingw32/lib/,静态库在/Lib/Windows/libDecrypt.a
+4. Clone该项目 把解密静态库移动到lib目录,为Mingw/x86_64-w64-mingw32/lib/,静态库在/Tool-Lib/Windows/libDecrypt.a
 5. 然后直接Cmake编译运行 看看能不能跑起来
 
 ### Ubuntu 22.04
 1. 安装GCC G++ 使用该命令 `sudo apt-get install gcc g++`
-2. 安装SDL2开发环境 使用该命令 `sudo apt-get install libsdl2-2.0 libsdl2-dev libsdl2-mixer-dev libsdl2-image-dev`
+2. 安装SDL2开发环境 使用该命令 `sudo apt-get install libsdl2-2.0 libsdl2-dev libsdl2-mixer-dev libsdl2-image-dev libsdl2-ttf-dev`
 3. 安装Cmake 使用该命令 `sudo apt-get install cmake`
-4. Clone该项目 把解密静态库移动到lib目录 命令`sudo mv ./Lib/Linux/libDecrypt.a /usr/lib/x86_64-linux-gnu/`
+4. Clone该项目 把解密静态库移动到lib目录 命令`sudo mv ./Tool-Lib/Linux/libDecrypt.a /usr/lib/x86_64-linux-gnu/`
+5. 然后直接Cmake编译运行 看看能不能跑起来
+
+### MacOS
+1. 安装brew
+    * 常规安装脚本（推荐 完全体 几分钟安装完成
+        `/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"`
+    * 极速安装脚本（精简版 几秒钟安装完成
+        `/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)" speed`
+2. 检查电脑是否有G++ GCC 编译器 `g++ -v Or gcc -v` 如果有大量的字符串输出证明电脑有G++ GCC
+3. 安装SDL2开发环境 使用该命令 `brew install sdl2 sdl2_mixer sdl2_image sdl2_ttf`
+4. 安装Cmake 使用该命令 `brew install cmake`
+4. Clone该项目 把解密静态库移动到lib目录 命令`sudo mv ./Tool-Lib/MacOS/libDecrypt.a /usr/local/lib/`
 5. 然后直接Cmake编译运行 看看能不能跑起来
 
 ## [文档](https://www.zzjmbox.tk/)

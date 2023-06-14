@@ -12,13 +12,15 @@ class MapBackground : public JieEngine{
             return "MapBackground";
         }
         /*
+            设置WindowSurface
+        */
+        void SetWindowSurface(SDL_Surface * WindowSurface){
+            this->WindowSurface = WindowSurface;
+        }
+        /*
             每帧更新函数
         */
         virtual void Update() = 0;
-        /*
-            接收事件 除了退出事件 其它事件都接收的到
-        */
-        virtual void WindowEvent(SDL_Event Event) = 0;
         /*
             释放资源函数
         */

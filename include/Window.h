@@ -2,7 +2,7 @@
 #define WINDOW_H_F
 
 #include "JieEngine.h"
-#include "Map.h"
+#include "MapStruct.h"
 
 class Window : public JieEngine{
     public:
@@ -11,7 +11,7 @@ class Window : public JieEngine{
         */
         virtual const char * GetClass(){
             return "Window";
-        }
+        }   
         /*
             构造函数 参数为 窗口标题 窗口图标
         */
@@ -41,11 +41,11 @@ class Window : public JieEngine{
                         this->CloseWindow();
                         return;
                     }else{
-                        CurrentMap->WindowEvent(this->Event);
+                        this->Mapstruct->WindowEvent(this->Event);
                     }
                 }
 
-                this->CurrentMap->Update();
+                this->Mapstruct->Update();
 
                 SDL_UpdateWindowSurface(this->MWindow);
 
@@ -67,15 +67,16 @@ class Window : public JieEngine{
         /*
             设置当前关卡实例
         */
-        void SetMap(Map * CurrentMap){
-            this->CurrentMap = CurrentMap;
+        void SetMap(MapStruct * Mapstruct){
+            this->Mapstruct = Mapstruct;
+            this->Mapstruct->SetWindowSurface(this->WindowSurface);
         }
         /*
             关闭窗口函数
         */
         void CloseWindow(){
             SDL_DestroyWindow(this->MWindow);
-            this->CurrentMap->Free();
+            this->Mapstruct->Free();
             IMG_Quit();
             Mix_Quit();
             SDL_Quit();
@@ -83,7 +84,7 @@ class Window : public JieEngine{
     private:
         SDL_Window * MWindow;
         SDL_Event Event;
-        Map * CurrentMap;
+        MapStruct * Mapstruct;
         uint32_t FPS = 75;
         uint32_t Begin = 0;
 };

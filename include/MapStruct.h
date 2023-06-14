@@ -12,6 +12,18 @@ class MapStruct : public JieEngine{
             return "MapStruct";
         }
         /*
+            设置WindowSurface
+        */
+        void SetWindowSurface(SDL_Surface * WindowSurface){
+            this->WindowSurface = WindowSurface;
+        }
+        /*
+            改变地图结构函数 (不能使用)
+        */
+        void Change_MapStruct(MapStruct * This,MapStruct * Mapstruct){
+            This = Mapstruct;
+        }
+        /*
             每帧更新函数
         */
         virtual void Update() = 0;
@@ -23,6 +35,7 @@ class MapStruct : public JieEngine{
             释放资源函数
         */
         virtual void Free() = 0;
+    private:
 };
 
 #endif 

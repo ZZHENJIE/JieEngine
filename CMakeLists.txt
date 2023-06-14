@@ -2,11 +2,21 @@ cmake_minimum_required(VERSION 3.10)
 
 project(JieEngine)
 
-if(CMAKE_HOST_SYSTEM_NAME MATCHES "Linux") #Linux
+set(CMAKE_CXX_STANDARD 11)
+
+if(CMAKE_HOST_APPLE) #MacOS
+
+    include_directories(/usr/local/include/)
+
+    link_directories(/usr/local/lib/)
+    
+    link_libraries(-lSDL2main -lDecrypt -lSDL2 -lSDL2_mixer -lSDL2_image)
+
+elseif(CMAKE_HOST_UNIX) #Linux
  
     link_libraries(-lSDL2main -lDecrypt -lSDL2 -lSDL2_mixer -lSDL2_image)
  
-elseif(CMAKE_HOST_SYSTEM_NAME MATCHES "Windows") #Windows
+elseif(CMAKE_HOST_WIN32) #Windows
  
     link_libraries(-lmingw32 -lDecrypt -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_image) #有终端窗口
     # link_libraries(-lmingw32 -lDecrypt -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_image -mwindows) #无终端窗口
@@ -14,5 +24,6 @@ elseif(CMAKE_HOST_SYSTEM_NAME MATCHES "Windows") #Windows
 endif()
 
 add_executable(${CMAKE_PROJECT_NAME}
-MainMapBackground.h MainMapStruct.h Main.cpp
+Main.cpp
+MainMapStruct.h
 )
