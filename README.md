@@ -25,7 +25,7 @@
 
 ### Windows
 1. 配置Mingw环境 [下载地址](https://github.com/niXman/mingw-builds-binaries/releases)
-2. 配置SDL2环境 可以选择[打包好的SDL2环境](https://zhongzhenjie.lanzoum.com/iTktU0yuujwb)或自己下载配置
+2. 配置SDL2环境 可以选择[打包好的SDL2环境](https://zhongzhenjie.lanzoum.com/i4syo0yvw7sd)或自己下载配置
     * SDL2本体[下载地址](https://github.com/libsdl-org/SDL/releases)
     * SDL2-Mixer[下载地址](https://github.com/libsdl-org/SDL_mixer/releases)
     * SDL2-Image[下载地址](https://github.com/libsdl-org/SDL_image/releases)
