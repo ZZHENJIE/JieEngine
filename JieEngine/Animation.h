@@ -52,9 +52,11 @@ class Animation : public JieEngine{
             每帧更新函数
         */
         void Update(){
-            SDL_Rect TempImageSurfacePosition = {this->PositionArray[AnimationCount].x,this->PositionArray[AnimationCount].y,this->Size.x,this->Size.y};
-            SDL_Rect TempWindowSurfacePosition = {this->ShowPosition->x,this->ShowPosition->y,this->Size.x,this->Size.y};
-            SDL_BlitSurface(Image,&TempImageSurfacePosition,WindowSurface,&TempWindowSurfacePosition);
+            if(this->IsShow){
+                SDL_Rect TempImageSurfacePosition = {this->PositionArray[AnimationCount].x,this->PositionArray[AnimationCount].y,this->Size.x,this->Size.y};
+                SDL_Rect TempWindowSurfacePosition = {this->ShowPosition->x,this->ShowPosition->y,this->Size.x,this->Size.y};
+                SDL_BlitSurface(Image,&TempImageSurfacePosition,WindowSurface,&TempWindowSurfacePosition);
+            }
 
             if(this->IsPlay && this->IsAnimation){
                 if(this->AnimationPlaySpeedCount % this->PlaySpeed == 0){
@@ -81,6 +83,18 @@ class Animation : public JieEngine{
             this->IsPlay = false;
         }
         /*
+            显示动画
+        */
+        void Show(){
+            this->IsShow = true;
+        }
+        /*
+            隐藏动画
+        */
+        void Hide(){
+            this->IsShow = false;
+        }
+        /*
             释放资源函数
         */
         void Free(){
@@ -94,6 +108,7 @@ class Animation : public JieEngine{
         short AnimationPlaySpeedCount = 0;
         bool IsPlay = true;
         bool IsAnimation = true;
+        bool IsShow = true;
         SDL_Surface * Image;
         SDL_Point * PositionArray;
         SDL_Point Size;
