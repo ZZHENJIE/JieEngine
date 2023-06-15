@@ -41,7 +41,11 @@ class Window : public JieEngine{
                         this->CloseWindow();
                         return;
                     }else{
-                        this->Mapstruct->WindowEvent(this->Event);
+                        const char * TempMapName = this->Mapstruct->GetClass();
+                        this->Mapstruct->WindowEvent(this->Event,this->Mapstruct);
+                        if(strcmp(TempMapName,this->Mapstruct->GetClass()) != 0){
+                            this->Mapstruct->SetWindowSurface(this->WindowSurface);
+                        }
                     }
                 }
 

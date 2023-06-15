@@ -26,4 +26,5 @@ endif()
 add_executable(${CMAKE_PROJECT_NAME}
 Main.cpp
 MainMapStruct.h
+TestMapStruct.h
 )
