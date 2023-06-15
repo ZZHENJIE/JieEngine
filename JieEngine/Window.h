@@ -69,7 +69,7 @@ class Window : public JieEngine{
         */
         void SetMap(MapStruct * Mapstruct){
             this->Mapstruct = Mapstruct;
-            this->Mapstruct->SetWindowSurface(this->WindowSurface);
+            this->Mapstruct->WindowSurface = this->WindowSurface;
         }
         /*
             关闭窗口函数

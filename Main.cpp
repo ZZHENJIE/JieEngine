@@ -5,7 +5,7 @@ int main(int argc, char *argv[])
 {   
     Window * MWindow = new Window("JieEngine",nullptr);
     
-    MWindow->SetMap(new MainMapStruct());
+    MWindow->SetMap(new MainMapStruct(MWindow->GetWindowSurface()));
 
     MWindow->ListenEvent();
 

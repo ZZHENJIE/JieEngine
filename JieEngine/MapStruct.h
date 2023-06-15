@@ -12,16 +12,10 @@ class MapStruct : public JieEngine{
             return "MapStruct";
         }
         /*
-            设置WindowSurface
-        */
-        void SetWindowSurface(SDL_Surface * WindowSurface){
-            this->WindowSurface = WindowSurface;
-        }
-        /*
             改变地图函数
         */
         void Change_MapStruct(MapStruct *& MWindowMapStruct,MapStruct * ChangeMapStruct){
-            ChangeMapStruct->SetWindowSurface(MWindowMapStruct->WindowSurface);
+            ChangeMapStruct->WindowSurface = MWindowMapStruct->WindowSurface;
             MWindowMapStruct = ChangeMapStruct;
         }
         /*

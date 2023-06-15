@@ -12,6 +12,12 @@ class MainMapStruct : public MapStruct{
             return "MainMapStruct";
         }
         /*
+            构造函数
+        */
+        MainMapStruct(SDL_Surface * WindowSurface){
+            this->WindowSurface = WindowSurface;
+        }
+        /*
             每帧更新函数
         */
         void Update(){

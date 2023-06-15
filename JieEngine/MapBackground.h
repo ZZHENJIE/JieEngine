@@ -12,12 +12,6 @@ class MapBackground : public JieEngine{
             return "MapBackground";
         }
         /*
-            设置WindowSurface
-        */
-        void SetWindowSurface(SDL_Surface * WindowSurface){
-            this->WindowSurface = WindowSurface;
-        }
-        /*
             每帧更新函数
         */
         virtual void Update() = 0;
