@@ -1,29 +1,23 @@
-#ifndef COMPONENT_H
-#define COMPONENT_H
+#pragma once
 
 #include "JieEngine.h"
-#include "Animation.h"
 
-class Component : public JieEngine{
+class Transform{
     public:
-        /*
-            获取类名
-        */
-        virtual const char * GetClass(){
-            return "Component";
-        }
-        /*
-            每帧更新函数
-        */
-        virtual void Update() = 0;
-        /*
-            释放资源函数 记得加 this->ObjectAnimation->Free(); 哦
-        */
-        virtual void Free() = 0;
-
+        Transform(int EntityId,SDL_Point Position = {0,0},SDL_Size Size = {0,0},double Rotation = 0);
         SDL_Point Position;
-        SDL_Point Size;
-        Animation * ObjectAnimation;
+        SDL_Size Size;
+        double Rotation;
+        static std::vector<int> EntityComponent;
 };
 
-#endif
+class Mesh{
+    public:
+        Mesh(int EntityId,bool IsVirtual = false);
+        bool IsVirtual;
+        static std::vector<int> EntityComponent;
+};
+
+class Rigidbody{
+    
+};
