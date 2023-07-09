@@ -23,5 +23,6 @@ namespace JieEngine{
     void SetRect(SDL_Rect * Rect,int x,int y, int w,int h);
     void LogRect(SDL_Rect * Rect);
     extern SDL_Renderer * WindowRenderer;
+    extern SDL_Size WindowSize;
     extern int EntityCountId;
 };

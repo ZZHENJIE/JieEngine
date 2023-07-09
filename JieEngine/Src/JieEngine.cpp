@@ -2,10 +2,12 @@
 #include "../Component.h"
 
 int JieEngine::EntityCountId = 0;
-SDL_Renderer * JieEngine::WindowRenderer = nullptr;
+SDL_Size JieEngine::WindowSize;
+SDL_Renderer * JieEngine::WindowRenderer;
 
 std::vector<int> Transform::EntityComponent;
 std::vector<int> Mesh::EntityComponent;
+std::vector<int> Rigidbody::EntityComponent;
 
 void JieEngine::Init(){
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
@@ -20,6 +22,7 @@ void JieEngine::Quit(){
     IMG_Quit();
     Mix_Quit();
     TTF_Quit();
+    SDL_DestroyRenderer(JieEngine::WindowRenderer);
 }
 
 void JieEngine::SetRect(SDL_Rect * Rect,int x,int y, int w,int h){

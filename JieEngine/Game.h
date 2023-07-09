@@ -9,7 +9,6 @@ class Game final{
         Game(const char * GameName,int Window_W,int Window_H,int Position_X,int Position_Y);
         ~Game();
         void SetWindowIcon(const char * SourceUrl);
-        SDL_Size GetWindowSize();
         void SetWindowSize(int Window_W,int Window_H);
         void SetGameMap(GameMap * Map);
     private:
