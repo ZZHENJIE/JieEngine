@@ -1,47 +1,28 @@
-#ifndef JIEENGINE_H
-#define JIEENGINE_H
+#pragma once
 
-#define WINDOW_W 800
-#define WINDOW_H 600
-
+#include <memory>
 #include <iostream>
-#include "Decrypt.h"
+#include <vector>
+#include <unordered_map>
+#include <experimental/any>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL_ttf.h>
 
-using namespace std;
+#define ENTITY_MAX 2048
 
-class JieEngine{
-    public:
-        /*
-            获取类名 后期更好对 对象进行一个判断 JieEngine 每个类都有这个函数
-        */
-        virtual const char * GetClass(){
-            return "JieEngine";
-        }
-        /*
-            WindowSurface 因为SDL内每添加一个东西到屏幕上都必须要有 WindowSurface
-        */
-        SDL_Surface * WindowSurface;
-        /*
-            释放WindowSurface 函数
-        */
-        void FreeWindowSurface(){
-            SDL_FreeSurface(this->WindowSurface);
-        }
-        /*
-            一个函数即可设置SDL_Rect的值 减少代码重复 更简洁
-        */
-        static void SetRectInfo(SDL_Rect * Rect,int x,int y, int w,int h){
-            Rect->x = x;
-            Rect->y = y;
-            Rect->w = w;
-            Rect->h = h;
-        }
-        /*
-            打印出SDL_Rect的数据 用于测试
-        */
-        static void PrintRectInfo(SDL_Rect * Rect){
-            cout << "JieEngine: X:" << Rect->x << " Y:" << Rect->y << " W:" << Rect->w << " H:" << Rect->h << endl;
-        }
+typedef struct SDL_Size{
+    int w;
+    int h;
+}SDL_Size;
+
+namespace JieEngine{
+    void Init();
+    void Quit();
+    void SetRect(SDL_Rect * Rect,int x,int y, int w,int h);
+    void LogRect(SDL_Rect * Rect);
+    extern SDL_Renderer * WindowRenderer;
+    extern SDL_Size WindowSize;
+    extern int EntityCountId;
 };
-
-#endif
