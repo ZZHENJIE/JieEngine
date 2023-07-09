@@ -3,15 +3,15 @@
 Game::Game(const char * GameName,int Window_W,int Window_H){
     JieEngine::Init();
     this->Window = SDL_CreateWindow(GameName,SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,Window_W,Window_H,SDL_WINDOW_SHOWN);
-    JieEngine::WindowSize = {Window_W,Window_H};
     JieEngine::WindowRenderer = SDL_CreateRenderer(this->Window,-1,0);
+    JieEngine::WindowSize = {Window_W,Window_H};
 }
 
 Game::Game(const char * GameName,int Window_W,int Window_H,int Position_X,int Position_Y){
     JieEngine::Init();
     this->Window = SDL_CreateWindow(GameName,Position_X,Position_Y,Window_W,Window_H,SDL_WINDOW_SHOWN);
-    JieEngine::WindowSize = {Window_W,Window_H};
     JieEngine::WindowRenderer = SDL_CreateRenderer(this->Window,-1,0);
+    JieEngine::WindowSize = {Window_W,Window_H};
 }
 
 Game::~Game(){
@@ -23,8 +23,8 @@ void Game::SetWindowIcon(const char * SourceUrl){
 }
 
 void Game::SetWindowSize(int Window_W,int Window_H){
-    JieEngine::WindowSize = {Window_W,Window_H};
     SDL_SetWindowSize(this->Window,Window_W,Window_H);
+    JieEngine::WindowSize = {Window_W,Window_H};
 }
 
 void Game::SetGameMap(GameMap * Map){

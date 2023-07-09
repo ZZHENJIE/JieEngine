@@ -16,7 +16,7 @@ Mesh::~Mesh(){
     
 }
 
-Rigidbody::Rigidbody(int EntityId,int Up,int Down,int Left,int Right):Up(this->Up),Down(this->Down),Left(this->Left),Right(this->Right){
+Rigidbody::Rigidbody(int EntityId,int X,int Y,int Weight):X(this->X),Y(this->Y),Weight(this->Weight){
     this->EntityComponent.push_back(EntityId);
 }
 

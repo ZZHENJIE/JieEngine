@@ -18,7 +18,6 @@ void GameMap::ChangeGameMap(GameMap *& Present,GameMap * Future){
 }
 
 void GameMap::MapUpdate(){
-    SDL_RenderClear(JieEngine::WindowRenderer);
     this->Update();
     for(auto Temp : this->EntityVector){
         Temp.get()->Update();

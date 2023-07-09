@@ -17,16 +17,16 @@ class Mesh{
         Mesh(int EntityId,bool IsVirtual = false);
         ~Mesh();
         bool IsVirtual;
+        static bool DeBug;
         static std::vector<int> EntityComponent;
 };
 
 class Rigidbody{
     public:
-        Rigidbody(int EntityId,int Up = 0,int Down = 0,int Left = 0,int Right = 0);
+        Rigidbody(int EntityId,int X = 0,int Y = 0,int Weight = 0);
         ~Rigidbody();
-        int Up;
-        int Down;
-        int Left;
-        int Right;
+        int X;
+        int Y;
+        int Weight;
         static std::vector<int> EntityComponent;
 };

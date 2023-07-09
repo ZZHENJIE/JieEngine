@@ -9,12 +9,15 @@ std::vector<int> Transform::EntityComponent;
 std::vector<int> Mesh::EntityComponent;
 std::vector<int> Rigidbody::EntityComponent;
 
+bool Mesh::DeBug = false;
+
 void JieEngine::Init(){
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
     IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
     Mix_Init(MIX_INIT_MP3 | MIX_INIT_FLAC);
     TTF_Init();
     Mix_OpenAudio(44100,MIX_DEFAULT_FORMAT,2,2048);
+    SDL_RenderClear(JieEngine::WindowRenderer);
 }
 
 void JieEngine::Quit(){
