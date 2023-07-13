@@ -8,13 +8,9 @@ struct Entity{
         ~Entity();
         int ID;
         template<typename T>
-        void AddComponent(T component){
-            Components[typeid(T).name()] = component;
-        }
+        void AddComponent(T component);
         template<typename T>
-        T& GetComponent(){
-            return std::experimental::any_cast<T&>(Components[typeid(T).name()]);
-        }
+        T & GetComponent();
         virtual void Update() = 0;
         virtual void Event(SDL_Event Event) = 0;
     protected:
