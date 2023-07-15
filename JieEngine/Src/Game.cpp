@@ -1,4 +1,4 @@
-#include "../Game.h"
+#include "Game.h"
 
 Game::Game(const char * GameName,int Window_W,int Window_H){
     JieEngine::Init();

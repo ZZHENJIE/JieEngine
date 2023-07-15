@@ -1,5 +1,6 @@
-#include "../JieEngine.h"
-#include "../Component.h"
+#include "JieEngine.h"
+#include "Component.h"
+#include "GameMap.h"
 
 int JieEngine::EntityCountId = 0;
 SDL_Size JieEngine::WindowSize;

@@ -1,13 +1,13 @@
 #include "Game.h"
-#include "../Example/OneMap.hpp"
+#include "./Example/OneMap.hpp"
 
 int main(int argc,char * argv[])
 {
-    auto MWindow = std::make_shared<Game>("JieEngine",500,600);
+    Game World("JieEngine",500,500);
 
-    auto One = std::make_shared<OneMap>();
+    GameMap * Test = new OneMap;
 
-    MWindow.get()->SetGameMap(One.get());
+    World.SetGameMap(Test);
 
     return 0;
 }

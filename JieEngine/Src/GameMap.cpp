@@ -1,4 +1,4 @@
-#include "../GameMap.h"
+#include "GameMap.h"
 
 GameMap::GameMap(){
     JieEngine::EntityCountId = 0;

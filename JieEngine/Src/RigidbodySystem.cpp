@@ -1,4 +1,4 @@
-#include "../System.h"
+#include "System.h"
 
 void RigidbodySystem(std::vector<std::shared_ptr<Entity>> EntityVector){
     for(auto Temp : Rigidbody::EntityID){

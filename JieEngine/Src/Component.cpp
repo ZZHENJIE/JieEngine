@@ -1,4 +1,4 @@
-#include "../Component.h"
+#include "Component.h"
 
 Transform::Transform(SDL_Point Position,SDL_Size Size,double Rotation){
 

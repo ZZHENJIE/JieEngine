@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../JieEngine/Entity.h"
+#include "Entity.h"
 
 class Barrier : public Entity {
     public:

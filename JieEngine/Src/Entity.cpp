@@ -1,5 +1,5 @@
-#include "../Entity.h"
-#include "../Component.h"
+#include "Entity.h"
+#include "Component.h"
 
 Entity::Entity(){
     this->ID = JieEngine::EntityCountId;

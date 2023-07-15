@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../JieEngine/GameMap.h"
+#include "GameMap.h"
 #include "Player.hpp"
 #include "Barrier.hpp"
 
@@ -33,7 +33,7 @@ public:
         this->EntityVector.push_back(Entity6);
         SDL_SetRenderDrawColor(JieEngine::WindowRenderer,255,255,240,200);
         Mesh::DeBug = true;
-        this->SetFocusEntity(Entity5.get()->ID);
+        this->SetFocusEntity(Entity1.get()->ID);
     }
     void Update(){
         
