@@ -8,22 +8,22 @@ void RigidbodySystem(std::vector<std::shared_ptr<Entity>> EntityVector){
             Transform & EntityTransform = EntityVector[Temp].get()->GetComponent<Transform>();
 
             if(EntityRigidbody.Y > 0){
-                EntityTransform.Position.y -= EntityRigidbody.Y;
-                EntityRigidbody.Y /= 2;
+                EntityTransform.Position.y += EntityRigidbody.Weight * EntityRigidbody.Y;
+                EntityRigidbody.Y *= EntityRigidbody.Resistance;
             }
 
             if(EntityRigidbody.Y < 0){
-                EntityTransform.Position.y += EntityRigidbody.Weight;
+                EntityTransform.Position.y += EntityRigidbody.Weight * EntityRigidbody.Y;
             }
             
             if(EntityRigidbody.X > 0){
-                EntityTransform.Position.x += EntityRigidbody.X;
-                EntityRigidbody.X /= 2;
+                EntityTransform.Position.x += EntityRigidbody.Weight * EntityRigidbody.X;
+                EntityRigidbody.X *= EntityRigidbody.Resistance;
             }
 
             if(EntityRigidbody.X < 0){
-                EntityTransform.Position.x += EntityRigidbody.X;
-                EntityRigidbody.X /= 2;
+                EntityTransform.Position.x += EntityRigidbody.Weight * EntityRigidbody.X;
+                EntityRigidbody.X *= EntityRigidbody.Resistance;
             }
 
         }

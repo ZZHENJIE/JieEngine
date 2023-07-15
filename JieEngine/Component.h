@@ -23,11 +23,12 @@ class Mesh{
 
 class Rigidbody{
     public:
-        Rigidbody(int EntityId,signed int X = 0,signed int Y = 0,int Weight = 0,bool Enable = true);
+        Rigidbody(int EntityId,signed int X = 0,signed int Y = 0,int Weight = 0,float Resistance = 0.5,bool Enable = true);
         ~Rigidbody();
         signed int X;
         signed int Y;
         int Weight;
+        float Resistance;
         bool Enable;
         static std::vector<int> EntityID;
     private:

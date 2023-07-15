@@ -5,6 +5,7 @@ GameMap::GameMap(){
     Mesh::EntityID.clear();
     Rigidbody::EntityID.clear();
     this->EntityVector.clear();
+    this->FocusObjectID = -1;
 }
 
 GameMap::~GameMap(){
@@ -28,6 +29,18 @@ void GameMap::MapUpdate(){
         Temp.get()->Update();
     }
     SystemUpdate(this->EntityVector);
+    if(this->FocusObjectID != -1){
+        Transform & FocusObjectTransform = this->EntityVector[this->FocusObjectID].get()->GetComponent<Transform>();
+        SDL_Point Distance = {
+            (JieEngine::WindowSize.w/2 - FocusObjectTransform.Size.w/2) - FocusObjectTransform.Position.x,
+            (JieEngine::WindowSize.h/2 - FocusObjectTransform.Size.h/2) - FocusObjectTransform.Position.y
+        };
+        for(auto Temp : this->EntityVector){
+            Transform & EntityTransform = Temp.get()->GetComponent<Transform>();
+            EntityTransform.Position.x += Distance.x;
+            EntityTransform.Position.y += Distance.y;
+        }
+    }
 }
 
 void GameMap::MapWindowEvent(SDL_Event Event,GameMap *& Present){
@@ -37,6 +50,6 @@ void GameMap::MapWindowEvent(SDL_Event Event,GameMap *& Present){
     }
 }
 
-void GameMap::SetCameraBindEntity(Entity * BindEntity){
-    this->CameraPosition = &BindEntity->GetComponent<Transform>().Position;
+void GameMap::SetFocusEntity(signed int BindEntityID){
+    FocusObjectID = BindEntityID;
 }
