@@ -1,7 +1,7 @@
 #include "Game.h"
 #include "../Example/OneMap.hpp"
 
-int main(int argc,char * const argv[])
+int main(int argc,char * argv[])
 {
     auto MWindow = std::make_shared<Game>("JieEngine",500,600);
 

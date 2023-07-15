@@ -12,11 +12,10 @@ class Transform{
 
 class Mesh{
     public:
-        Mesh(int EntityId,bool IsVirtual = false);
+        Mesh(int EntityId,bool Enable = true);
         ~Mesh();
-        bool IsVirtual;
+        bool Enable;
         static bool DeBug;
-        bool Enable = true;
         static std::vector<int> EntityID;
     private:
         int VectorID;
@@ -24,12 +23,12 @@ class Mesh{
 
 class Rigidbody{
     public:
-        Rigidbody(int EntityId,int X = 0,int Y = 0,int Weight = 0);
+        Rigidbody(int EntityId,signed int X = 0,signed int Y = 0,int Weight = 0,bool Enable = true);
         ~Rigidbody();
-        int X;
-        int Y;
+        signed int X;
+        signed int Y;
         int Weight;
-        bool Enable = true;
+        bool Enable;
         static std::vector<int> EntityID;
     private:
         int VectorID;

@@ -17,6 +17,12 @@ void GameMap::ChangeGameMap(GameMap *& Present,GameMap * Future){
 }
 
 void GameMap::MapUpdate(){
+    Uint8 R,G,B,A;
+    SDL_Rect Window = {0,0,JieEngine::WindowSize.w,JieEngine::WindowSize.h};
+    SDL_GetRenderDrawColor(JieEngine::WindowRenderer,&R,&G,&B,&A);
+    SDL_SetRenderDrawColor(JieEngine::WindowRenderer,0,0,0,255);
+    SDL_RenderFillRect(JieEngine::WindowRenderer,&Window);
+    SDL_SetRenderDrawColor(JieEngine::WindowRenderer,R,G,B,A);
     this->Update();
     for(auto Temp : this->EntityVector){
         Temp.get()->Update();

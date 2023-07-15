@@ -8,7 +8,7 @@ include_directories(${PROJECT_SOURCE_DIR}/JieEngine)
 
 if(CMAKE_HOST_WIN32)
 
-    link_libraries(-lmingw32 -lDecrypt -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2_ttf)
+    link_libraries(-lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2_ttf)
 
 else()
 
