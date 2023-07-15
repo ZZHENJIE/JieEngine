@@ -2,9 +2,8 @@
 
 GameMap::GameMap(){
     JieEngine::EntityCountId = 0;
-    Transform::EntityComponent.clear();
-    Mesh::EntityComponent.clear();
-    Rigidbody::EntityComponent.clear();
+    Mesh::EntityID.clear();
+    Rigidbody::EntityID.clear();
     this->EntityVector.clear();
 }
 

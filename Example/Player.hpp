@@ -5,7 +5,6 @@
 class Player : public Entity {
     public:
         Player(){
-            this->AddComponent(Transform(this->ID));
             this->AddComponent(Mesh(this->ID));
             this->AddComponent(Rigidbody(this->ID));
             this->GetComponent<Rigidbody>().Weight = 10;

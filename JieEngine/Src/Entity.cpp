@@ -3,6 +3,7 @@
 
 Entity::Entity(){
     this->ID = JieEngine::EntityCountId;
+    this->AddComponent(Transform());
     JieEngine::EntityCountId ++;
 }
 

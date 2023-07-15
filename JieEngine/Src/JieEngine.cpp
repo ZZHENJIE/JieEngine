@@ -5,9 +5,8 @@ int JieEngine::EntityCountId = 0;
 SDL_Size JieEngine::WindowSize;
 SDL_Renderer * JieEngine::WindowRenderer;
 
-std::vector<int> Transform::EntityComponent;
-std::vector<int> Mesh::EntityComponent;
-std::vector<int> Rigidbody::EntityComponent;
+std::vector<int> Mesh::EntityID;
+std::vector<int> Rigidbody::EntityID;
 
 bool Mesh::DeBug = false;
 

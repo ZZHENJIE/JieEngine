@@ -4,12 +4,10 @@
 
 class Transform{
     public:
-        Transform(int EntityId,SDL_Point Position = {0,0},SDL_Size Size = {0,0},double Rotation = 0);
-        ~Transform();
+        Transform(SDL_Point Position = {0,0},SDL_Size Size = {0,0},double Rotation = 0);
         SDL_Point Position;
         SDL_Size Size;
         double Rotation;
-        static std::vector<int> EntityComponent;
 };
 
 class Mesh{
@@ -18,7 +16,10 @@ class Mesh{
         ~Mesh();
         bool IsVirtual;
         static bool DeBug;
-        static std::vector<int> EntityComponent;
+        bool Enable = true;
+        static std::vector<int> EntityID;
+    private:
+        int VectorID;
 };
 
 class Rigidbody{
@@ -28,5 +29,8 @@ class Rigidbody{
         int X;
         int Y;
         int Weight;
-        static std::vector<int> EntityComponent;
+        bool Enable = true;
+        static std::vector<int> EntityID;
+    private:
+        int VectorID;
 };

@@ -13,6 +13,6 @@ struct Entity{
         T & GetComponent();
         virtual void Update() = 0;
         virtual void Event(SDL_Event Event) = 0;
-    protected:
+    private:
         std::unordered_map<std::string, std::experimental::any> Components;
 };
