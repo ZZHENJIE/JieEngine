@@ -1,14 +1,13 @@
 # 杰引擎 JieEngine
 
 <div border-radius="20px" align="center">
-    <img  src="https://www.libsdl.org/media/SDL_logo.png" width = "20%" alt="JieEngine Logo">
+    <img src="https://www.libsdl.org/media/SDL_logo.png" width = "20%" alt="SDL Logo">
     <br/>
-    <img style="border-radius:30px;" src="https://www.zzjmbox.tk/Image/Logo.png" width = "20%" alt="JieEngine Logo">
+    <img src="https://www.zzjmbox.tk/Image/Logo.png" width = "20%" alt="JieEngine Logo">
 </div>
 
-本引擎是使用[SDL2图形库](https://www.libsdl.org/)实现的 只支持2D游戏 使用渲染器渲染画面
-
 ## 优点
+* 使用ECS架构
 * 体积小
 * 配置简单
 * 速度快
