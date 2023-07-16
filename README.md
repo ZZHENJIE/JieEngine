@@ -1,8 +1,10 @@
 # 杰引擎 JieEngine
 
-<img src="https://www.zzjmbox.tk/Image/Logo.png" width = "50%" height = "50%" alt="JieEngine Logo" align=center/>
-
-![](https://www.libsdl.org/media/SDL_logo.png)
+<div border-radius="20px" align="center">
+    <img  src="https://www.libsdl.org/media/SDL_logo.png" width = "20%" alt="JieEngine Logo">
+    <br/>
+    <img style="border-radius:30px;" src="https://www.zzjmbox.tk/Image/Logo.png" width = "20%" alt="JieEngine Logo">
+</div>
 
 本引擎是使用[SDL2图形库](https://www.libsdl.org/)实现的 只支持2D游戏 使用渲染器渲染画面
 
