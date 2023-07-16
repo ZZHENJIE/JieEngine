@@ -28,7 +28,6 @@ void GameMap::MapUpdate(){
     for(auto Temp : this->EntityVector){
         Temp.get()->Update();
     }
-    SystemUpdate(this->EntityVector);
     if(this->FocusObjectID != -1){
         Transform & FocusObjectTransform = this->EntityVector[this->FocusObjectID].get()->GetComponent<Transform>();
         SDL_Point Distance = {
@@ -41,6 +40,7 @@ void GameMap::MapUpdate(){
             EntityTransform.Position.y += Distance.y;
         }
     }
+    SystemUpdate(this->EntityVector);
 }
 
 void GameMap::MapWindowEvent(SDL_Event Event,GameMap *& Present){
@@ -48,6 +48,7 @@ void GameMap::MapWindowEvent(SDL_Event Event,GameMap *& Present){
     for(auto Temp = this->EntityVector.begin();Temp != this->EntityVector.end(); Temp++){
         Temp.base()->get()->Event(Event);
     }
+    SystemUpdate(this->EntityVector);
 }
 
 void GameMap::SetFocusEntity(signed int BindEntityID){

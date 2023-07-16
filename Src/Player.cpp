@@ -2,7 +2,7 @@
 
 Player::Player(){
     this->AddComponent(Mesh(this->ID));
-    this->AddComponent(Rigidbody(this->ID,0,0,5));
+    this->AddComponent(Rigidbody(this->ID,0,0,5,0.1));
 }
 
 void Player::Update(){
@@ -12,7 +12,9 @@ void Player::Event(SDL_Event Event){
     if(Event.key.type == SDL_KEYDOWN){
         switch(Event.key.keysym.sym){
             case SDLK_w:{
-                this->GetComponent<Rigidbody>().Y -= 5;
+                if(this->GetComponent<Rigidbody>().Y == 0){
+                    this->GetComponent<Rigidbody>().Y -= 5;
+                } 
                 break;
             }
             case SDLK_a:{
