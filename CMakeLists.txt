@@ -27,10 +27,12 @@ elseif(CMAKE_HOST_WIN32) #Windows
 endif()
 
 include_directories(${PROJECT_SOURCE_DIR}/JieEngine/Include)
+include_directories(${PROJECT_SOURCE_DIR}/Include)
 
-file(GLOB SOURCES "${PROJECT_SOURCE_DIR}/JieEngine/Src/*.cpp")
+file(GLOB JieEngine "${PROJECT_SOURCE_DIR}/JieEngine/Src/*.cpp")
+file(GLOB Game "${PROJECT_SOURCE_DIR}/Src/*.cpp")
 
-add_executable(${CMAKE_PROJECT_NAME} ${SOURCES}
+add_executable(${CMAKE_PROJECT_NAME} ${JieEngine} ${Game}
 Main.cpp
 )
 

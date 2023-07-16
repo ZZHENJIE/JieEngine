@@ -4,9 +4,7 @@
 
 ![](https://www.libsdl.org/media/SDL_logo.png)
 
-本引擎是使用[SDL2图形库](https://www.libsdl.org/)实现的 只支持2D游戏 运行该项目是示例游戏
-
-引擎渲染主要使用的是 Surface 因为 在SDL2中Surface是使用CPU渲染的 而且只包含像素信息 简洁
+本引擎是使用[SDL2图形库](https://www.libsdl.org/)实现的 只支持2D游戏 使用渲染器渲染画面
 
 ## 创作背景
 许多C++初学者都知道C++在游戏领域是占据非常重要的位置的,所以初学者也想做一款小游戏 可是用C++官方库 在控制台做游戏 始终不满意 所以想做图形游戏 可是虚幻引擎体积太大了 要学习的东西太多了 可能安装引擎的时候就已经不想学习虚幻了(作者就是这样的😰) 所以我去Bing了一下 看到SDL2图形库感觉不错 就试了试 窗口出现的那一刻可以爽一整天了 可是当我用他开始写游戏时 才知道用图形库写游戏有多么难了而且代码就是💩山 所以萌生了写一下小引擎的想法
@@ -31,14 +29,12 @@
     * SDL2-Image[下载地址](https://github.com/libsdl-org/SDL_image/releases)
     * SDL2-TTF[下载地址](https://github.com/libsdl-org/SDL_ttf/releases)
 3. 安装Cmake [下载地址](https://cmake.org/download/)
-4. Clone该项目 把解密静态库移动到lib目录,为Mingw/x86_64-w64-mingw32/lib/,静态库在/Tool-Lib/Windows/libDecrypt.a
 5. 然后直接Cmake编译运行 看看能不能跑起来
 
 ### Ubuntu 22.04
 1. 安装GCC G++ 使用该命令 `sudo apt-get install gcc g++`
 2. 安装SDL2开发环境 使用该命令 `sudo apt-get install libsdl2-2.0 libsdl2-dev libsdl2-mixer-dev libsdl2-image-dev libsdl2-ttf-dev`
 3. 安装Cmake 使用该命令 `sudo apt-get install cmake`
-4. Clone该项目 把解密静态库移动到lib目录 命令`sudo mv ./Tool-Lib/Linux/libDecrypt.a /usr/lib/x86_64-linux-gnu/`
 5. 然后直接Cmake编译运行 看看能不能跑起来
 
 ### MacOS
@@ -50,9 +46,8 @@
 2. 检查电脑是否有G++ GCC 编译器 `g++ -v Or gcc -v` 如果有大量的字符串输出证明电脑有G++ GCC
 3. 安装SDL2开发环境 使用该命令 `brew install sdl2 sdl2_mixer sdl2_image sdl2_ttf`
 4. 安装Cmake 使用该命令 `brew install cmake`
-4. Clone该项目 把解密静态库移动到lib目录 命令`sudo mv ./Tool-Lib/MacOS/libDecrypt.a /usr/local/lib/`
 5. 然后直接Cmake编译运行 看看能不能跑起来
 
-## [文档](https://www.zzjmbox.tk/)
-
 ## [示例游戏](https://github.com/ZZHENJIE/JieEngine-TestGame)
+
+## [文档](https://zzhenjie.github.io/JieEngine-Document/#/)

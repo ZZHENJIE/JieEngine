@@ -1,5 +1,5 @@
 #include "Game.h"
-#include "./Example/OneMap.hpp"
+#include "OneMap.h"
 
 int main(int argc,char * argv[])
 {
