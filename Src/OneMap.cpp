@@ -20,7 +20,7 @@ OneMap::OneMap(){
     Entity6.get()->GetComponent<Transform>().Position = {160,180};
     Entity6.get()->GetComponent<Transform>().Size = {20,20};
     auto Entity7 = std::make_shared<Barrier>();
-    Entity7.get()->GetComponent<Transform>().Position = {130,110};
+    Entity7.get()->GetComponent<Transform>().Position = {140,110};
     Entity7.get()->GetComponent<Transform>().Size = {20,20};
     Entity7.get()->AddComponent(Rigidbody(Entity7.get()->ID,0,0,3,0.9));
     this->EntityVector.push_back(Entity1);

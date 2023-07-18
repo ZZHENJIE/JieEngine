@@ -8,7 +8,7 @@ Entity::Entity(){
 }
 
 Entity::~Entity(){
-
+    
 }
 
 template<typename T>

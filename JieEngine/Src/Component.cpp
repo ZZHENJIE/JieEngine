@@ -1,8 +1,6 @@
 #include "Component.h"
 
-Transform::Transform(SDL_Point Position,SDL_Size Size,double Rotation){
-
-}
+Transform::Transform(SDL_Point Position,SDL_Size Size,double Rotation){}
 
 
 Mesh::Mesh(int EntityId,bool Enable){
@@ -17,7 +15,10 @@ Mesh::Mesh(int EntityId,bool Enable){
 }
 
 Mesh::~Mesh(){
-    
+    // this->EntityID.erase(this->EntityID.begin() + this->VectorID - 1);
+    // for(auto Temp : this->EntityID){
+    //     SDL_Log("Size -> %d,Info -> %d\n",this->EntityID.size(),Temp);
+    // }
 }
 
 Rigidbody::Rigidbody(int EntityId,signed int X,signed int Y,int Weight,float Resistance,bool Enable){
