@@ -5,6 +5,6 @@
 class Player : public Entity {
     public:
         Player();
-        void Update();
-        void Event(SDL_Event Event);
+        void Update() override;
+        void Event(SDL_Event Event) override;
 };

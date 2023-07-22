@@ -28,20 +28,21 @@ void Game::SetWindowSize(int Window_W,int Window_H){
 }
 
 void Game::SetGameMap(GameMap * Map){
-    SDL_Event Event;
+    SDL_Event WindowEvent;
     
     while (true){
 
-        if(SDL_GetTicks() - this->FPS_Temp < (1000/this->FPS)){
-            SDL_Delay((1000/this->FPS) - SDL_GetTicks() + this->FPS_Temp);
+        if(SDL_GetTicks() - this->Ticks_Count < (1000/this->FPS)){
+            SDL_Delay((1000/this->FPS) - SDL_GetTicks() + this->Ticks_Count);
         }
 
-        if(SDL_PollEvent(&Event)){
-            if(Event.type == SDL_QUIT){
+        if(SDL_PollEvent(&WindowEvent)){
+            if(WindowEvent.type == SDL_QUIT){
                 JieEngine::Quit();
+                delete Map;
                 return;
             }else{
-                Map->MapWindowEvent(Event,Map);
+                Map->MapWindowEvent(WindowEvent,Map);
             }
         }
 
@@ -49,6 +50,6 @@ void Game::SetGameMap(GameMap * Map){
 
         SDL_RenderPresent(JieEngine::WindowRenderer);
 
-        this->FPS_Temp = SDL_GetTicks();
+        this->Ticks_Count = SDL_GetTicks();
     }
 }

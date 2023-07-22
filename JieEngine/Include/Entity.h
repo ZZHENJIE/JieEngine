@@ -8,12 +8,12 @@ struct Entity{
         ~Entity();
         int ID;
         template<typename T>
-        void AddComponent(T component);
+        void AddComponent(T * component);
         template<typename T>
         T & GetComponent();
         virtual void Update() = 0;
         virtual void Event(SDL_Event Event) = 0;
         virtual void Collide(Entity * Object){};
     private:
-        std::unordered_map<std::string, std::experimental::any> Components;
+        std::unordered_map<std::string,std::experimental::any> Components;
 };

@@ -2,7 +2,6 @@
 
 Transform::Transform(SDL_Point Position,SDL_Size Size,double Rotation){}
 
-
 Mesh::Mesh(int EntityId,bool Enable){
     this->EntityID.push_back(EntityId);
     this->VectorID = this->EntityID.size() - 1;
@@ -15,9 +14,14 @@ Mesh::Mesh(int EntityId,bool Enable){
 }
 
 Mesh::~Mesh(){
-    // this->EntityID.erase(this->EntityID.begin() + this->VectorID - 1);
-    // for(auto Temp : this->EntityID){
-    //     SDL_Log("Size -> %d,Info -> %d\n",this->EntityID.size(),Temp);
+    int Count = 0;
+    SDL_Log("111");
+    // for(auto Temp = this->EntityID.begin();Temp != this->EntityID.end();Temp++){
+    //     if(Count == this->VectorID){
+    //         this->EntityID.erase(Temp);
+    //         break;
+    //     }
+    //     Count++;
     // }
 }
 

@@ -1,7 +1,11 @@
 #include "Barrier.h"
 
 Barrier::Barrier(){
-    this->AddComponent(Mesh(this->ID));
+    this->AddComponent(new Mesh(this->ID));
+}
+
+Barrier::~Barrier(){
+    
 }
 
 void Barrier::Update(){

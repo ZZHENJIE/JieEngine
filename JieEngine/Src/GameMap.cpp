@@ -2,8 +2,7 @@
 
 GameMap::GameMap(){
     JieEngine::EntityCountId = 0;
-    Mesh::EntityID.clear();
-    Rigidbody::EntityID.clear();
+    JieEngine::ClearComponentData();
     this->EntityVector.clear();
     this->FocusObjectID = -1;
 }

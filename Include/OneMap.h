@@ -7,6 +7,6 @@
 class OneMap : public GameMap{
 public:
     OneMap();
-    void Update();
-    void WindowEvent(SDL_Event Event,GameMap *& Present);
+    void Update() override;
+    void WindowEvent(SDL_Event Event,GameMap *& Present) override;
 };

@@ -14,5 +14,5 @@ class Game final{
     private:
         SDL_Window * Window;
         Uint32 FPS = 60;
-        Uint32 FPS_Temp = 0;
+        Uint32 Ticks_Count = 0;
 };

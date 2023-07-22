@@ -1,8 +1,8 @@
 #include "Player.h"
 
 Player::Player(){
-    this->AddComponent(Mesh(this->ID));
-    this->AddComponent(Rigidbody(this->ID,0,0,5,0.1));
+    this->AddComponent(new Mesh(this->ID));
+    this->AddComponent(new Rigidbody(this->ID,0,0,5,0.1));
 }
 
 void Player::Update(){

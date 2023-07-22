@@ -20,6 +20,11 @@ void JieEngine::Init(){
     SDL_RenderClear(JieEngine::WindowRenderer);
 }
 
+void JieEngine::ClearComponentData(){
+    Mesh::EntityID.clear();
+    Rigidbody::EntityID.clear();
+}
+
 void JieEngine::Quit(){
     SDL_Quit();
     IMG_Quit();
@@ -37,4 +42,8 @@ void JieEngine::SetRect(SDL_Rect * Rect,int x,int y, int w,int h){
 
 void JieEngine::LogRect(SDL_Rect * Rect){
     SDL_Log("JieEngine: X:%d Y:%d W:%d H:%d \n",Rect->x,Rect->y,Rect->w,Rect->h);
+}
+
+void JieEngine::LogRect(SDL_FRect * Rect){
+    SDL_Log("JieEngine: X:%f Y:%f W:%f H:%f \n",Rect->x,Rect->y,Rect->w,Rect->h);
 }
