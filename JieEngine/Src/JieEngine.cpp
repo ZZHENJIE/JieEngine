@@ -1,40 +1,30 @@
 #include "JieEngine.h"
-#include "Component.h"
-#include "GameMap.h"
 
-int JieEngine::EntityCountId = 0;
-SDL_Size JieEngine::WindowSize;
-SDL_Renderer * JieEngine::WindowRenderer;
+using namespace JieEngine;
 
-std::vector<int> Mesh::EntityID;
-std::vector<int> Rigidbody::EntityID;
-
-bool Mesh::DeBug = false;
-
-void JieEngine::Init(){
-    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
-    IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
-    Mix_Init(MIX_INIT_MP3 | MIX_INIT_FLAC);
-    TTF_Init();
-    Mix_OpenAudio(44100,MIX_DEFAULT_FORMAT,2,2048);
-    SDL_RenderClear(JieEngine::WindowRenderer);
+void JieEngine::InitEngine(){
+    Resource.SManage = make_shared<SystemManage>();
+    Resource.Quit = true;
 }
 
-void JieEngine::Quit(){
-    SDL_Quit();
-    IMG_Quit();
-    Mix_Quit();
-    TTF_Quit();
-    SDL_DestroyRenderer(JieEngine::WindowRenderer);
+void JieEngine::QuitEngine(){
+
 }
 
-void JieEngine::SetRect(SDL_Rect * Rect,int x,int y, int w,int h){
-    Rect->x = x;
-    Rect->y = y;
-    Rect->w = w;
-    Rect->h = h;
+Window::Window(const char * Title,int W,int H,int X,int Y,SDL_WindowFlags Flags){
+    this->_Window = SDL_CreateWindow(Title,X,Y,W,H,Flags);
 }
 
-void JieEngine::LogRect(SDL_Rect * Rect){
-    SDL_Log("JieEngine: X:%d Y:%d W:%d H:%d \n",Rect->x,Rect->y,Rect->w,Rect->h);
+void Window::Booting(){
+    SDL_Event Event;
+    while(Resource.Quit){
+        if(SDL_PollEvent(&Event)){
+            if(Event.type == SDL_QUIT){
+                Resource.Quit = false;
+            }else{
+                Resource._GameMap->_MapEvent(Event);
+            }
+        }
+        Resource._GameMap->_MapUpdate();
+    }
 }

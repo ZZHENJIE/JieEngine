@@ -1,28 +1,31 @@
 #pragma once
 
-#include <memory>
-#include <iostream>
-#include <vector>
-#include <unordered_map>
-#include <experimental/any>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_mixer.h>
-#include <SDL2/SDL_ttf.h>
-
-#define ENTITY_MAX 2048
-
-typedef struct SDL_Size{
-    int w;
-    int h;
-}SDL_Size;
+#include "JUnVector.h"
+#include "System.h"
+#include "GameMap.h"
+#include "Component.h"
 
 namespace JieEngine{
-    void Init();
-    void Quit();
-    void SetRect(SDL_Rect * Rect,int x,int y, int w,int h);
-    void LogRect(SDL_Rect * Rect);
-    extern SDL_Renderer * WindowRenderer;
-    extern SDL_Size WindowSize;
-    extern int EntityCountId;
+
+    typedef struct Point2D final{
+        int x;
+        int y;
+    }Point2D;
+
+    typedef struct Size2D final{
+        int w;
+        int h;
+    }Size2D;
+
+    void InitEngine();
+
+    void QuitEngine();
+
+    class Window final{
+        public:
+            Window(const char * Title,int W,int H,int X,int Y,SDL_WindowFlags Flags);
+            void Booting();
+        private:
+            SDL_Window * _Window;
+    };
 };

@@ -1,22 +1,17 @@
-# 杰引擎 JieEngine
+# JieEngine
 
-<div border-radius="20px" align="center">
-    <img src="https://www.libsdl.org/media/SDL_logo.png" width = "20%" alt="SDL Logo">
-    <br/>
-    <img src="https://www.zzjmbox.tk/Image/Logo.png" width = "20%" alt="JieEngine Logo">
-</div>
 
-## 优点
-* 使用ECS架构
-* 体积小
-* 配置简单
-* 速度快
-* 上手快
 
-## 缺点
-* 功能少
-* BUG多
 
-## [示例游戏](https://github.com/ZZHENJIE/JieEngine-TestGame)
+## 常见问题
 
-## [文档](http://www.zzjmbox.tk/#)
+**如果编译能通过但是VSCODE一直报未找到头文件错误,可以使用以下方法**
+
+`Ctrl + Shift + P` 打开VSCODE Command Palette 输入 `C/C++:Edit Configurations (JSON)` 会在文件夹内自动创建一个JSON文件 找到`includePath`这个数组 把头文件路径填写上去就好了 例如:
+
+```json
+"includePath": [
+    "${workspaceFolder}/JieEngine/Include/",
+    "${workspaceFolder}/Test/Include/"
+]
+```

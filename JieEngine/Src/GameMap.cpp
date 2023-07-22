@@ -1,56 +1,22 @@
 #include "GameMap.h"
 
-GameMap::GameMap(){
-    JieEngine::EntityCountId = 0;
-    Mesh::EntityID.clear();
-    Rigidbody::EntityID.clear();
-    this->EntityVector.clear();
-    this->FocusObjectID = -1;
-}
+using namespace JieEngine;
 
-GameMap::~GameMap(){
-    
-}
-
-void GameMap::ChangeGameMap(GameMap *& Present,GameMap * Future){
-    Present = nullptr;
-    Present = Future;
-}
-
-void GameMap::MapUpdate(){
-    Uint8 R,G,B,A;
-    SDL_Rect Window = {0,0,JieEngine::WindowSize.w,JieEngine::WindowSize.h};
-    SDL_GetRenderDrawColor(JieEngine::WindowRenderer,&R,&G,&B,&A);
-    SDL_SetRenderDrawColor(JieEngine::WindowRenderer,0,0,0,255);
-    SDL_RenderFillRect(JieEngine::WindowRenderer,&Window);
-    SDL_SetRenderDrawColor(JieEngine::WindowRenderer,R,G,B,A);
+void GameMap::_MapUpdate(){
     this->Update();
-    for(auto Temp : this->EntityVector){
-        Temp.get()->Update();
+    for(auto Temp : this->_EntityManage){
+        Temp->Update();
     }
-    if(this->FocusObjectID != -1){
-        Transform & FocusObjectTransform = this->EntityVector[this->FocusObjectID].get()->GetComponent<Transform>();
-        SDL_Point Distance = {
-            (JieEngine::WindowSize.w/2 - FocusObjectTransform.Size.w/2) - FocusObjectTransform.Position.x,
-            (JieEngine::WindowSize.h/2 - FocusObjectTransform.Size.h/2) - FocusObjectTransform.Position.y
-        };
-        for(auto Temp : this->EntityVector){
-            Transform & EntityTransform = Temp.get()->GetComponent<Transform>();
-            EntityTransform.Position.x += Distance.x;
-            EntityTransform.Position.y += Distance.y;
-        }
-    }
-    SystemUpdate(this->EntityVector);
+    Resource.SManage->Update(this->_EntityManage);
 }
 
-void GameMap::MapWindowEvent(SDL_Event Event,GameMap *& Present){
-    this->WindowEvent(Event,Present);
-    for(auto Temp = this->EntityVector.begin();Temp != this->EntityVector.end(); Temp++){
-        Temp.base()->get()->Event(Event);
+void GameMap::_MapEvent(SDL_Event Event){
+    this->Event(Event);
+    for(auto Temp : this->_EntityManage){
+        Temp->Event(Event);
     }
-    SystemUpdate(this->EntityVector);
 }
 
-void GameMap::SetFocusEntity(signed int BindEntityID){
-    FocusObjectID = BindEntityID;
+void GameMap::AddEntity(Entity * Player){
+    this->_EntityManage.push_back(make_shared<Entity>(Player));
 }

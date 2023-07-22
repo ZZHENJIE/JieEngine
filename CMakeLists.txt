@@ -26,20 +26,28 @@ elseif(CMAKE_HOST_WIN32) #Windows
 
 endif()
 
-include_directories(${PROJECT_SOURCE_DIR}/JieEngine/Include)
-include_directories(${PROJECT_SOURCE_DIR}/Include)
+include_directories(${PROJECT_SOURCE_DIR}/JieEngine/Include/) #引擎头文件路径
 
-file(GLOB JieEngine "${PROJECT_SOURCE_DIR}/JieEngine/Src/*.cpp")
-file(GLOB Game "${PROJECT_SOURCE_DIR}/Src/*.cpp")
+file(GLOB JieEngine "${PROJECT_SOURCE_DIR}/JieEngine/Src/*.cpp") #引擎源文件路径
 
-add_executable(${CMAKE_PROJECT_NAME} ${JieEngine} ${Game}
-Main.cpp
-)
+if(CMAKE_BUILD_TYPE AND (CMAKE_BUILD_TYPE STREQUAL "Debug"))
+
+    include_directories(${PROJECT_SOURCE_DIR}/Test/Include/) #测试项目头文件路径
+
+    file(GLOB Test "${PROJECT_SOURCE_DIR}/Test/Src/*.cpp") #测试项目源文件路径
+
+    add_executable(${CMAKE_PROJECT_NAME} ${JieEngine} ${Test})
+
+elseif(CMAKE_BUILD_TYPE AND (CMAKE_BUILD_TYPE STREQUAL "Release"))
+
+    add_executable(${CMAKE_PROJECT_NAME} ${JieEngine} ${PROJECT_SOURCE_DIR}/JieEngine/Main.cpp)
+
+endif()
 
 # if(CMAKE_HOST_APPLE) #MacOS
-#     target_link_libraries(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/JieEngine/Lib/MacOS/JieEngine.a)
+#     target_link_libraries(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/JieEngine/Lib/MacOS.a)
 # elseif(CMAKE_HOST_UNIX) #Linux
-#     target_link_libraries(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/JieEngine/Lib/Linux/JieEngine.a)
+#     target_link_libraries(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/JieEngine/Lib/Linux.a)
 # elseif(CMAKE_HOST_WIN32) #Windows
-#     target_link_libraries(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/JieEngine/Lib/Windows/JieEngine.a)
+#     target_link_libraries(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/JieEngine/Lib/Windows.a)
 # endif()

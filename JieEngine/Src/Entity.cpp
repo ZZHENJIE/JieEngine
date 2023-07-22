@@ -1,31 +1,19 @@
 #include "Entity.h"
-#include "Component.h"
+
+using namespace JieEngine;
 
 Entity::Entity(){
-    this->ID = JieEngine::EntityCountId;
-    this->AddComponent(Transform());
-    JieEngine::EntityCountId ++;
+    this->ID = Resource._GenerateEntityID.Push(1);
+}
+
+Entity::Entity(Entity *& Ptr){
+    this->ID = Ptr->ID;
+    this->Components = Ptr->Components;
 }
 
 Entity::~Entity(){
-    
+    Resource._GenerateEntityID.Remove(this->ID);
+    for(auto Temp : this->Components){
+        ComponentManage::DestroyComponentS(Temp.second);
+    }
 }
-
-template<typename T>
-void Entity::AddComponent(T component){
-    Components[typeid(T).name()] = component;
-}
-
-template<typename T>
-T & Entity::GetComponent(){
-    return std::experimental::any_cast<T&>(Components[typeid(T).name()]);
-}
-
-template void Entity::AddComponent(Transform);
-template Transform & Entity::GetComponent();
-
-template void Entity::AddComponent(Mesh);
-template Mesh & Entity::GetComponent();
-
-template void Entity::AddComponent(Rigidbody);
-template Rigidbody & Entity::GetComponent();
