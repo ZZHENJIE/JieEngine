@@ -51,14 +51,6 @@ namespace JieEngine{
         shared_ptr<GameMap> _GameMap;
     };
 
-<<<<<<< HEAD
-=======
-    struct Component{
-        bool IsEnable;
-        bool UIClog;
-    };
-
->>>>>>> 535fbdba87fd472195cd413d29e283c4d4fc2b79
     struct Transform{
         Point2D Pos;
         Size2D Size;
@@ -67,20 +59,12 @@ namespace JieEngine{
 
     struct Mesh{
         bool IsEnable;
-<<<<<<< HEAD
         bool IsDeBug;
         void (*CollideFunction)(Entity * Object_1,Entity * Object_2);
     };
 
     struct RigidBody{
         bool IsEnable;
-=======
-        void (*Collide)(Entity * Object_1,Entity * Object_2);
-    };
-
-    struct RigidBody : Component{
-
->>>>>>> 535fbdba87fd472195cd413d29e283c4d4fc2b79
     };
 
     extern GlobalResourceComponent Resource;
