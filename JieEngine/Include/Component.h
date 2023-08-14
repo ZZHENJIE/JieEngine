@@ -46,11 +46,30 @@ namespace JieEngine{
         shared_ptr<GameMap> _GameMap;
     };
 
+    struct Component{
+        bool IsEnable;
+        bool UIClog;
+    };
+
+    struct Transform{
+        Point2D Pos;
+        Size2D Size;
+        float Revolve;
+    };
+
+    struct Mesh{
+        bool IsEnable;
+        void (*Collide)(Entity * Object_1,Entity * Object_2);
+    };
+
+    struct RigidBody : Component{
+
+    };
+
     extern GlobalResourceComponent Resource;
     
     class ComponentManage final {
         public:
-            ComponentManage();
             template <typename T>
             static void EnrollComponent(){
                 Resource._CategoryEntityID[typeid(T).name()] = make_shared<JUnVector>();
@@ -73,26 +92,6 @@ namespace JieEngine{
                     Resource._CategoryEntityID[typeid(T).name()]->Size()
                 };
             }
-    };
-
-    struct Component{
-        bool IsEnable;
-        bool UIClog;
-    };
-
-    struct Transform{
-        Point2D Pos;
-        Size2D Size;
-        float Revolve;
-    };
-
-    struct Mesh{
-        bool IsEnable;
-        void (*Collide)(Entity * Object_1,Entity * Object_2);
-    };
-
-    struct RigidBody : Component{
-
     };
 
 };

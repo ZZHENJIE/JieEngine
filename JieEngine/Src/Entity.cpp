@@ -4,7 +4,6 @@ using namespace JieEngine;
 
 Entity::Entity(){
     this->ID = Resource._GenerateEntityID.Push(1);
-    cout << "Create:" << this->ID << endl;
 }
 
 Entity::Entity(Entity * Ptr){
@@ -15,7 +14,6 @@ Entity::Entity(Entity * Ptr){
 
 Entity::~Entity(){
     Resource._GenerateEntityID.Remove(this->ID);
-    cout << "Remove:" << this->ID << endl;
     for(auto Temp : this->Components){
         ComponentManage::DestroyComponentS(Temp.second);
     }

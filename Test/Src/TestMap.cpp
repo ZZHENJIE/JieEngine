@@ -1,15 +1,5 @@
 #include "TestMap.h"
 
-void MeshSystem(EntityVector EntityManage){
-    for(auto Temp : EntityManage){
-        cout << Temp->Title << endl;
-    }
-}
-
-void RigidBodySystem(EntityVector EntityManage){
-    
-}
-
 void TestMap::Update(){
 
 }

@@ -8,6 +8,9 @@ void JieEngine::InitEngine(){
     Mix_Init(MIX_INIT_MP3 | MIX_INIT_FLAC);
     TTF_Init();
     Resource.SManage = make_shared<SystemManage>();
+    ComponentManage::EnrollComponent<Mesh>();
+    ComponentManage::EnrollComponent<RigidBody>();
+    ComponentManage::EnrollComponent<Transform>();
     Resource.Quit = true;
     SDL_RenderClear(Resource.WindowRender);
 }
