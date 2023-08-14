@@ -8,18 +8,15 @@
 using namespace std;
 using namespace JieEngine;
 
-void MeshSystem(EntityManage Entity);
-void RigidBodySystem(EntityManage Entity);
-void TransformSystem(EntityManage Entity);
+void MeshSystem(EntityVector EntityManage);
+void RigidBodySystem(EntityVector EntityManage);
 
 class TestMap : public GameMap{
     public:
         TestMap(){
-            ComponentManage::EnrollComponent<Transform>();
             ComponentManage::EnrollComponent<Mesh>();
             ComponentManage::EnrollComponent<RigidBody>();
 
-            Resource.SManage->EnrollReviseSystem<Transform>(TransformSystem);
             Resource.SManage->EnrollReviseSystem<Mesh>(MeshSystem);
             Resource.SManage->EnrollReviseSystem<RigidBody>(RigidBodySystem);
         }

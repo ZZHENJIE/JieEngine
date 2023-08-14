@@ -7,19 +7,31 @@
 #include <typeinfo>
 #include <memory>
 #include <iostream>
+#include <SDL2/SDL.h>
 
 using namespace std;
 
 namespace JieEngine{
     class SystemManage;
     class GameMap;
+    class Entity;
+
+    typedef struct Point2D final{
+        int x;
+        int y;
+    }Point2D;
+
+    typedef struct Size2D final{
+        int w;
+        int h;
+    }Size2D;
 
     struct ComponentData{
         std::experimental::any Data;
         int Index;
     };
 
-    struct EntityIDJUnVector final{
+    struct EntityIDJVector final{
         JUnInt * Begin;
         JUnInt Size;
     };
@@ -28,6 +40,7 @@ namespace JieEngine{
         JUnInt FPS;
         shared_ptr<SystemManage> SManage;
         bool Quit;
+        SDL_Renderer * WindowRender;
         JUnVector _GenerateEntityID;
         unordered_map<string,shared_ptr<JUnVector>> _CategoryEntityID;
         shared_ptr<GameMap> _GameMap;
@@ -37,6 +50,7 @@ namespace JieEngine{
     
     class ComponentManage final {
         public:
+            ComponentManage();
             template <typename T>
             static void EnrollComponent(){
                 Resource._CategoryEntityID[typeid(T).name()] = make_shared<JUnVector>();
@@ -53,8 +67,8 @@ namespace JieEngine{
                 Resource._CategoryEntityID[Data.Data.type().name()]->Remove(Data.Index);
             }
             template <typename T>
-            static EntityIDJUnVector GetEntityIDJUnVector(){
-                return EntityIDJUnVector{
+            static EntityIDJVector GetEntityIDJVector(){
+                return EntityIDJVector{
                     Resource._CategoryEntityID[typeid(T).name()]->Begin(),
                     Resource._CategoryEntityID[typeid(T).name()]->Size()
                 };
@@ -66,15 +80,18 @@ namespace JieEngine{
         bool UIClog;
     };
 
-    struct Mesh : Component{
+    struct Transform{
+        Point2D Pos;
+        Size2D Size;
+        float Revolve;
+    };
 
+    struct Mesh{
+        bool IsEnable;
+        void (*Collide)(Entity * Object_1,Entity * Object_2);
     };
 
     struct RigidBody : Component{
-
-    };
-
-    struct Transform : Component{
 
     };
 

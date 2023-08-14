@@ -7,15 +7,7 @@
 
 namespace JieEngine{
 
-    typedef struct Point2D final{
-        int x;
-        int y;
-    }Point2D;
-
-    typedef struct Size2D final{
-        int w;
-        int h;
-    }Size2D;
+    using EntityVector = std::vector<std::shared_ptr<Entity>>;
 
     void InitEngine();
 
@@ -24,6 +16,9 @@ namespace JieEngine{
     class Window final{
         public:
             Window(const char * Title,int W,int H,int X,int Y,SDL_WindowFlags Flags);
+            ~Window();
+            void SetIcon(const char * FileUrl);
+            void SetWindowSize(Size2D Size);
             void Booting();
         private:
             SDL_Window * _Window;

@@ -2,15 +2,12 @@
 
 #include "JUnVector.h"
 #include "Component.h"
-#include <SDL2/SDL.h>
 
 namespace JieEngine{
-    class GameMap;
-    
     class Entity{
         public:
             Entity();
-            Entity(Entity *& Ptr);
+            Entity(Entity * Ptr);
             ~Entity();
             template <typename T>
             void AddComponent(T Parameter){
@@ -38,9 +35,11 @@ namespace JieEngine{
                 }
                 return false;
             }
+            const char * Title;
+            friend GameMap;
+        private:
             virtual void Update() = 0;
             virtual void Event(SDL_Event Event) = 0;
-        private:
             std::unordered_map<std::string,ComponentData> Components;
             int ID;
     };
