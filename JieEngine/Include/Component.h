@@ -3,11 +3,15 @@
 #include "JUnVector.h"
 #include <unordered_map>
 #include <experimental/any>
-#include <string>
 #include <typeinfo>
-#include <memory>
 #include <iostream>
+#include <vector>
+#include <memory>
+#include <string>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL_ttf.h>
 
 using namespace std;
 
@@ -38,6 +42,7 @@ namespace JieEngine{
     
     struct GlobalResourceComponent final {
         JUnInt FPS;
+        JUnInt FixedFPS;
         shared_ptr<SystemManage> SManage;
         bool Quit;
         SDL_Renderer * WindowRender;
@@ -46,11 +51,26 @@ namespace JieEngine{
         shared_ptr<GameMap> _GameMap;
     };
 
+    struct Transform{
+        Point2D Pos;
+        Size2D Size;
+        float Revolve;
+    };
+
+    struct Mesh{
+        bool IsEnable;
+        bool IsDeBug;
+        void (*CollideFunction)(Entity * Object_1,Entity * Object_2);
+    };
+
+    struct RigidBody{
+        bool IsEnable;
+    };
+
     extern GlobalResourceComponent Resource;
     
     class ComponentManage final {
         public:
-            ComponentManage();
             template <typename T>
             static void EnrollComponent(){
                 Resource._CategoryEntityID[typeid(T).name()] = make_shared<JUnVector>();
@@ -73,26 +93,6 @@ namespace JieEngine{
                     Resource._CategoryEntityID[typeid(T).name()]->Size()
                 };
             }
-    };
-
-    struct Component{
-        bool IsEnable;
-        bool UIClog;
-    };
-
-    struct Transform{
-        Point2D Pos;
-        Size2D Size;
-        float Revolve;
-    };
-
-    struct Mesh{
-        bool IsEnable;
-        void (*Collide)(Entity * Object_1,Entity * Object_2);
-    };
-
-    struct RigidBody : Component{
-
     };
 
 };

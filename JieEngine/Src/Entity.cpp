@@ -2,9 +2,14 @@
 
 using namespace JieEngine;
 
-Entity::Entity(){
+Entity::Entity(const char * Title){
+    if(Title == nullptr){
+        this->Title = typeid(this).name();
+    }else{
+        this->Title = Title;
+    }
     this->ID = Resource._GenerateEntityID.Push(1);
-    cout << "Create:" << this->ID << endl;
+    this->AddComponent<Transform>({{0,0},{0,0},0});
 }
 
 Entity::Entity(Entity * Ptr){
@@ -15,8 +20,9 @@ Entity::Entity(Entity * Ptr){
 
 Entity::~Entity(){
     Resource._GenerateEntityID.Remove(this->ID);
-    cout << "Remove:" << this->ID << endl;
     for(auto Temp : this->Components){
-        ComponentManage::DestroyComponentS(Temp.second);
+        if(Temp.second.Data.type() != typeid(Transform)){
+            ComponentManage::DestroyComponentS(Temp.second);
+        }
     }
 }

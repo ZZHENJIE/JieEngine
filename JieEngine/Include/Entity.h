@@ -1,18 +1,21 @@
 #pragma once
 
-#include "JUnVector.h"
 #include "Component.h"
 
 namespace JieEngine{
     class Entity{
         public:
-            Entity();
+            Entity(const char * Title);
             Entity(Entity * Ptr);
             ~Entity();
             template <typename T>
             void AddComponent(T Parameter){
                 this->Components[typeid(T).name()].Data = Parameter;
-                this->Components[typeid(T).name()].Index = ComponentManage::CreateComponent<T>(this->ID);
+                if(typeid(T) == typeid(Transform)){
+                    this->Components[typeid(T).name()].Index = 0;
+                }else{
+                    this->Components[typeid(T).name()].Index = ComponentManage::CreateComponent<T>(this->ID);
+                }
             }
             template <typename... Args>
             void AddComponents(Args... Parameter){
@@ -20,11 +23,11 @@ namespace JieEngine{
             }
             template<typename T>
             T & GetComponent(){
-                return std::experimental::any_cast<T&>(Components[typeid(T).name()]);
+                return std::experimental::any_cast<T&>(Components[typeid(T).name()].Data);
             }
             template<typename... Args>
             void ReviseComponents(Args... Parameter){
-                ((this->Components[typeid(Args).name()] = Parameter), ...);
+                ((this->Components[typeid(Args).name()].Data = Parameter), ...);
             }
             template<typename T>
             bool IsPossessComponent(){

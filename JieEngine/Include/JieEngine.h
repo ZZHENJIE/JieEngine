@@ -1,9 +1,6 @@
 #pragma once
 
-#include "JUnVector.h"
-#include "System.h"
 #include "GameMap.h"
-#include "Component.h"
 
 namespace JieEngine{
 
