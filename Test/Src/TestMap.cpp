@@ -1,5 +1,6 @@
 #include "TestMap.h"
 
+<<<<<<< HEAD
 TestMap::TestMap(){
     Player * Temp = new Player("Player");
     this->AddEntity<Player>(Temp);
@@ -20,6 +21,8 @@ TestMap::TestMap(){
     this->AddEntity<Barrier>(Barrier5);
 }
 
+=======
+>>>>>>> 535fbdba87fd472195cd413d29e283c4d4fc2b79
 void TestMap::Update(){
     
 }

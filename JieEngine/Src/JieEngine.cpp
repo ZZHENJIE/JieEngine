@@ -11,6 +11,9 @@ void JieEngine::InitEngine(){
     ComponentManage::EnrollComponent<RigidBody>();
     ComponentManage::EnrollComponent<Transform>();
     Resource.SManage = make_shared<SystemManage>();
+    ComponentManage::EnrollComponent<Mesh>();
+    ComponentManage::EnrollComponent<RigidBody>();
+    ComponentManage::EnrollComponent<Transform>();
     Resource.Quit = true;
     Resource.FixedFPS = -1;
     SDL_RenderClear(Resource.WindowRender);

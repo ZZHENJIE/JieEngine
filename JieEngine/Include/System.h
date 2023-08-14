@@ -1,5 +1,17 @@
 #pragma once
 
+<<<<<<< HEAD
+=======
+#include <unordered_map>
+#include <vector>
+#include <memory>
+#include <string>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL_ttf.h>
+#include "Component.h"
+>>>>>>> 535fbdba87fd472195cd413d29e283c4d4fc2b79
 #include "Entity.h"
 
 using namespace std;

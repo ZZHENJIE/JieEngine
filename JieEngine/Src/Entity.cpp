@@ -9,7 +9,10 @@ Entity::Entity(const char * Title){
         this->Title = Title;
     }
     this->ID = Resource._GenerateEntityID.Push(1);
+<<<<<<< HEAD
     this->AddComponent<Transform>({{0,0},{0,0},0});
+=======
+>>>>>>> 535fbdba87fd472195cd413d29e283c4d4fc2b79
 }
 
 Entity::Entity(Entity * Ptr){
