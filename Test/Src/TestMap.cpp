@@ -2,7 +2,6 @@
 
 TestMap::TestMap(){
     Player * Temp = new Player("Player");
-    this->AddEntity<Player>(Temp);
     Barrier * Barrier1 = new Barrier("Barrier1");
     Barrier * Barrier2 = new Barrier("Barrier2");
     Barrier * Barrier3 = new Barrier("Barrier3");
@@ -13,11 +12,18 @@ TestMap::TestMap(){
     Barrier3->GetComponent<Transform>().Pos = {140,120};
     Barrier4->GetComponent<Transform>().Pos = {160,120};
     Barrier5->GetComponent<Transform>().Pos = {160,100};
+    this->AddEntity<Player>(Temp);
     this->AddEntity<Barrier>(Barrier1);
     this->AddEntity<Barrier>(Barrier2);
     this->AddEntity<Barrier>(Barrier3);
     this->AddEntity<Barrier>(Barrier4);
     this->AddEntity<Barrier>(Barrier5);
+    // this->AddEntity(Temp);
+    // this->AddEntity(Barrier1);
+    // this->AddEntity(Barrier2);
+    // this->AddEntity(Barrier3);
+    // this->AddEntity(Barrier4);
+    // this->AddEntity(Barrier5);
 }
 
 void TestMap::Update(){

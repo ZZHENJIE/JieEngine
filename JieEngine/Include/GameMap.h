@@ -4,18 +4,22 @@
 
 namespace JieEngine{
     class Window;
-    class Entity;
 
     class GameMap{
         public:
             template <typename T>
-            void AddEntity(T * Type){
-                this->EntityManage.push_back(make_shared<T>(Type));
+            void AddEntity(Entity * Type){
+                this->EntityManage[Type->ID] = make_shared<T>(Type);
+            }
+            template <typename T>
+            void RemoveEntity(Entity * Type){
+                EntityCache.push_back(Type->ID);
+                
             }
             friend Window;
-        protected:
-            std::vector<std::shared_ptr<Entity>> EntityManage;
         private:
+            std::vector<std::shared_ptr<Entity>> EntityManage;
+            std::vector<int> EntityCache;
             virtual void Update() = 0;
             virtual void Event(SDL_Event Event) = 0;
             virtual void _MapUpdate() final;
