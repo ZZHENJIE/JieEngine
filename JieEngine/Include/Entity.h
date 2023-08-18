@@ -11,11 +11,7 @@ namespace JieEngine{
             template <typename T>
             void AddComponent(T Parameter){
                 this->Components[typeid(T).name()].Data = Parameter;
-                if(typeid(T) == typeid(Transform)){
-                    this->Components[typeid(T).name()].Index = 0;
-                }else{
-                    this->Components[typeid(T).name()].Index = ComponentManage::CreateComponent<T>(this->ID);
-                }
+                this->Components[typeid(T).name()].Index = ComponentManage::CreateComponent<T>(this->ID);
             }
             template <typename... Args>
             void AddComponents(Args... Parameter){
@@ -31,13 +27,14 @@ namespace JieEngine{
             }
             template<typename T>
             bool IsPossessComponent(){
-                for (auto Temp : this->Components) {
-                    if (Temp.second.Data.type() == typeid(T)){
+                for (auto Iterate : this->Components) {
+                    if (Iterate.second.Data.type() == typeid(T)){
                         return true;
                     }
                 }
                 return false;
             }
+            int GetID();
             const char * Title;
             friend GameMap;
         private:

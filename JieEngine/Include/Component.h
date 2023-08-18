@@ -1,6 +1,6 @@
 #pragma once
 
-#include "JUnVector.h"
+#include "JContainer.h"
 #include <unordered_map>
 #include <experimental/any>
 #include <typeinfo>
@@ -20,6 +20,9 @@ namespace JieEngine{
     class GameMap;
     class Entity;
 
+    using JUnInt = uint32_t;
+    using EntityVector = std::vector<std::shared_ptr<Entity>>;
+
     typedef struct Point2D final{
         int x;
         int y;
@@ -34,20 +37,15 @@ namespace JieEngine{
         std::experimental::any Data;
         int Index;
     };
-
-    struct EntityIDJVector final{
-        JUnInt * Begin;
-        JUnInt Size;
-    };
     
     struct GlobalResourceComponent final {
         JUnInt FPS;
         JUnInt FixedFPS;
         shared_ptr<SystemManage> SManage;
-        bool Quit;
+        bool Run;
         SDL_Renderer * WindowRender;
-        JUnVector _GenerateEntityID;
-        unordered_map<string,shared_ptr<JUnVector>> _CategoryEntityID;
+        JContainer<JUnInt> _GenerateEntityID;
+        unordered_map<string,shared_ptr<JContainer<JUnInt>>> _CategoryEntityID;
         shared_ptr<GameMap> _GameMap;
     };
 
@@ -73,11 +71,12 @@ namespace JieEngine{
         public:
             template <typename T>
             static void EnrollComponent(){
-                Resource._CategoryEntityID[typeid(T).name()] = make_shared<JUnVector>();
+                Resource._CategoryEntityID[typeid(T).name()] = make_shared<JContainer<JUnInt>>();
+                Resource._CategoryEntityID[typeid(T).name()]->SetNull(-1);
             }
             template <typename T>
             static int CreateComponent(JUnInt EntityID){
-                return Resource._CategoryEntityID[typeid(T).name()]->Push(EntityID);
+                return Resource._CategoryEntityID[typeid(T).name()]->Add(EntityID);
             }
             template <typename T>
             static void DestroyComponent(JUnInt VectorIndex){
@@ -87,11 +86,8 @@ namespace JieEngine{
                 Resource._CategoryEntityID[Data.Data.type().name()]->Remove(Data.Index);
             }
             template <typename T>
-            static EntityIDJVector GetEntityIDJVector(){
-                return EntityIDJVector{
-                    Resource._CategoryEntityID[typeid(T).name()]->Begin(),
-                    Resource._CategoryEntityID[typeid(T).name()]->Size()
-                };
+            static JContainer<JUnInt> GetEntityIDJVector(){
+                return * Resource._CategoryEntityID[typeid(T).name()];
             }
     };
 

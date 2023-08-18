@@ -13,10 +13,7 @@ namespace JieEngine{
 
     class SystemManage final{
         public:
-            SystemManage(){
-                this->EnrollReviseSystem<Mesh>(MeshSystem);
-                this->EnrollReviseSystem<RigidBody>(RigidBodySystem);
-            }
+            SystemManage();
             template <typename T>
             void EnrollReviseSystem(void (*Function)(std::vector<std::shared_ptr<Entity>>)){
                 this->_SystemFunction[typeid(T).name()] = Function;

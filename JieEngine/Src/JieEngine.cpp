@@ -7,15 +7,10 @@ void JieEngine::InitEngine(){
     IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
     Mix_Init(MIX_INIT_MP3 | MIX_INIT_FLAC);
     TTF_Init();
-    ComponentManage::EnrollComponent<Mesh>();
-    ComponentManage::EnrollComponent<RigidBody>();
-    ComponentManage::EnrollComponent<Transform>();
     Resource.SManage = make_shared<SystemManage>();
-    ComponentManage::EnrollComponent<Mesh>();
-    ComponentManage::EnrollComponent<RigidBody>();
-    ComponentManage::EnrollComponent<Transform>();
-    Resource.Quit = true;
+    Resource.Run = true;
     Resource.FixedFPS = -1;
+    Resource._GenerateEntityID.SetNull(-1);
     SDL_RenderClear(Resource.WindowRender);
 }
 
@@ -48,13 +43,13 @@ void Window::Booting(){
     SDL_Event Event;
     Uint32 Begin;
 
-    while(Resource.Quit){
+    while(Resource.Run){
 
         Begin = SDL_GetTicks();
 
         if(SDL_PollEvent(&Event)){
             if(Event.type == SDL_QUIT){
-                Resource.Quit = false;
+                Resource.Run = false;
             }else{
                 Resource._GameMap->_MapEvent(Event);
             }

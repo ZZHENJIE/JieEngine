@@ -9,17 +9,16 @@ namespace JieEngine{
         public:
             template <typename T>
             void AddEntity(Entity * Type){
-                this->EntityManage[Type->ID] = make_shared<T>(Type);
+                this->EntityManage.insert(this->EntityManage.begin() + Type->ID,make_shared<T>(Type));
             }
-            template <typename T>
-            void RemoveEntity(Entity * Type){
-                EntityCache.push_back(Type->ID);
-                
-            }
+            void RemoveEntity(Entity * Type);
+            void RemoveEntity(int EntityID);
+            std::shared_ptr<Entity> GetEntity(const char * Title);
+            std::shared_ptr<Entity> GetEntity(string Title);
+            std::shared_ptr<Entity> GetEntity(int EntityID);
             friend Window;
         private:
             std::vector<std::shared_ptr<Entity>> EntityManage;
-            std::vector<int> EntityCache;
             virtual void Update() = 0;
             virtual void Event(SDL_Event Event) = 0;
             virtual void _MapUpdate() final;

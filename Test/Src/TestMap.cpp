@@ -18,12 +18,6 @@ TestMap::TestMap(){
     this->AddEntity<Barrier>(Barrier3);
     this->AddEntity<Barrier>(Barrier4);
     this->AddEntity<Barrier>(Barrier5);
-    // this->AddEntity(Temp);
-    // this->AddEntity(Barrier1);
-    // this->AddEntity(Barrier2);
-    // this->AddEntity(Barrier3);
-    // this->AddEntity(Barrier4);
-    // this->AddEntity(Barrier5);
 }
 
 void TestMap::Update(){
@@ -32,7 +26,7 @@ void TestMap::Update(){
 
 void TestMap::Event(SDL_Event Event){
     if(Event.key.type == SDL_KEYDOWN && Event.key.keysym.sym == SDLK_m){
-        Barrier * Temp = new Barrier("Barrier");
-        this->AddEntity<Barrier>(Temp);
+        Transform & Temp = this->GetEntity("Barrier4")->GetComponent<Transform>();
+        cout << "X: " << Temp.Pos.x << " Y: " << Temp.Pos.y << endl;
     }
 }

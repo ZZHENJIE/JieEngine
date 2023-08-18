@@ -4,8 +4,6 @@
 
 namespace JieEngine{
 
-    using EntityVector = std::vector<std::shared_ptr<Entity>>;
-
     void InitEngine();
 
     void QuitEngine();

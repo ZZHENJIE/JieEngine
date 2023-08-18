@@ -8,8 +8,8 @@ Entity::Entity(const char * Title){
     }else{
         this->Title = Title;
     }
-    this->ID = Resource._GenerateEntityID.Push(1);
-    this->AddComponent<Transform>({{0,0},{0,0},0});
+    this->ID = Resource._GenerateEntityID.Add(1);
+    this->Components[typeid(Transform).name()].Data = Transform({{0,0},{0,0},0});
 }
 
 Entity::Entity(Entity * Ptr){
@@ -18,11 +18,15 @@ Entity::Entity(Entity * Ptr){
     this->Components = Ptr->Components;
 }
 
+int Entity::GetID(){
+    return this->ID;
+}
+
 Entity::~Entity(){
     Resource._GenerateEntityID.Remove(this->ID);
-    for(auto Temp : this->Components){
-        if(Temp.second.Data.type() != typeid(Transform)){
-            ComponentManage::DestroyComponentS(Temp.second);
+    for(auto Iterate : this->Components){
+        if(Iterate.second.Data.type() != typeid(Transform)){
+            ComponentManage::DestroyComponentS(Iterate.second);
         }
     }
 }
