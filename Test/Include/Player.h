@@ -11,7 +11,10 @@ class Player : public Entity {
                 true,
                 nullptr
             },{
-                true
+                true,
+                0,
+                0,
+                20
             });
             this->GetComponent<Transform>().Size = {20,20};
             this->GetComponent<Transform>().Pos = {130,50};
@@ -26,11 +29,15 @@ class Player : public Entity {
             if(Event.key.type == SDL_KEYDOWN){
                 switch(Event.key.keysym.sym){
                     case SDLK_a:{
-                        this->GetComponent<Transform>().Pos.x --;
+                        this->GetComponent<RigidBody>().XForce -= 10;
                         break;
                     }
                     case SDLK_d:{
-                        this->GetComponent<Transform>().Pos.x ++;
+                        this->GetComponent<RigidBody>().XForce += 10;
+                        break;
+                    }
+                    case SDLK_w:{
+                        this->GetComponent<RigidBody>().YForce += 10;
                         break;
                     }
                 }

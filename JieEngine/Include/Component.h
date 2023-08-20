@@ -63,6 +63,9 @@ namespace JieEngine{
 
     struct RigidBody{
         bool IsEnable;
+        int XForce;
+        int YForce;
+        float Weight;
     };
 
     extern GlobalResourceComponent Resource;
