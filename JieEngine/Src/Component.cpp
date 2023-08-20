@@ -2,4 +2,6 @@
 
 using namespace JieEngine;
 
+bool Mesh::IsDeBug = false;
+
 GlobalResourceComponent JieEngine::Resource;

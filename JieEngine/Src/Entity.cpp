@@ -26,7 +26,7 @@ Entity::~Entity(){
     Resource._GenerateEntityID.Remove(this->ID);
     for(auto Iterate : this->Components){
         if(Iterate.second.Data.type() != typeid(Transform)){
-            ComponentManage::DestroyComponentS(Iterate.second);
+            ComponentManage::DestroyComponent(Iterate.second);
         }
     }
 }

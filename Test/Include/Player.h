@@ -9,7 +9,6 @@ class Player : public Entity {
         Player(const char * Title):Entity(Title){
             this->AddComponents<Mesh,RigidBody>({
                 true,
-                true,
                 nullptr
             },{
                 true
@@ -24,7 +23,18 @@ class Player : public Entity {
             
         }
         virtual void Event(SDL_Event Event) override{
-
+            if(Event.key.type == SDL_KEYDOWN){
+                switch(Event.key.keysym.sym){
+                    case SDLK_a:{
+                        this->GetComponent<Transform>().Pos.x --;
+                        break;
+                    }
+                    case SDLK_d:{
+                        this->GetComponent<Transform>().Pos.x ++;
+                        break;
+                    }
+                }
+            }
         }
         void Collide(Entity * Object_1,Entity * Object_2){
 
@@ -35,7 +45,6 @@ class Barrier : public Entity{
     public:
         Barrier(const char * Title):Entity(Title){
             this->AddComponent<Mesh>({
-                false,
                 true,
                 nullptr
             });

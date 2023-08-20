@@ -57,6 +57,8 @@ void Window::Booting(){
 
         Resource._GameMap->_MapUpdate();
 
+        SDL_RenderPresent(Resource.WindowRender);
+
         if(Resource.FixedFPS != -1){
             if(SDL_GetTicks() - Begin < (1000/Resource.FixedFPS))
             {

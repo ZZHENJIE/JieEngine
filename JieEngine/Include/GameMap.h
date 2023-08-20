@@ -7,9 +7,13 @@ namespace JieEngine{
 
     class GameMap{
         public:
+            GameMap();
             template <typename T>
             void AddEntity(Entity * Type){
-                this->EntityManage.insert(this->EntityManage.begin() + Type->ID,make_shared<T>(Type));
+                if(Type->ID >= this->EntityManage.capacity()){
+                    this->EntityManage.resize(Type->ID * 2);
+                }
+                this->EntityManage[Type->ID] = make_shared<T>(Type);
             }
             void RemoveEntity(Entity * Type);
             void RemoveEntity(int EntityID);

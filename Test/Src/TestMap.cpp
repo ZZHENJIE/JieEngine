@@ -11,13 +11,15 @@ TestMap::TestMap(){
     Barrier2->GetComponent<Transform>().Pos = {120,120};
     Barrier3->GetComponent<Transform>().Pos = {140,120};
     Barrier4->GetComponent<Transform>().Pos = {160,120};
-    Barrier5->GetComponent<Transform>().Pos = {160,100};
+    Barrier5->GetComponent<Transform>().Pos = {180,100};
     this->AddEntity<Player>(Temp);
     this->AddEntity<Barrier>(Barrier1);
     this->AddEntity<Barrier>(Barrier2);
     this->AddEntity<Barrier>(Barrier3);
     this->AddEntity<Barrier>(Barrier4);
     this->AddEntity<Barrier>(Barrier5);
+    SDL_SetRenderDrawColor(Resource.WindowRender,255,255,0,255);
+    Mesh::IsDeBug = true;
 }
 
 void TestMap::Update(){
@@ -26,7 +28,11 @@ void TestMap::Update(){
 
 void TestMap::Event(SDL_Event Event){
     if(Event.key.type == SDL_KEYDOWN && Event.key.keysym.sym == SDLK_m){
-        Transform & Temp = this->GetEntity("Barrier4")->GetComponent<Transform>();
-        cout << "X: " << Temp.Pos.x << " Y: " << Temp.Pos.y << endl;
+        this->RemoveEntity(this->GetEntity("Barrier3")->GetID());
+    }
+    if(Event.key.type == SDL_KEYDOWN && Event.key.keysym.sym == SDLK_n){
+        Barrier * Barrier3 = new Barrier("Barrier3");
+        Barrier3->GetComponent<Transform>().Pos = {140,120};
+        this->AddEntity<Barrier>(Barrier3);
     }
 }

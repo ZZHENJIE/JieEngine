@@ -57,8 +57,8 @@ namespace JieEngine{
 
     struct Mesh{
         bool IsEnable;
-        bool IsDeBug;
         void (*CollideFunction)(Entity * Object_1,Entity * Object_2);
+        static bool IsDeBug;
     };
 
     struct RigidBody{
@@ -79,14 +79,14 @@ namespace JieEngine{
                 return Resource._CategoryEntityID[typeid(T).name()]->Add(EntityID);
             }
             template <typename T>
-            static void DestroyComponent(JUnInt VectorIndex){
-                Resource._CategoryEntityID[typeid(T).name()]->Remove(VectorIndex);
+            static void DestroyComponent(JUnInt Index){
+                Resource._CategoryEntityID[typeid(T).name()]->Remove(Index);
             }
-            static void DestroyComponentS(ComponentData Data){
+            static void DestroyComponent(ComponentData Data){
                 Resource._CategoryEntityID[Data.Data.type().name()]->Remove(Data.Index);
             }
             template <typename T>
-            static JContainer<JUnInt> GetEntityIDJVector(){
+            static JContainer<JUnInt> & GetEntityIDJVector(){
                 return * Resource._CategoryEntityID[typeid(T).name()];
             }
     };

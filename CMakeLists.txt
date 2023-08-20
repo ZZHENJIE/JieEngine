@@ -30,19 +30,19 @@ include_directories(${PROJECT_SOURCE_DIR}/JieEngine/Include/) #引擎头文件�
 
 file(GLOB JieEngine "${PROJECT_SOURCE_DIR}/JieEngine/Src/*.cpp") #引擎源文件路径
 
-if(CMAKE_BUILD_TYPE AND (CMAKE_BUILD_TYPE STREQUAL "Debug"))
+#Debug
 
-    include_directories(${PROJECT_SOURCE_DIR}/Test/Include/) #测试项目头文件路径
+include_directories(${PROJECT_SOURCE_DIR}/Test/Include/) #测试项目头文件路径
 
-    file(GLOB Test "${PROJECT_SOURCE_DIR}/Test/Src/*.cpp") #测试项目源文件路径
+file(GLOB Test "${PROJECT_SOURCE_DIR}/Test/Src/*.cpp") #测试项目源文件路径
 
-    add_executable(${CMAKE_PROJECT_NAME} ${JieEngine} ${Test})
+add_executable(${CMAKE_PROJECT_NAME} ${JieEngine} ${Test})
 
-elseif(CMAKE_BUILD_TYPE AND (CMAKE_BUILD_TYPE STREQUAL "Release"))
+# if(CMAKE_BUILD_TYPE AND (CMAKE_BUILD_TYPE STREQUAL "Release"))
 
-    add_executable(${CMAKE_PROJECT_NAME} ${JieEngine} ${PROJECT_SOURCE_DIR}/JieEngine/Main.cpp)
+#     add_executable(${CMAKE_PROJECT_NAME} ${JieEngine} ${PROJECT_SOURCE_DIR}/JieEngine/Main.cpp)
 
-endif()
+# endif()
 
 # if(CMAKE_HOST_APPLE) #MacOS
 #     target_link_libraries(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/JieEngine/Lib/MacOS.a)
