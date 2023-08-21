@@ -8,6 +8,8 @@
 #include <vector>
 #include <memory>
 #include <string>
+#include <string.h>
+#include <fstream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
@@ -17,6 +19,7 @@ using namespace std;
 
 namespace JieEngine{
     class SystemManage;
+    class UnpackData;
     class GameMap;
     class Entity;
 
@@ -43,6 +46,7 @@ namespace JieEngine{
         JUnInt FixedFPS;
         shared_ptr<SystemManage> SManage;
         bool Run;
+        shared_ptr<UnpackData> ResourceFile;
         SDL_Renderer * WindowRender;
         JContainer<JUnInt> _GenerateEntityID;
         unordered_map<string,shared_ptr<JContainer<JUnInt>>> _CategoryEntityID;
