@@ -1,0 +1,52 @@
+set(Box2D_SOURCE_FILES
+    b2_block_allocator.cpp
+    b2_body.cpp
+    b2_broad_phase.cpp
+    b2_chain_circle_contact.cpp
+    b2_chain_polygon_contact.cpp
+    b2_chain_shape.cpp
+    b2_circle_contact.cpp
+    b2_circle_shape.cpp
+    b2_collide_circle.cpp
+    b2_collide_edge.cpp
+    b2_collide_polygon.cpp
+    b2_collision.cpp
+    b2_contact.cpp
+    b2_contact_manager.cpp
+    b2_contact_solver.cpp
+    b2_distance.cpp
+    b2_distance_joint.cpp
+    b2_draw.cpp
+    b2_dynamic_tree.cpp
+    b2_edge_circle_contact.cpp
+    b2_edge_polygon_contact.cpp
+    b2_edge_shape.cpp
+    b2_fixture.cpp
+    b2_friction_joint.cpp
+    b2_gear_joint.cpp
+    b2_island.cpp
+    b2_joint.cpp
+    b2_math.cpp
+    b2_motor_joint.cpp
+    b2_mouse_joint.cpp
+    b2_polygon_circle_contact.cpp
+    b2_polygon_contact.cpp
+    b2_polygon_shape.cpp
+    b2_prismatic_joint.cpp
+    b2_pulley_joint.cpp
+    b2_revolute_joint.cpp
+    b2_rope.cpp
+    b2_settings.cpp
+    b2_stack_allocator.cpp
+    b2_timer.cpp
+    b2_time_of_impact.cpp
+    b2_weld_joint.cpp
+    b2_wheel_joint.cpp
+    b2_world.cpp
+    b2_world_callbacks.cpp
+)
+
+add_library(Box2D STATIC ${Box2D_SOURCE_FILES})
+set_target_properties(Box2D PROPERTIES OUTPUT_NAME "Box2D")
+set_target_properties(Box2D PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
+set_target_properties(Box2D PROPERTIES PREFIX "lib")

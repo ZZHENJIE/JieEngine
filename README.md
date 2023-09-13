@@ -1,7 +1,24 @@
 # JieEngine
 
+## 简介
 
+一个简单的2D C++游戏引擎 物理引擎采用[Box2D](https://box2d.org)
 
+<img src="https://zzhenjie.github.io/JieEngine-Document/Docs/Image/Logo.svg" style="width: 10%;">
+
+<img src="https://box2d.org/images/logo.svg" style="width: 10%;">
+
+## 优点
+
+* 体积小
+* 配置简单
+* 速度快
+* 上手快
+
+## 缺点
+
+* 功能少
+* BUG多
 
 ## 常见问题
 
@@ -16,4 +33,4 @@
 ]
 ```
 
-[文档](https://zzhenjie.github.io/JieEngine-Document)
+## [文档](https://zzhenjie.github.io/JieEngine-Document)
