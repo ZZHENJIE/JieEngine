@@ -20,16 +20,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "box2d/b2_fixture.h"
-#include "box2d/b2_block_allocator.h"
-#include "box2d/b2_broad_phase.h"
-#include "box2d/b2_chain_shape.h"
-#include "box2d/b2_circle_shape.h"
-#include "box2d/b2_collision.h"
-#include "box2d/b2_contact.h"
-#include "box2d/b2_edge_shape.h"
-#include "box2d/b2_polygon_shape.h"
-#include "box2d/b2_world.h"
+#include "Box2D/b2_fixture.h"
+#include "Box2D/b2_block_allocator.h"
+#include "Box2D/b2_broad_phase.h"
+#include "Box2D/b2_chain_shape.h"
+#include "Box2D/b2_circle_shape.h"
+#include "Box2D/b2_collision.h"
+#include "Box2D/b2_contact.h"
+#include "Box2D/b2_edge_shape.h"
+#include "Box2D/b2_polygon_shape.h"
+#include "Box2D/b2_world.h"
 
 b2Fixture::b2Fixture()
 {

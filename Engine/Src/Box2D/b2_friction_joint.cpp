@@ -20,9 +20,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "box2d/b2_friction_joint.h"
-#include "box2d/b2_body.h"
-#include "box2d/b2_time_step.h"
+#include "Box2D/b2_friction_joint.h"
+#include "Box2D/b2_body.h"
+#include "Box2D/b2_time_step.h"
 
 // Point-to-point constraint
 // Cdot = v2 - v1

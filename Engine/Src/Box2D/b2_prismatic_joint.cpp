@@ -20,10 +20,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "box2d/b2_body.h"
-#include "box2d/b2_draw.h"
-#include "box2d/b2_prismatic_joint.h"
-#include "box2d/b2_time_step.h"
+#include "Box2D/b2_body.h"
+#include "Box2D/b2_draw.h"
+#include "Box2D/b2_prismatic_joint.h"
+#include "Box2D/b2_time_step.h"
 
 // Linear constraint (point-to-line)
 // d = p2 - p1 = x2 + r2 - x1 - r1

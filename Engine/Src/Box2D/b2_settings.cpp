@@ -22,7 +22,7 @@
 
 #define _CRT_SECURE_NO_WARNINGS
 
-#include "box2d/b2_settings.h"
+#include "Box2D/b2_settings.h"
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>

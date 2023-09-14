@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "box2d/b2_broad_phase.h"
+#include "Box2D/b2_broad_phase.h"
 #include <string.h>
 
 b2BroadPhase::b2BroadPhase()

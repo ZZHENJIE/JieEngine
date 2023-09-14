@@ -20,20 +20,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "box2d/b2_block_allocator.h"
-#include "box2d/b2_body.h"
-#include "box2d/b2_distance_joint.h"
-#include "box2d/b2_draw.h"
-#include "box2d/b2_friction_joint.h"
-#include "box2d/b2_gear_joint.h"
-#include "box2d/b2_motor_joint.h"
-#include "box2d/b2_mouse_joint.h"
-#include "box2d/b2_prismatic_joint.h"
-#include "box2d/b2_pulley_joint.h"
-#include "box2d/b2_revolute_joint.h"
-#include "box2d/b2_weld_joint.h"
-#include "box2d/b2_wheel_joint.h"
-#include "box2d/b2_world.h"
+#include "Box2D/b2_block_allocator.h"
+#include "Box2D/b2_body.h"
+#include "Box2D/b2_distance_joint.h"
+#include "Box2D/b2_draw.h"
+#include "Box2D/b2_friction_joint.h"
+#include "Box2D/b2_gear_joint.h"
+#include "Box2D/b2_motor_joint.h"
+#include "Box2D/b2_mouse_joint.h"
+#include "Box2D/b2_prismatic_joint.h"
+#include "Box2D/b2_pulley_joint.h"
+#include "Box2D/b2_revolute_joint.h"
+#include "Box2D/b2_weld_joint.h"
+#include "Box2D/b2_wheel_joint.h"
+#include "Box2D/b2_world.h"
 
 #include <new>
 

@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "box2d/b2_draw.h"
-#include "box2d/b2_rope.h"
+#include "Box2D/b2_draw.h"
+#include "Box2D/b2_rope.h"
 
 #include <stdio.h>
 

@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "box2d/b2_math.h"
+#include "Box2D/b2_math.h"
 
 const b2Vec2 b2Vec2_zero(0.0f, 0.0f);
 

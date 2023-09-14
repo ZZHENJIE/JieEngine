@@ -23,7 +23,7 @@
 #ifndef B2_CHAIN_AND_POLYGON_CONTACT_H
 #define B2_CHAIN_AND_POLYGON_CONTACT_H
 
-#include "box2d/b2_contact.h"
+#include "b2_contact.h"
 
 class b2BlockAllocator;
 

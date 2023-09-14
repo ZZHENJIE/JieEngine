@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "box2d/b2_collision.h"
-#include "box2d/b2_distance.h"
+#include "Box2D/b2_collision.h"
+#include "Box2D/b2_distance.h"
 
 void b2WorldManifold::Initialize(const b2Manifold* manifold,
 						  const b2Transform& xfA, float radiusA,

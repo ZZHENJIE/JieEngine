@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "box2d/b2_collision.h"
-#include "box2d/b2_polygon_shape.h"
+#include "Box2D/b2_collision.h"
+#include "Box2D/b2_polygon_shape.h"
 
 // Find the max separation between poly1 and poly2 using edge normals from poly1.
 static float b2FindMaxSeparation(int32* edgeIndex,

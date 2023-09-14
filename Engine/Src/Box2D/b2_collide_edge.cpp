@@ -20,10 +20,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "box2d/b2_collision.h"
-#include "box2d/b2_circle_shape.h"
-#include "box2d/b2_edge_shape.h"
-#include "box2d/b2_polygon_shape.h"
+#include "Box2D/b2_collision.h"
+#include "Box2D/b2_circle_shape.h"
+#include "Box2D/b2_edge_shape.h"
+#include "Box2D/b2_polygon_shape.h"
 
 
 // Compute contact points for edge versus circle.
