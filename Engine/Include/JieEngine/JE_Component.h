@@ -6,6 +6,9 @@ namespace JieEngine{
 
 using namespace std;
 
+class JEEntity;
+class JEMap;
+
 class JEComponentManage final{
 public:
     template <typename T>
@@ -33,6 +36,11 @@ public:
     }
 
 private:
+
+    friend JEEntity;
+
+    friend JEMap;
+
     static unordered_map<string,JEComponent> ComponentData;
 };
 

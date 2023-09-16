@@ -73,6 +73,7 @@ struct JEGlobalResourceComponent final {
     JEUnpackData * ResourceFile;
     b2World * Box2DWorld;
     SDL_Renderer * _Renderer;
+    JEMap * _ChangeMap;
 };
 
 using JERect = SDL_Rect;

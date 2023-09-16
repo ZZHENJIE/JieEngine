@@ -4,11 +4,22 @@
 using namespace JieEngine;
 
 JEMap::JEMap(){
-    
+    JEEntity::EntityIDAssignment.Clear();
 }
 
 JEMap::~JEMap(){
+    for(auto Iterate : JEComponentManage::ComponentData){
+        Iterate.second.Data.clear();
+    }
+}
 
+void JEMap::RemoveEntity(JEUnInt EntityID){
+    for (auto Iterate = this->EntityManage.begin(); Iterate != this->EntityManage.end(); Iterate++) {
+        if ((*Iterate)->GetID() == EntityID) {
+            this->EntityManage.erase(Iterate);
+            break;
+        }
+    }
 }
 
 void JEMap::_MapUpdate(){

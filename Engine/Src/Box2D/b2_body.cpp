@@ -20,14 +20,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "Box2D/b2_body.h"
-#include "Box2D/b2_contact.h"
-#include "Box2D/b2_fixture.h"
-#include "Box2D/b2_joint.h"
-#include "Box2D/b2_world.h"
+#include "box2d/b2_body.h"
+#include "box2d/b2_contact.h"
+#include "box2d/b2_fixture.h"
+#include "box2d/b2_joint.h"
+#include "box2d/b2_world.h"
+#include <typeinfo>
 
 #include <new>
-#include <typeinfo>
 
 b2Body::b2Body(const b2BodyDef* bd, b2World* world)
 {
@@ -103,7 +103,9 @@ b2Body::b2Body(const b2BodyDef* bd, b2World* world)
 	m_fixtureList = nullptr;
 	m_fixtureCount = 0;
 
-	Name = typeid(this).name();
+	Title = typeid(this).name();
+	ID = 0;
+	CollideFunction = nullptr;
 }
 
 b2Body::~b2Body()

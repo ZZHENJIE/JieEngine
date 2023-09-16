@@ -6,17 +6,16 @@
 
 using namespace JieEngine;
 
-class One : public JEMap{
+class Two : public JEMap{
 public:
-    One(){
+    Two(){
         
     }
-    ~One(){
+    ~Two(){
 
     }
 private:
     void Init(){
-        this->AddEntity<Player>();
         this->AddEntity<Barrier>();
     }
     void Update(){
@@ -24,6 +23,6 @@ private:
         
     }
     void Event(SDL_Event Event){
-        
+
     }
 };

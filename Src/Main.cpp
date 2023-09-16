@@ -1,5 +1,6 @@
 #include "JieEngine/JE_World.h"
 #include "JieEngine/JE.h"
+#include "JieEngine/JE_System.h"
 #include "One.h"
 
 using namespace JieEngine;
@@ -18,7 +19,11 @@ int main(int argc,char * argv[]){
         Resource.Box2DWorld->DestroyBody(JEComponentManage::GetComponentData<JEPhysics>(EntityID).Body);
     });
 
-    Resource.GameMap = new One();
+    GameWorld->System->AddFunction([](JEUnInt EntityID){
+        
+    });
+
+    JEChangeGameMap(new One());
 
     GameWorld->Booting();
 

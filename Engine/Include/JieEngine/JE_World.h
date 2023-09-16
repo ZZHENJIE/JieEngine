@@ -6,7 +6,11 @@
 
 namespace JieEngine{
 
+class JESystem;
+
 extern JEGlobalResourceComponent Resource;
+
+void JEChangeGameMap(JEMap * GameMap);
 
 class JEWorld final{
     public:
@@ -16,14 +20,14 @@ class JEWorld final{
         void Booting();
         void SetIcon(const char * FileName);
         void SetWindowSize(JESize2D Size);
-        void AddCollisionFunction(JECollisionFunction Function);
         JESize2D GetWorldSize();
+
+        JESystem * System;
     private:
         JieEngine::JESize2D _WorldSize;
         SDL_Window * _Window;
         JEDebugDraw * _DebugDraw;
         vector<b2Body*> _WorldBorder;
-        JEContactListener * _ContactListener;
 };
 
 };

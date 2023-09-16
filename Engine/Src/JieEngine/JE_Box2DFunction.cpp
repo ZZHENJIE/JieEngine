@@ -76,35 +76,15 @@ void JEDebugDraw::DrawPoint(const b2Vec2& p, float size, const b2Color& color){
     SDL_RenderDrawPointF(Resource._Renderer,p.x,-1 * p.y);
 }
 
-JEContactListener::JEContactListener(){
-    this->FunctionVector = vector<JECollisionFunction>();
-}
-
-JEContactListener::~JEContactListener(){
-    
-}
-
-void JEContactListener::BeginContact(b2Contact * contact){
-    b2Body * ObjectA = contact->GetFixtureA()->GetBody();
-    b2Body * ObjectB = contact->GetFixtureB()->GetBody();
-    for(auto Iterators : this->FunctionVector){
-        (*Iterators)(ObjectA,ObjectB);
-    }
-}
-
-void JEContactListener::AddFunction(JECollisionFunction Function){
-    this->FunctionVector.push_back(Function);
-}
-
 JEPolygonPointVector JieEngine::JECreateJEPolygonPointVector(){
     return make_shared<vector<JEPoint2D>>();
 }
 
-b2Body * JieEngine::JECreateRectBody(JEPoint2D Position,JESize2D Size,b2BodyType Type,JEBodyParameter BodyData){
+b2Body * JieEngine::JECreateRectBody(JEPoint2D Position,JESize2D Size,b2BodyType Type,JEUnInt EntityID,JEBodyParameter BodyData){
     b2BodyDef Rect;
     Rect.type = Type;
     Rect.position.Set(Position.X,-1 * Position.Y);
-    b2Body * Data = Resource.Box2DWorld->CreateBody(&Rect);
+    b2Body * Data = Resource.Box2DWorld->CreateBody(&Rect,EntityID);
     b2PolygonShape RectBox;
     RectBox.SetAsBox(Size.W,Size.H);
     b2FixtureDef FixtureDef;
@@ -115,7 +95,7 @@ b2Body * JieEngine::JECreateRectBody(JEPoint2D Position,JESize2D Size,b2BodyType
     return Data;
 }
 
-b2Body * JieEngine::JECreatePolygonBody(JEPolygonPointVector PointData,b2BodyType Type,JEBodyParameter BodyData){
+b2Body * JieEngine::JECreatePolygonBody(JEPolygonPointVector PointData,b2BodyType Type,JEUnInt EntityID,JEBodyParameter BodyData){
     b2Vec2 * Vertices = new b2Vec2[PointData->size()];
     for(int Iterators = 0; Iterators < PointData->size(); Iterators++){
         Vertices[Iterators].Set(PointData->at(Iterators).X,-1 * PointData->at(Iterators).Y);
@@ -123,7 +103,7 @@ b2Body * JieEngine::JECreatePolygonBody(JEPolygonPointVector PointData,b2BodyTyp
     b2BodyDef BodyDef;
     BodyDef.type = Type;
     BodyDef.position.Set(0.0f,0.0f);
-    b2Body * Data = Resource.Box2DWorld->CreateBody(&BodyDef);
+    b2Body * Data = Resource.Box2DWorld->CreateBody(&BodyDef,EntityID);
     b2PolygonShape PolygonShape;
     PolygonShape.Set(Vertices,PointData->size());
     b2FixtureDef FixtureDef;
@@ -136,11 +116,11 @@ b2Body * JieEngine::JECreatePolygonBody(JEPolygonPointVector PointData,b2BodyTyp
     return Data;
 }
 
-b2Body * JieEngine::JECreateCircleBody(JEPoint2D Position,float Radius,b2BodyType Type,JEBodyParameter BodyData){
+b2Body * JieEngine::JECreateCircleBody(JEPoint2D Position,float Radius,b2BodyType Type,JEUnInt EntityID,JEBodyParameter BodyData){
     b2BodyDef BodyDef;
     BodyDef.type = Type;
     BodyDef.position.Set(Position.X,-1 * Position.Y);
-    b2Body * Data = Resource.Box2DWorld->CreateBody(&BodyDef);
+    b2Body * Data = Resource.Box2DWorld->CreateBody(&BodyDef,EntityID);
     b2CircleShape CircleShape;
     CircleShape.m_radius = Radius;
     b2FixtureDef FixtureDef;
@@ -152,11 +132,11 @@ b2Body * JieEngine::JECreateCircleBody(JEPoint2D Position,float Radius,b2BodyTyp
     return Data;
 }
 
-b2Body * JieEngine::JECreateLineBody(JEPoint2D PointA,JEPoint2D PointB,b2BodyType Type,JEBodyParameter BodyData){
+b2Body * JieEngine::JECreateLineBody(JEPoint2D PointA,JEPoint2D PointB,b2BodyType Type,JEUnInt EntityID,JEBodyParameter BodyData){
     b2BodyDef Line;
     Line.type = Type;
     Line.position.Set(0.0f,0.0f);
-    auto Data = Resource.Box2DWorld->CreateBody(&Line);
+    auto Data = Resource.Box2DWorld->CreateBody(&Line,EntityID);
     b2EdgeShape LineShape;
     JEVec2 Vec2A(PointA.X,-1 * PointA.Y);
     JEVec2 Vec2B(PointB.X,-1 * PointB.Y);
@@ -179,31 +159,31 @@ vector<b2Body*> JieEngine::JECreateWorldBorder(JESize2D WorldSize){
     },{
         WorldSize.W,0
     },
-    b2_staticBody));
+    b2_staticBody,-1));
 
     Data.push_back(JECreateLineBody({
         WorldSize.W,0
     },{
         WorldSize.W,WorldSize.H
     },
-    b2_staticBody));
+    b2_staticBody,-1));
 
     Data.push_back(JECreateLineBody({
         WorldSize.W,WorldSize.H
     },{
         0,WorldSize.H
     },
-    b2_staticBody));
+    b2_staticBody,-1));
 
     Data.push_back(JECreateLineBody({
         0,WorldSize.H
     },{
         0,0
     },
-    b2_staticBody));
+    b2_staticBody,-1));
 
     for(auto Iterators : Data){
-        Iterators->SetName("Border");
+        Iterators->SetTitle("WorldBorder");
     }
 
     return Data;

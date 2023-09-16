@@ -6,6 +6,7 @@
 namespace JieEngine{
 
 class JEMap;
+class JESystem;
 
 using namespace std;
 
@@ -17,11 +18,17 @@ public:
 
     template <typename T>
     void AddComponent(T Data){
+        ComponentList.push_back(typeid(T).name());
         JEComponentManage::CreateComponentData<T>(this->ID,Data);
     }
 
     template <typename T>
     void RemoveComponent(){
+        for(int Iterate = 0;Iterate < ComponentList.size();Iterate++){
+            if(ComponentList.at(Iterate) == typeid(T).name()){
+                ComponentList.erase(ComponentList.begin() + Iterate);
+            }
+        }
         JEComponentManage::RemoveComponentData<T>(this->ID);
     }
 
@@ -32,12 +39,18 @@ public:
 
     JEUnInt GetID();
 
-    friend JEMap;
 private:
+
+    friend JEMap;
+
+    friend JESystem;
+
     JEUnInt ID;
     static JEContainer<JEUnInt> EntityIDAssignment;
+    vector<string> ComponentList;
     virtual void Update() = 0;
     virtual void Event(SDL_Event Event) = 0;
+    bool _Lock;
 };
 
 };

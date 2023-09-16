@@ -386,11 +386,17 @@ public:
 	/// Dump this body to a file
 	void Dump();
 
-	/// Get the Body Name
-	const char * GetName();
+	/// Get the Body Title
+	const char * GetTitle();
 
-	/// Set the Body Name
-	void SetName(const char * name);
+	/// Set the Body Title
+	void SetTitle(const char * title);
+
+	/// Get the Body ID
+	uint32_t GetID();
+
+	/// Set CollideFunction
+	void SetCollideFunction(void(*Function)(b2Body * MainBody,b2Body * DeputyBody));
 
 private:
 
@@ -453,7 +459,8 @@ private:
 	b2World* m_world;
 	b2Body* m_prev;
 	b2Body* m_next;
-	const char * Name;
+	const char * Title;
+	uint32_t ID;
 
 	b2Fixture* m_fixtureList;
 	int32 m_fixtureCount;
@@ -473,6 +480,8 @@ private:
 	float m_sleepTime;
 
 	b2BodyUserData m_userData;
+
+	void(*CollideFunction)(b2Body * MainBody,b2Body * DeputyBody);
 };
 
 inline b2BodyType b2Body::GetType() const
@@ -889,15 +898,23 @@ inline const b2World* b2Body::GetWorld() const
 	return m_world;
 }
 
-inline const char * b2Body::GetName(){
-	if(Name != nullptr){
-		return Name;
+inline const char * b2Body::GetTitle(){
+	if(Title != nullptr){
+		return Title;
 	}
 	return nullptr;
 }
 
-inline void b2Body::SetName(const char * name){
-	Name = name;
+inline void b2Body::SetTitle(const char * title){
+	Title = title;
+}
+
+inline uint32_t b2Body::GetID(){
+	return ID;
+}
+
+inline void b2Body::SetCollideFunction(void(*Function)(b2Body * MainBody,b2Body * DeputyBody)){
+	CollideFunction = Function;
 }
 
 #endif

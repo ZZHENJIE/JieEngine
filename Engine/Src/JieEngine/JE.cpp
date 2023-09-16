@@ -15,6 +15,7 @@ void JieEngine::JEInit(){
     Resource.Run = true;
     Resource.FixedFPS = -1;
     Resource.GameMap = nullptr;
+    Resource._ChangeMap = nullptr;
     SDL_RenderClear(Resource._Renderer);
 }
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "JieEngine/JE_Entity.h"
+#include "Two.h"
 
 using namespace JieEngine;
 
@@ -8,7 +9,12 @@ class Player : public JEEntity{
 public:
     Player(){
         this->AddComponent<JEPhysics>({
-            JECreateCircleBody({150.0f,100.0f},10.0f,b2_dynamicBody,{0.3f,0.3f,0.5f})
+            JECreateCircleBody({150.0f,100.0f},10.0f,b2_dynamicBody,this->GetID(),{0.3f,0.3f,0.5f})
+        });
+        this->GetComponent<JEPhysics>().Body->SetCollideFunction([](b2Body * MainBody,b2Body * DeputyBody){
+            if(strcmp(DeputyBody->GetTitle(),"WorldBorder") == 0){
+                JEChangeGameMap(new Two());
+            }
         });
     }
 
