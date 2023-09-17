@@ -1,27 +1,17 @@
-#include "JieEngine/JE_World.h"
 #include "JieEngine/JE.h"
-#include "JieEngine/JE_System.h"
 #include "One.h"
 
 using namespace JieEngine;
 
 int main(int argc,char * argv[]){
     
-    JEInit();
-
     JEVec2 Gravity(0.0f,-10.0f);
 
     JEWorld * GameWorld = new JEWorld({640.0f,480.0f},Gravity);
 
+    JEInit(GameWorld);
+
     GameWorld->CreateWindowAndRenderer("JieEngine",640,480);
-
-    JEComponentManage::EnrollComponent<JEPhysics>([](JEUnInt EntityID){
-        Resource.Box2DWorld->DestroyBody(JEComponentManage::GetComponentData<JEPhysics>(EntityID).Body);
-    });
-
-    GameWorld->System->AddFunction([](JEUnInt EntityID){
-        
-    });
 
     JEChangeGameMap(new One());
 

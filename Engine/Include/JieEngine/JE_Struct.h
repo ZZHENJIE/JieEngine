@@ -30,6 +30,33 @@ struct JEComponent final{
     void(*Destroy)(JEUnInt EntityID);
 };
 
+struct JEPoint2D final{
+    float X;
+    float Y;
+};
+
+struct JESize2D final{
+    float W;
+    float H;
+};
+
+struct JETransform final{
+    JEPoint2D Pos;
+    float Angle;
+};
+
+struct JEImage final{
+    const char * Name;
+    JESize2D Size;
+};
+
+struct JEAnimation final{
+    unordered_map<string,JEImage> ImageResource;
+    JEUnInt SplitNumber;
+    JEUnInt PlaySpeed;
+    JEUnInt _PlayNum;
+};
+
 struct JEPhysics final{
     b2Body * Body;
 };
@@ -55,16 +82,6 @@ struct JEFileData final{
     int Size;
 };
 
-struct JEPoint2D final{
-    float X;
-    float Y;
-};
-
-struct JESize2D final{
-    float W;
-    float H;
-};
-
 struct JEGlobalResourceComponent final {
     JEUnInt FPS;
     JEUnInt FixedFPS;
@@ -81,5 +98,7 @@ using JERect = SDL_Rect;
 using JERectF = SDL_FRect;
 
 using JEVec2 = b2Vec2;
+
+extern JEGlobalResourceComponent Resource;
 
 };

@@ -8,8 +8,6 @@ namespace JieEngine{
 
 class JESystem;
 
-extern JEGlobalResourceComponent Resource;
-
 void JEChangeGameMap(JEMap * GameMap);
 
 class JEWorld final{

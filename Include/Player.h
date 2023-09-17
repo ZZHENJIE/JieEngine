@@ -12,9 +12,7 @@ public:
             JECreateCircleBody({150.0f,100.0f},10.0f,b2_dynamicBody,this->GetID(),{0.3f,0.3f,0.5f})
         });
         this->GetComponent<JEPhysics>().Body->SetCollideFunction([](b2Body * MainBody,b2Body * DeputyBody){
-            if(strcmp(DeputyBody->GetTitle(),"WorldBorder") == 0){
-                JEChangeGameMap(new Two());
-            }
+            
         });
     }
 
@@ -23,7 +21,8 @@ public:
     }
 private:
     void Update(){
-
+        b2Vec2 Temp = this->GetComponent<JEPhysics>().Body->GetPosition();
+        SDL_RenderDrawPointF(Resource._Renderer,Temp.x,-1 * Temp.y);
     }
 
     void Event(SDL_Event Event){

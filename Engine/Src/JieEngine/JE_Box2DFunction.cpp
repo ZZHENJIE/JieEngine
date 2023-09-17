@@ -6,6 +6,14 @@ void JieEngine::JESetRendererB2Color(SDL_Renderer * Renderer,const b2Color & Col
     SDL_SetRenderDrawColor(Renderer,Color.r * 255,Color.g * 255,Color.b * 255,Color.a * 255);
 }
 
+JETransform JieEngine::JEGetBodyTransform(b2Body * Body){
+    JETransform Data;
+    Data.Pos.X = Body->GetPosition().x;
+    Data.Pos.Y = -1 * Body->GetPosition().y;
+    Data.Angle = Body->GetAngle();
+    return Data;
+}
+
 JEDebugDraw::JEDebugDraw(){
     this->m_drawFlags = e_shapeBit;
 }

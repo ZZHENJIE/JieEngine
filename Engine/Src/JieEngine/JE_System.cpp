@@ -5,9 +5,20 @@ using namespace JieEngine;
 
 JESystem::JESystem(){
     this->_FunctionList.clear();
+    this->_ComponentSystem.clear();
 }
 
 void JESystem::Update(){
+    for(auto ComponentData : JEComponentManage::ComponentData){
+        if(ComponentData.second.Data.empty() == false && this->_ComponentSystem.at(ComponentData.first) != nullptr){
+            for(JEUnInt EntityID = 0; EntityID < ComponentData.second.Data.size();EntityID++){
+                if(JEEntity::EntityIDAssignment.At(EntityID) != -1){
+                    (*this->_ComponentSystem.at(ComponentData.first))(EntityID);
+                }
+            }
+        }
+    }
+
     for(auto EntityID : JEEntity::EntityIDAssignment){
         for(auto Iterate : this->_FunctionList){
             (*Iterate)(EntityID);

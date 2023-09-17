@@ -9,8 +9,6 @@ using namespace std;
 
 class JEWorld;
 
-extern JEGlobalResourceComponent Resource;
-
 class JEMap{
 public:
     JEMap();

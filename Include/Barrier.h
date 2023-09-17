@@ -17,14 +17,11 @@ public:
     }
 private:
     void Update(){
-
+        b2Vec2 Temp = this->GetComponent<JEPhysics>().Body->GetPosition();
+        SDL_RenderDrawPointF(Resource._Renderer,Temp.x,-1 * Temp.y);
     }
 
     void Event(SDL_Event Event){
-        if(Event.key.type == SDL_KEYDOWN){
-            if(Event.key.keysym.sym == SDLK_x){
-                
-            }
-        }
+
     }
 };

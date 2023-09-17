@@ -8,6 +8,7 @@ using namespace std;
 
 class JEEntity;
 class JEMap;
+class JESystem;
 
 class JEComponentManage final{
 public:
@@ -40,6 +41,8 @@ private:
     friend JEEntity;
 
     friend JEMap;
+
+    friend JESystem;
 
     static unordered_map<string,JEComponent> ComponentData;
 };

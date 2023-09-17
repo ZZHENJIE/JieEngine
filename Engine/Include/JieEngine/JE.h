@@ -1,12 +1,11 @@
 #pragma once
 
-#include "JE_Struct.h"
+#include "JE_World.h"
+#include "JE_System.h"
 
 namespace JieEngine{
-
-void JEInit();
-
-extern JEGlobalResourceComponent Resource;
+    
+void JEInit(JEWorld * World);
 
 void JEQuit();
 

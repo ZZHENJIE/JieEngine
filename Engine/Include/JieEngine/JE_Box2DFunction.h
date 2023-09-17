@@ -6,13 +6,13 @@ namespace JieEngine{
 
 using namespace std;
 
-extern JEGlobalResourceComponent Resource;
-
 using JEPolygonPointVector = shared_ptr<vector<JEPoint2D>>;
 
 using JECollisionFunction = void (*)(b2Body * ObjectA,b2Body * ObjectB);
 
 void JESetRendererB2Color(SDL_Renderer * Renderer,const b2Color & Color);
+
+JETransform JEGetBodyTransform(b2Body * Body);
 
 class JEDebugDraw : public b2Draw{
 public:

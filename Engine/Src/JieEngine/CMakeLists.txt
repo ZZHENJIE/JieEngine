@@ -7,6 +7,8 @@ set(JieEngine_SOURCE_FILES
     JE_System.cpp
     JE.cpp
     JE_Compress.cpp
+    JEAnimationSystem.cpp
+    JEImageSystem.cpp
 )
 
 add_library(JieEngine STATIC ${JieEngine_SOURCE_FILES})
