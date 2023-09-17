@@ -67,16 +67,6 @@ struct JEBodyParameter final{
     float Restitution;
 };
 
-struct JECompressData final{
-    string Message;
-    bool Succeed;
-};
-
-struct JECompressFileInfo final{
-    string Url;
-    string Name;
-};
-
 struct JEFileData final{
     char * Data;
     int Size;

@@ -23,14 +23,14 @@ TTF_Font * JEUnpackData::Font(string FileName,int FontSize){
     return nullptr;
 }
 
-JEUnpackData JieEngine::Unpack(string FileUrl){
-    JEUnpackData Ret;
+JEUnpackData * JieEngine::JEUnpack(string FileUrl){
+    JEUnpackData * Ret = new JEUnpackData();
     ifstream File;
     File.open(FileUrl, ios::binary);
     char Buffer[512];
     long Count = 0;
     if (!File) {
-        Ret.ErrorMessage = "Unable to open file: " + FileUrl;
+        Ret->ErrorMessage = "Unable to open file: " + FileUrl;
     }else{
         while (File.read(Buffer,1)){
             string Num;
@@ -52,11 +52,11 @@ JEUnpackData JieEngine::Unpack(string FileUrl){
                 }
             }
             Name.pop_back();
-            Ret._Data[Name].Data = new char[Count];
-            Ret._Data[Name].Size = Count;
+            Ret->_Data[Name].Data = new char[Count];
+            Ret->_Data[Name].Size = Count;
             for(long i = 0; i < Count; i++){
                 File.read(Buffer,1);
-                strcpy(&Ret._Data[Name].Data[i],Buffer);
+                strcpy(&Ret->_Data[Name].Data[i],Buffer);
             }
         }
     }

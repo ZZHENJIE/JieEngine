@@ -8,7 +8,7 @@ using namespace std;
 
 class JEUnpackData;
 
-JEUnpackData Unpack(string FileUrl);
+JEUnpackData * JEUnpack(string FileUrl);
 
 class JEUnpackData final{
     public:
@@ -17,7 +17,7 @@ class JEUnpackData final{
         TTF_Font * Font(string FileName,int FontSize);
         string ErrorMessage;
     private:
-        friend JEUnpackData Unpack(string FileUrl);
+        friend JEUnpackData * JEUnpack(string FileUrl);
         unordered_map<string,JEFileData> _Data;
 };
 
