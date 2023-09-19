@@ -8,8 +8,8 @@ void JieEngine::JESetRendererB2Color(SDL_Renderer * Renderer,const b2Color & Col
 
 JETransform JieEngine::JEGetBodyTransform(b2Body * Body){
     JETransform Data;
-    Data.Pos.X = Body->GetPosition().x;
-    Data.Pos.Y = -1 * Body->GetPosition().y;
+    Data.Position.X = Body->GetPosition().x;
+    Data.Position.Y = -1 * Body->GetPosition().y;
     Data.Angle = Body->GetAngle();
     return Data;
 }
@@ -94,7 +94,7 @@ b2Body * JieEngine::JECreateRectBody(JEPoint2D Position,JESize2D Size,b2BodyType
     Rect.position.Set(Position.X,-1 * Position.Y);
     b2Body * Data = Resource.Box2DWorld->CreateBody(&Rect,EntityID);
     b2PolygonShape RectBox;
-    RectBox.SetAsBox(Size.W,Size.H);
+    RectBox.SetAsBox(Size.W/2,Size.H/2);
     b2FixtureDef FixtureDef;
     FixtureDef.shape = &RectBox;
     FixtureDef.density = BodyData.Density;

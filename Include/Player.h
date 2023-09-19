@@ -14,6 +14,14 @@ public:
         this->GetComponent<JEPhysics>().Body->SetCollideFunction([](b2Body * MainBody,b2Body * DeputyBody){
             
         });
+        unordered_map<string,JEAnimationImage> Image;
+        JECreateAnimationImage("Player",4,&Image["None"]);
+        Image["None"].PlaySpeed = 1000;
+        this->AddComponent<JEAnimation>({
+            Image,
+            "None",
+            true
+        });
     }
 
     ~Player(){
@@ -53,7 +61,7 @@ private:
                     break;
                 }
                 case SDLK_x:{
-                    this->RemoveComponent<JEPhysics>();
+                    this->GetComponent<JEAnimation>().Enabled = !this->GetComponent<JEAnimation>().Enabled;
                     break;
                 }
             }

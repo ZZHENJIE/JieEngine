@@ -1,5 +1,6 @@
 #include "JieEngine/JE_Map.h"
 #include "JieEngine/JE_Entity.h"
+#include "JieEngine/JE_System.h"
 
 using namespace JieEngine;
 
@@ -8,7 +9,7 @@ JEMap::JEMap(){
 }
 
 JEMap::~JEMap(){
-    for(auto Iterate : JEComponentManage::ComponentData){
+    for(auto Iterate : JEComponentManage::_ComponentData){
         Iterate.second.Data.clear();
     }
 }
@@ -34,6 +35,7 @@ void JEMap::_MapUpdate(){
             Iterate->Update();
         }
     }
+    JESystemManage::Update(this->EntityManage);
 }
 
 void JEMap::_MapEvent(SDL_Event Event){

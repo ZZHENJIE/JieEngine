@@ -6,7 +6,6 @@ set(JieEngine_SOURCE_FILES
     JE_Box2DFunction.cpp
     JE_System.cpp
     JE.cpp
-    JE_Compress.cpp
     JEAnimationSystem.cpp
     JEImageSystem.cpp
 )

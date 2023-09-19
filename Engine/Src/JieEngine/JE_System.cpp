@@ -3,37 +3,38 @@
 
 using namespace JieEngine;
 
-JESystem::JESystem(){
-    this->_FunctionList.clear();
-    this->_ComponentSystem.clear();
+vector<void(*)(JEUnInt EntityID)> JESystemManage::_FunctionList;
+
+unordered_map<string,void(*)(JEUnInt EntityID)> JESystemManage::_ComponentSystem;
+
+void JESystemManage::Init(){
+    _FunctionList.clear();
+    _ComponentSystem.clear();
 }
 
-void JESystem::Update(){
-    for(auto ComponentData : JEComponentManage::ComponentData){
-        if(ComponentData.second.Data.empty() == false && this->_ComponentSystem.at(ComponentData.first) != nullptr){
-            for(JEUnInt EntityID = 0; EntityID < ComponentData.second.Data.size();EntityID++){
-                if(JEEntity::EntityIDAssignment.At(EntityID) != -1){
-                    (*this->_ComponentSystem.at(ComponentData.first))(EntityID);
-                }
+void JESystemManage::Update(vector<shared_ptr<JEEntity>> EntityManage){
+    for(auto Iterate : EntityManage){
+        for(auto Component : Iterate->ComponentList){
+            if(_ComponentSystem[Component] != nullptr){
+                (*_ComponentSystem[Component])(Iterate->ID);
             }
         }
     }
-
-    for(auto EntityID : JEEntity::EntityIDAssignment){
-        for(auto Iterate : this->_FunctionList){
-            (*Iterate)(EntityID);
+    for(auto Iterate : _FunctionList){
+        for(auto EntityID : EntityManage){
+            (*Iterate)(EntityID->ID);
         }
     }
 }
 
-void JESystem::AddFunction(void(*Function)(JEUnInt EntityID)){
-    this->_FunctionList.push_back(Function);
+void JESystemManage::AddFunction(void(*Function)(JEUnInt EntityID)){
+    _FunctionList.push_back(Function);
 }
 
-void JESystem::RemoveFunction(void(*Function)(JEUnInt EntityID)){
-    for(auto Iterate = this->_FunctionList.begin();Iterate != this->_FunctionList.end();Iterate++){
+void JESystemManage::RemoveFunction(void(*Function)(JEUnInt EntityID)){
+    for(auto Iterate = _FunctionList.begin();Iterate != _FunctionList.end();Iterate++){
         if((*Iterate) == Function){
-            this->_FunctionList.erase(Iterate);
+            _FunctionList.erase(Iterate);
             break;
         }
     }

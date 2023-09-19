@@ -8,7 +8,7 @@ class Barrier : public JEEntity{
 public:
     Barrier(){
         this->AddComponent<JEPhysics>({
-            JECreateRectBody({150,150},{10,10},b2_staticBody,this->GetID())
+            JECreateRectBody({150,150},{20,20},b2_staticBody,this->GetID())
         });
         this->GetComponent<JEPhysics>().Body->SetTitle("Rect");
     }

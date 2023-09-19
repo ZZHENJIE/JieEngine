@@ -6,7 +6,7 @@
 namespace JieEngine{
 
 class JEMap;
-class JESystem;
+class JESystemManage;
 
 using namespace std;
 
@@ -43,7 +43,7 @@ private:
 
     friend JEMap;
 
-    friend JESystem;
+    friend JESystemManage;
 
     JEUnInt ID;
     static JEContainer<JEUnInt> EntityIDAssignment;

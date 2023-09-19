@@ -5,27 +5,35 @@ using namespace JieEngine;
 
 JEGlobalResourceComponent JieEngine::Resource;
 
-unordered_map<string,JEComponent> JEComponentManage::ComponentData;
+unordered_map<string,JEComponent> JEComponentManage::_ComponentData;
 
-void InitComponentAndSystem(JEWorld * World){
+void InitComponentAndSystem(){
+
+    JESystemManage::Init();
+    JEComponentManage::Init();
+
     JEComponentManage::EnrollComponent<JEPhysics>([](JEUnInt EntityID){
         Resource.Box2DWorld->DestroyBody(JEComponentManage::GetComponentData<JEPhysics>(EntityID).Body);
     });
 
     JEComponentManage::EnrollComponent<JEImage>([](JEUnInt EntityID){
-        
+        auto Image = JEComponentManage::GetComponentData<JEImage>(EntityID);
+        SDL_DestroyTexture(Image.Texture);
     });
 
     JEComponentManage::EnrollComponent<JEAnimation>([](JEUnInt EntityID){
-        
+        auto Animation = JEComponentManage::GetComponentData<JEAnimation>(EntityID);
+        for(auto Iterate : Animation.Image){
+            SDL_DestroyTexture(Iterate.second.Texture);
+        }
     });
 
-    World->System->AddComponentFunction<JEPhysics>(nullptr);
-    World->System->AddComponentFunction<JEImage>(JEImageSystem);
-    World->System->AddComponentFunction<JEAnimation>(JEAnimationSystem);
+    JESystemManage::AddComponentFunction<JEPhysics>(nullptr);
+    JESystemManage::AddComponentFunction<JEImage>(JEImageSystem);
+    JESystemManage::AddComponentFunction<JEAnimation>(JEAnimationSystem);
 }
 
-void JieEngine::JEInit(JEWorld * World){
+void JieEngine::JEInit(){
     SDL_Init(SDL_INIT_AUDIO | SDL_INIT_VIDEO);
     IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
     Mix_Init(MIX_INIT_MP3 | MIX_INIT_FLAC);
@@ -35,7 +43,7 @@ void JieEngine::JEInit(JEWorld * World){
     Resource.GameMap = nullptr;
     Resource._ChangeMap = nullptr;
     SDL_RenderClear(Resource._Renderer);
-    InitComponentAndSystem(World);
+    InitComponentAndSystem();
 }
 
 void JieEngine::JEQuit(){

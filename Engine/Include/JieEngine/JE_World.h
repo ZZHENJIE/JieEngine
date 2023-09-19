@@ -19,8 +19,6 @@ class JEWorld final{
         void SetIcon(const char * FileName);
         void SetWindowSize(JESize2D Size);
         JESize2D GetWorldSize();
-
-        JESystem * System;
     private:
         JieEngine::JESize2D _WorldSize;
         SDL_Window * _Window;

@@ -6,7 +6,6 @@ using namespace JieEngine;
 
 JEWorld::JEWorld(JESize2D WorldSize,JEVec2 Gravity){
     this->_WorldSize = WorldSize;
-    this->System = new JESystem();
     this->_DebugDraw = new JEDebugDraw();
     Resource.Box2DWorld = new b2World(Gravity);
     this->_WorldBorder = JECreateWorldBorder(WorldSize);
@@ -15,7 +14,6 @@ JEWorld::JEWorld(JESize2D WorldSize,JEVec2 Gravity){
 
 JEWorld::~JEWorld(){
     delete this->_DebugDraw;
-    delete this->System;
     SDL_DestroyWindow(this->_Window);
 }
 
@@ -45,7 +43,6 @@ void JEWorld::Booting(){
         }
         if(Resource.GameMap != nullptr){
             Resource.GameMap->_MapUpdate();
-            this->System->Update();
         }
         Resource.Box2DWorld->Step(0.01f, 6, 3);
         SDL_RenderPresent(Resource._Renderer);

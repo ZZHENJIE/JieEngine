@@ -25,6 +25,11 @@ class JEUnpackData;
 
 using JEUnInt = uint32_t;
 
+enum JELog{
+    SUCCEED,
+    RESOURCE_LOAD_ERROR,
+};
+
 struct JEComponent final{
     vector<experimental::any> Data;
     void(*Destroy)(JEUnInt EntityID);
@@ -41,20 +46,32 @@ struct JESize2D final{
 };
 
 struct JETransform final{
-    JEPoint2D Pos;
+    JEPoint2D Position;
     float Angle;
 };
 
-struct JEImage final{
-    const char * Name;
+struct JEAnimationImage final{
+    SDL_Texture * Texture;
     JESize2D Size;
+    JEUnInt Split;
+    JEUnInt PlaySpeed;
+    SDL_RendererFlip Flip;
+    JEUnInt _Split;
+    JEUnInt _PlaySpeed;
 };
 
 struct JEAnimation final{
-    unordered_map<string,JEImage> ImageResource;
-    JEUnInt SplitNumber;
-    JEUnInt PlaySpeed;
-    JEUnInt _PlayNum;
+    unordered_map<string,JEAnimationImage> Image;
+    string Status;
+    bool Enabled;
+};
+
+struct JEImage final{
+    SDL_Texture * Texture;
+    JESize2D Size;
+    JETransform Transform;
+    SDL_RendererFlip Flip;
+    bool Enabled;
 };
 
 struct JEPhysics final{

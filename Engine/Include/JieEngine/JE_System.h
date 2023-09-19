@@ -6,38 +6,43 @@ namespace JieEngine{
 
 using namespace std;
 
+class JEEntity;
+
+JELog JECreateImage(const char * ImageName,JEPoint2D Position,JEImage * Data,SDL_RendererFlip Flip = SDL_FLIP_NONE);
+
+JELog JECreateAnimationImage(const char * ImageName,JEUnInt Split,JEAnimationImage * Data,SDL_RendererFlip Flip = SDL_FLIP_NONE);
+
 void JEImageSystem(JEUnInt EntityID);
 
 void JEAnimationSystem(JEUnInt EntityID);
 
-class JESystem final{
+class JESystemManage final{
 
 public:
 
-    JESystem();
+    static void Init();
 
-    void Update();
+    static void Update(vector<shared_ptr<JEEntity>> EntityManage);
 
-    void AddFunction(void(*Function)(JEUnInt EntityID));
+    static void AddFunction(void(*Function)(JEUnInt EntityID));
 
-    void RemoveFunction(void(*Function)(JEUnInt EntityID));
+    static void RemoveFunction(void(*Function)(JEUnInt EntityID));
 
     template <typename T>
-    void AddComponentFunction(void(*Function)(JEUnInt EntityID)){
-        this->_ComponentSystem[typeid(T).name()] = Function;
+    static void AddComponentFunction(void(*Function)(JEUnInt EntityID)){
+        _ComponentSystem[typeid(T).name()] = Function;
     }
 
     template <typename T>
-    void RemoveComponentFunction(void(*Function)(JEUnInt EntityID)){
-        this->_ComponentSystem.erase(this->_ComponentSystem.find(typeid(T).name()));
+    static void RemoveComponentFunction(void(*Function)(JEUnInt EntityID)){
+        _ComponentSystem.erase(_ComponentSystem.find(typeid(T).name()));
     }
 
 private:
 
-    vector<void(*)(JEUnInt EntityID)> _FunctionList;
+    static vector<void(*)(JEUnInt EntityID)> _FunctionList;
 
-    unordered_map<string,void(*)(JEUnInt EntityID)> _ComponentSystem;
-
+    static unordered_map<string,void(*)(JEUnInt EntityID)> _ComponentSystem;
 };
 
 }

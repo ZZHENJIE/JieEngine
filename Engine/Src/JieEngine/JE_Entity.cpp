@@ -15,9 +15,11 @@ JEEntity::~JEEntity(){
         this->EntityIDAssignment.Remove(this->ID);
     }
     for(auto Iterate : ComponentList){
-        for(auto Component : JEComponentManage::ComponentData){
+        for(auto Component : JEComponentManage::_ComponentData){
             if(Iterate == Component.first){
-                JEComponentManage::ComponentData.at(Iterate).Destroy(this->ID);
+                if(JEComponentManage::_ComponentData.at(Iterate).Destroy != nullptr){
+                    JEComponentManage::_ComponentData.at(Iterate).Destroy(this->ID);
+                }
                 break;
             }
         }

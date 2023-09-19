@@ -6,7 +6,7 @@
 
 namespace JieEngine{
     
-void JEInit(JEWorld * World);
+void JEInit();
 
 void JEQuit();
 
