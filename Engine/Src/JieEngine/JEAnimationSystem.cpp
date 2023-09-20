@@ -26,7 +26,7 @@ void JieEngine::JEAnimationSystem(JEUnInt EntityID){
     auto * Component = &JEComponentManage::GetComponentData<JEAnimation>(EntityID);
     if(Component->Enabled == true){
         JEAnimationImage & AnimationImage = Component->Image[Component->Status];
-        JETransform Transform = JEGetBodyTransform(JEComponentManage::GetComponentData<JEPhysics>(EntityID).Body);
+        JETransform Transform = JEComponentManage::GetComponentData<JETransform>(EntityID);
         JERect Srcrect = {
             (int)AnimationImage.Size.W * (int)AnimationImage._Split,
             0,

@@ -50,6 +50,12 @@ struct JETransform final{
     float Angle;
 };
 
+struct JEAudio final{
+    unordered_map<string,Mix_Chunk *> Sound;
+    JEUnInt Channel;
+    JEUnInt Volume;
+};
+
 struct JEAnimationImage final{
     SDL_Texture * Texture;
     JESize2D Size;
@@ -69,7 +75,6 @@ struct JEAnimation final{
 struct JEImage final{
     SDL_Texture * Texture;
     JESize2D Size;
-    JETransform Transform;
     SDL_RendererFlip Flip;
     bool Enabled;
 };

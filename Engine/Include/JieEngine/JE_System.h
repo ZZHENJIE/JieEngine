@@ -8,13 +8,19 @@ using namespace std;
 
 class JEEntity;
 
-JELog JECreateImage(const char * ImageName,JEPoint2D Position,JEImage * Data,SDL_RendererFlip Flip = SDL_FLIP_NONE);
+extern JEContainer<JEUnInt> MixerChannel;
+
+JELog JECreateImage(const char * ImageName,JEImage * Data,SDL_RendererFlip Flip = SDL_FLIP_NONE);
 
 JELog JECreateAnimationImage(const char * ImageName,JEUnInt Split,JEAnimationImage * Data,SDL_RendererFlip Flip = SDL_FLIP_NONE);
+
+JELog JECreateAudio(unordered_map<string,string> ChunkResource,JEAudio * Data,JEUnInt Volume = 50);
 
 void JEImageSystem(JEUnInt EntityID);
 
 void JEAnimationSystem(JEUnInt EntityID);
+
+void JEPhysicsSystem(JEUnInt EntityID);
 
 class JESystemManage final{
 

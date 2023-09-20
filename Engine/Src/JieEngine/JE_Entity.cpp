@@ -7,6 +7,7 @@ JEContainer<JEUnInt> JEEntity::EntityIDAssignment = JEContainer<JEUnInt>(-1);
 JEEntity::JEEntity(){
     this->ID = EntityIDAssignment.Add(1);
     EntityIDAssignment[this->ID] = this->ID;
+    this->AddComponent<JETransform>({{0,0},0.0f});
     this->_Lock = true;
 }
 

@@ -7,8 +7,9 @@ using namespace JieEngine;
 class Barrier : public JEEntity{
 public:
     Barrier(){
+        this->GetComponent<JETransform>().Position = {150.0f,150.0f};
         this->AddComponent<JEPhysics>({
-            JECreateRectBody({150,150},{20,20},b2_staticBody,this->GetID())
+            JECreateRectBody({20,20},b2_staticBody,this->GetID())
         });
         this->GetComponent<JEPhysics>().Body->SetTitle("Rect");
     }

@@ -1,4 +1,5 @@
 #include "JieEngine/JE_Box2DFunction.h"
+#include "JieEngine/JE_Component.h"
 
 using namespace JieEngine;
 
@@ -88,9 +89,10 @@ JEPolygonPointVector JieEngine::JECreateJEPolygonPointVector(){
     return make_shared<vector<JEPoint2D>>();
 }
 
-b2Body * JieEngine::JECreateRectBody(JEPoint2D Position,JESize2D Size,b2BodyType Type,JEUnInt EntityID,JEBodyParameter BodyData){
+b2Body * JieEngine::JECreateRectBody(JESize2D Size,b2BodyType Type,JEUnInt EntityID,JEBodyParameter BodyData){
     b2BodyDef Rect;
     Rect.type = Type;
+    auto Position = JEComponentManage::GetComponentData<JETransform>(EntityID).Position;
     Rect.position.Set(Position.X,-1 * Position.Y);
     b2Body * Data = Resource.Box2DWorld->CreateBody(&Rect,EntityID);
     b2PolygonShape RectBox;
@@ -124,9 +126,10 @@ b2Body * JieEngine::JECreatePolygonBody(JEPolygonPointVector PointData,b2BodyTyp
     return Data;
 }
 
-b2Body * JieEngine::JECreateCircleBody(JEPoint2D Position,float Radius,b2BodyType Type,JEUnInt EntityID,JEBodyParameter BodyData){
+b2Body * JieEngine::JECreateCircleBody(float Radius,b2BodyType Type,JEUnInt EntityID,JEBodyParameter BodyData){
     b2BodyDef BodyDef;
     BodyDef.type = Type;
+    auto Position = JEComponentManage::GetComponentData<JETransform>(EntityID).Position;
     BodyDef.position.Set(Position.X,-1 * Position.Y);
     b2Body * Data = Resource.Box2DWorld->CreateBody(&BodyDef,EntityID);
     b2CircleShape CircleShape;

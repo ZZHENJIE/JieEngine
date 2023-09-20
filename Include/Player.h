@@ -8,8 +8,9 @@ using namespace JieEngine;
 class Player : public JEEntity{
 public:
     Player(){
+        this->GetComponent<JETransform>().Position = {150.0f,100.0f};
         this->AddComponent<JEPhysics>({
-            JECreateCircleBody({150.0f,100.0f},10.0f,b2_dynamicBody,this->GetID(),{0.3f,0.3f,0.5f})
+            JECreateCircleBody(10.0f,b2_dynamicBody,this->GetID(),{0.3f,0.3f,0.5f})
         });
         this->GetComponent<JEPhysics>().Body->SetCollideFunction([](b2Body * MainBody,b2Body * DeputyBody){
             
@@ -22,6 +23,11 @@ public:
             "None",
             true
         });
+        JEAudio Audio;
+        unordered_map<string,string> AudioFile;
+        AudioFile["None"] = "Biu";
+        JECreateAudio(AudioFile,&Audio);
+        this->AddComponent<JEAudio>(Audio);
     }
 
     ~Player(){
@@ -61,7 +67,8 @@ private:
                     break;
                 }
                 case SDLK_x:{
-                    this->GetComponent<JEAnimation>().Enabled = !this->GetComponent<JEAnimation>().Enabled;
+                    auto Audio = this->GetComponent<JEAudio>();
+                    Mix_PlayChannel(Audio.Channel,Audio.Sound["None"],0);
                     break;
                 }
             }

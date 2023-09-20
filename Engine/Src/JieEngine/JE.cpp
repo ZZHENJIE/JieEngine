@@ -28,9 +28,20 @@ void InitComponentAndSystem(){
         }
     });
 
-    JESystemManage::AddComponentFunction<JEPhysics>(nullptr);
+    JEComponentManage::EnrollComponent<JEAudio>([](JEUnInt EntityID){
+        auto Audio = JEComponentManage::GetComponentData<JEAudio>(EntityID);
+        for(auto Iterate : Audio.Sound){
+            Mix_FreeChunk(Iterate.second);
+        }
+        MixerChannel.Remove(Audio.Channel);
+    });
+
+    JEComponentManage::EnrollComponent<JETransform>(nullptr);
+
+    JESystemManage::AddComponentFunction<JEPhysics>(JEPhysicsSystem);
     JESystemManage::AddComponentFunction<JEImage>(JEImageSystem);
     JESystemManage::AddComponentFunction<JEAnimation>(JEAnimationSystem);
+    JESystemManage::AddComponentFunction<JETransform>(nullptr);
 }
 
 void JieEngine::JEInit(){
@@ -38,6 +49,7 @@ void JieEngine::JEInit(){
     IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
     Mix_Init(MIX_INIT_MP3 | MIX_INIT_FLAC);
     TTF_Init();
+    Mix_OpenAudio(44100,MIX_DEFAULT_FORMAT,2,2048);
     Resource.Run = true;
     Resource.FixedFPS = -1;
     Resource.GameMap = nullptr;
