@@ -7,13 +7,14 @@ using namespace JieEngine;
 JEWorld::JEWorld(JESize2D WorldSize,JEVec2 Gravity){
     this->_WorldSize = WorldSize;
     this->_DebugDraw = new JEDebugDraw();
-    Resource.Box2DWorld = new b2World(Gravity);
+    Resource._Box2DWorld = new b2World(Gravity);
     this->_WorldBorder = JECreateWorldBorder(WorldSize);
-    Resource.Box2DWorld->SetDebugDraw(this->_DebugDraw);
+    Resource._Box2DWorld->SetDebugDraw(this->_DebugDraw);
 }
 
 JEWorld::~JEWorld(){
     delete this->_DebugDraw;
+    delete [] _WorldBorder;
     SDL_DestroyWindow(this->_Window);
 }
 
@@ -44,7 +45,7 @@ void JEWorld::Booting(){
         if(Resource.GameMap != nullptr){
             Resource.GameMap->_MapUpdate();
         }
-        Resource.Box2DWorld->Step(0.01f, 6, 3);
+        Resource._Box2DWorld->Step(0.01f, 6, 3);
         SDL_RenderPresent(Resource._Renderer);
         if(Resource.FixedFPS != -1){
             if(SDL_GetTicks() - Begin < (1000/Resource.FixedFPS))
@@ -58,10 +59,14 @@ void JEWorld::Booting(){
     }
 }
 
-void JEWorld::SetIcon(const char * FileName){
-    if(Resource.ResourceFile != nullptr){
-        SDL_SetWindowIcon(this->_Window,Resource.ResourceFile->Image(FileName));
+JELog JEWorld::SetIcon(const char * FileName){
+    SDL_Surface * Icon = Resource.ResourceFile->Image(FileName);
+    if(Icon != nullptr){
+        SDL_SetWindowIcon(this->_Window,Icon);
+        SDL_FreeSurface(Icon);
+        return SUCCEED;
     }
+    return RESOURCE_LOAD_ERROR;
 }
 
 void JEWorld::SetWindowSize(JESize2D Size){

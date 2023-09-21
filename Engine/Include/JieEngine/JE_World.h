@@ -16,14 +16,14 @@ class JEWorld final{
         ~JEWorld();
         void CreateWindowAndRenderer(const char * Title,int W,int H,int X = SDL_WINDOWPOS_CENTERED,int Y = SDL_WINDOWPOS_CENTERED,Uint32 WindowFlag = SDL_WINDOW_SHOWN,Uint32 RendererFlag = SDL_RENDERER_ACCELERATED);
         void Booting();
-        void SetIcon(const char * FileName);
+        JELog SetIcon(const char * FileName);
         void SetWindowSize(JESize2D Size);
         JESize2D GetWorldSize();
     private:
-        JieEngine::JESize2D _WorldSize;
+        JESize2D _WorldSize;
         SDL_Window * _Window;
         JEDebugDraw * _DebugDraw;
-        vector<b2Body*> _WorldBorder;
+        b2Body ** _WorldBorder;
 };
 
 };

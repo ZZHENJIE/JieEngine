@@ -43,6 +43,6 @@ b2Body * JECreateCircleBody(float Radius,b2BodyType Type,JEUnInt EntityID,JEBody
 
 b2Body * JECreateLineBody(JEPoint2D PointA,JEPoint2D PointB,b2BodyType Type,JEUnInt EntityID,JEBodyParameter BodyData = {0.0f,0.0f,0.0f});
 
-vector<b2Body*> JECreateWorldBorder(JESize2D WorldSize);
+b2Body ** JECreateWorldBorder(JESize2D WorldSize);
 
 };

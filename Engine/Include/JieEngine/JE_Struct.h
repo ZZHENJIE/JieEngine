@@ -100,7 +100,7 @@ struct JEGlobalResourceComponent final {
     bool Run;
     JEMap * GameMap;
     JEUnpackData * ResourceFile;
-    b2World * Box2DWorld;
+    b2World * _Box2DWorld;
     SDL_Renderer * _Renderer;
     JEMap * _ChangeMap;
 };

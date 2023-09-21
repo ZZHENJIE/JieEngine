@@ -20,7 +20,7 @@ private:
         this->AddEntity<Barrier>();
     }
     void Update(){
-        Resource.Box2DWorld->DebugDraw();
+        Resource._Box2DWorld->DebugDraw();
         
     }
     void Event(SDL_Event Event){

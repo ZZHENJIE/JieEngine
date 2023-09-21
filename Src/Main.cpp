@@ -13,7 +13,7 @@ int main(int argc,char * argv[]){
 
     GameWorld->CreateWindowAndRenderer("JieEngine",640,480);
 
-    Resource.ResourceFile = JEUnpack("./Test.JieEngine");
+    Resource.ResourceFile = new JEUnpackData("./Test.JieEngine");
 
     JEChangeGameMap(new One());
 

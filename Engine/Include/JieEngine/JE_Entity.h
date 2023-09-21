@@ -45,11 +45,13 @@ private:
 
     friend JESystemManage;
 
-    JEUnInt ID;
     static JEContainer<JEUnInt> EntityIDAssignment;
-    vector<string> ComponentList;
+
     virtual void Update() = 0;
     virtual void Event(SDL_Event Event) = 0;
+
+    JEUnInt ID;
+    vector<string> ComponentList;
     bool _Lock;
 };
 

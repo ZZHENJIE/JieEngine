@@ -13,7 +13,7 @@ void InitComponentAndSystem(){
     JEComponentManage::Init();
 
     JEComponentManage::EnrollComponent<JEPhysics>([](JEUnInt EntityID){
-        Resource.Box2DWorld->DestroyBody(JEComponentManage::GetComponentData<JEPhysics>(EntityID).Body);
+        Resource._Box2DWorld->DestroyBody(JEComponentManage::GetComponentData<JEPhysics>(EntityID).Body);
     });
 
     JEComponentManage::EnrollComponent<JEImage>([](JEUnInt EntityID){
@@ -64,5 +64,7 @@ void JieEngine::JEQuit(){
     Mix_Quit();
     TTF_Quit();
     SDL_DestroyRenderer(Resource._Renderer);
-    delete Resource.Box2DWorld;
+    delete Resource.GameMap;
+    delete Resource._ChangeMap;
+    delete Resource._Box2DWorld;
 }
