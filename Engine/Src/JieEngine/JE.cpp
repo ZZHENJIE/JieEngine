@@ -8,7 +8,7 @@ JEGlobalResourceComponent JieEngine::Resource;
 unordered_map<string,JEComponent> JEComponentManage::_ComponentData;
 
 void InitComponentAndSystem(){
-
+    
     JESystemManage::Init();
     JEComponentManage::Init();
 

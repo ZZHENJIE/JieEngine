@@ -36,19 +36,19 @@ public:
 
     template <typename T>
     static void AddComponentFunction(void(*Function)(JEUnInt EntityID)){
-        _ComponentSystem[typeid(T).name()] = Function;
+        _ComponentSystemList[typeid(T).name()] = Function;
     }
 
     template <typename T>
     static void RemoveComponentFunction(void(*Function)(JEUnInt EntityID)){
-        _ComponentSystem.erase(_ComponentSystem.find(typeid(T).name()));
+        _ComponentSystemList.erase(_ComponentSystemList.find(typeid(T).name()));
     }
 
 private:
 
     static vector<void(*)(JEUnInt EntityID)> _FunctionList;
 
-    static unordered_map<string,void(*)(JEUnInt EntityID)> _ComponentSystem;
+    static unordered_map<string,void(*)(JEUnInt EntityID)> _ComponentSystemList;
 };
 
 }

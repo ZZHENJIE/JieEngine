@@ -3,8 +3,8 @@
 
 using namespace JieEngine;
 
-void JieEngine::JESetRendererB2Color(SDL_Renderer * Renderer,const b2Color & Color){
-    SDL_SetRenderDrawColor(Renderer,Color.r * 255,Color.g * 255,Color.b * 255,Color.a * 255);
+void JieEngine::JESetRendererB2Color(const b2Color & Color){
+    SDL_SetRenderDrawColor(Resource._Renderer,Color.r * 255,Color.g * 255,Color.b * 255,Color.a * 255);
 }
 
 JETransform JieEngine::JEGetBodyTransform(b2Body * Body){
@@ -20,7 +20,7 @@ JEDebugDraw::JEDebugDraw(){
 }
 
 void JEDebugDraw::DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color){
-    JESetRendererB2Color(Resource._Renderer,color);
+    JESetRendererB2Color(color);
     for(int Iterators = 0; Iterators < vertexCount; Iterators++){
         if(Iterators != vertexCount - 1){
             b2Vec2 Point = vertices[Iterators];
@@ -35,7 +35,7 @@ void JEDebugDraw::DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b
 }
 
 void JEDebugDraw::DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color){
-    JESetRendererB2Color(Resource._Renderer,color);
+    JESetRendererB2Color(color);
     for(int Iterators = 0; Iterators < vertexCount; Iterators++){
         if(Iterators != vertexCount - 1){
             b2Vec2 Point = vertices[Iterators];
@@ -50,7 +50,7 @@ void JEDebugDraw::DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, co
 }
 
 void JEDebugDraw::DrawCircle(const b2Vec2& center, float radius, const b2Color& color){
-    JESetRendererB2Color(Resource._Renderer,color);
+    JESetRendererB2Color(color);
     JEPoint2D Position = {center.x,-1 * center.y};
     for (int Iterators = 0; Iterators < 360; Iterators++) {
         float Angle = Iterators * M_PI / 180.0f;
@@ -61,7 +61,7 @@ void JEDebugDraw::DrawCircle(const b2Vec2& center, float radius, const b2Color& 
 }
 
 void JEDebugDraw::DrawSolidCircle(const b2Vec2& center, float radius, const b2Vec2& axis, const b2Color& color){
-    JESetRendererB2Color(Resource._Renderer,color);
+    JESetRendererB2Color(color);
     JEPoint2D Position = {center.x,-1 * center.y};
     for (int Iterators = 0; Iterators < 360; Iterators++) {
         float Angle = Iterators * M_PI / 180.0f;
@@ -72,7 +72,7 @@ void JEDebugDraw::DrawSolidCircle(const b2Vec2& center, float radius, const b2Ve
 }
 
 void JEDebugDraw::DrawSegment(const b2Vec2& p1, const b2Vec2& p2, const b2Color& color){
-    JESetRendererB2Color(Resource._Renderer,color);
+    JESetRendererB2Color(color);
     SDL_RenderDrawLineF(Resource._Renderer,p1.x,-1 * p1.y,p2.x,-1 * p2.y);
 }
 
@@ -81,7 +81,7 @@ void JEDebugDraw::DrawTransform(const b2Transform& xf){
 }
 
 void JEDebugDraw::DrawPoint(const b2Vec2& p, float size, const b2Color& color){
-    JESetRendererB2Color(Resource._Renderer,color);
+    JESetRendererB2Color(color);
     SDL_RenderDrawPointF(Resource._Renderer,p.x,-1 * p.y);
 }
 
@@ -172,12 +172,16 @@ b2Body ** JieEngine::JECreateWorldBorder(JESize2D WorldSize){
     },
     b2_staticBody,-1);
 
+    Data[0]->SetTitle("WorldBorder_Top");
+
     Data[1] = JECreateLineBody({
         WorldSize.W,0
     },{
         WorldSize.W,WorldSize.H
     },
     b2_staticBody,-1);
+
+    Data[1]->SetTitle("WorldBorder_Right");
 
     Data[2] = JECreateLineBody({
         WorldSize.W,WorldSize.H
@@ -186,6 +190,8 @@ b2Body ** JieEngine::JECreateWorldBorder(JESize2D WorldSize){
     },
     b2_staticBody,-1);
 
+    Data[2]->SetTitle("WorldBorder_Bottom");
+
     Data[3] = JECreateLineBody({
         0,WorldSize.H
     },{
@@ -193,9 +199,7 @@ b2Body ** JieEngine::JECreateWorldBorder(JESize2D WorldSize){
     },
     b2_staticBody,-1);
 
-    for(JEUnInt Iterators = 0; Iterators < 4;Iterators++){
-        Data[Iterators]->SetTitle("WorldBorder");
-    }
+    Data[3]->SetTitle("WorldBorder_Left");
 
     return Data;
 }

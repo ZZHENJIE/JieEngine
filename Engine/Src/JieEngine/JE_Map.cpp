@@ -5,13 +5,14 @@
 using namespace JieEngine;
 
 JEMap::JEMap(){
+    for(auto Iterate : JEComponentManage::_ComponentData ){
+        Iterate.second.Data.clear();
+    }
     JEEntity::EntityIDAssignment.Clear();
 }
 
 JEMap::~JEMap(){
-    for(auto Iterate : JEComponentManage::_ComponentData){
-        Iterate.second.Data.clear();
-    }
+    
 }
 
 void JEMap::RemoveEntity(JEUnInt EntityID){
