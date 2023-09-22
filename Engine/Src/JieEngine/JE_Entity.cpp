@@ -11,17 +11,18 @@ JEEntity::JEEntity(){
     this->_Lock = true;
 }
 
+JEEntity::JEEntity(JEEntity * Ptr){
+    this->ComponentList = Ptr->ComponentList;
+    this->ID = Ptr->ID;
+    this->_Lock = Ptr->_Lock;
+}
+
 JEEntity::~JEEntity(){
     if(this->_Lock == false){
         this->EntityIDAssignment.Remove(this->ID);
-    }
-    for(auto Iterate : ComponentList){
-        for(auto Component : JEComponentManage::_ComponentData){
-            if(Iterate == Component.first){
-                if(JEComponentManage::_ComponentData.at(Iterate).Destroy != nullptr){
-                    JEComponentManage::_ComponentData.at(Iterate).Destroy(this->ID);
-                }
-                break;
+        for(auto Iterate : ComponentList){
+            if(JEComponentManage::_ComponentData.at(Iterate).Destroy != nullptr){
+                JEComponentManage::_ComponentData.at(Iterate).Destroy(this->ID);
             }
         }
     }

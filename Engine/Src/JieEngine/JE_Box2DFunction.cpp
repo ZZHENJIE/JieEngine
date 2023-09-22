@@ -3,10 +3,6 @@
 
 using namespace JieEngine;
 
-void JieEngine::JESetRendererB2Color(const b2Color & Color){
-    SDL_SetRenderDrawColor(Resource._Renderer,Color.r * 255,Color.g * 255,Color.b * 255,Color.a * 255);
-}
-
 JETransform JieEngine::JEGetBodyTransform(b2Body * Body){
     JETransform Data;
     Data.Position.X = Body->GetPosition().x;
@@ -15,12 +11,17 @@ JETransform JieEngine::JEGetBodyTransform(b2Body * Body){
     return Data;
 }
 
+void JieEngine::JEBodyApplyLinearImpulse(b2Body * Body,JEPoint2D Force){
+    JEVec2 _Force(Force.X,-1 * Force.Y);
+    Body->ApplyLinearImpulse(_Force,Body->GetWorldCenter(),true);
+}
+
 JEDebugDraw::JEDebugDraw(){
     this->m_drawFlags = e_shapeBit;
 }
 
 void JEDebugDraw::DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color){
-    JESetRendererB2Color(color);
+    SDL_SetRenderDrawColor(Resource._Renderer,color.r * 255,color.g * 255,color.b * 255,color.a * 255);
     for(int Iterators = 0; Iterators < vertexCount; Iterators++){
         if(Iterators != vertexCount - 1){
             b2Vec2 Point = vertices[Iterators];
@@ -35,7 +36,7 @@ void JEDebugDraw::DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b
 }
 
 void JEDebugDraw::DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color){
-    JESetRendererB2Color(color);
+    SDL_SetRenderDrawColor(Resource._Renderer,color.r * 255,color.g * 255,color.b * 255,color.a * 255);
     for(int Iterators = 0; Iterators < vertexCount; Iterators++){
         if(Iterators != vertexCount - 1){
             b2Vec2 Point = vertices[Iterators];
@@ -50,7 +51,7 @@ void JEDebugDraw::DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, co
 }
 
 void JEDebugDraw::DrawCircle(const b2Vec2& center, float radius, const b2Color& color){
-    JESetRendererB2Color(color);
+    SDL_SetRenderDrawColor(Resource._Renderer,color.r * 255,color.g * 255,color.b * 255,color.a * 255);
     JEPoint2D Position = {center.x,-1 * center.y};
     for (int Iterators = 0; Iterators < 360; Iterators++) {
         float Angle = Iterators * M_PI / 180.0f;
@@ -61,7 +62,7 @@ void JEDebugDraw::DrawCircle(const b2Vec2& center, float radius, const b2Color& 
 }
 
 void JEDebugDraw::DrawSolidCircle(const b2Vec2& center, float radius, const b2Vec2& axis, const b2Color& color){
-    JESetRendererB2Color(color);
+    SDL_SetRenderDrawColor(Resource._Renderer,color.r * 255,color.g * 255,color.b * 255,color.a * 255);
     JEPoint2D Position = {center.x,-1 * center.y};
     for (int Iterators = 0; Iterators < 360; Iterators++) {
         float Angle = Iterators * M_PI / 180.0f;
@@ -72,7 +73,7 @@ void JEDebugDraw::DrawSolidCircle(const b2Vec2& center, float radius, const b2Ve
 }
 
 void JEDebugDraw::DrawSegment(const b2Vec2& p1, const b2Vec2& p2, const b2Color& color){
-    JESetRendererB2Color(color);
+    SDL_SetRenderDrawColor(Resource._Renderer,color.r * 255,color.g * 255,color.b * 255,color.a * 255);
     SDL_RenderDrawLineF(Resource._Renderer,p1.x,-1 * p1.y,p2.x,-1 * p2.y);
 }
 
@@ -81,7 +82,7 @@ void JEDebugDraw::DrawTransform(const b2Transform& xf){
 }
 
 void JEDebugDraw::DrawPoint(const b2Vec2& p, float size, const b2Color& color){
-    JESetRendererB2Color(color);
+    SDL_SetRenderDrawColor(Resource._Renderer,color.r * 255,color.g * 255,color.b * 255,color.a * 255);
     SDL_RenderDrawPointF(Resource._Renderer,p.x,-1 * p.y);
 }
 
@@ -90,11 +91,11 @@ JEPolygonPointVector JieEngine::JECreateJEPolygonPointVector(){
 }
 
 b2Body * JieEngine::JECreateRectBody(JESize2D Size,b2BodyType Type,JEUnInt EntityID,JEBodyParameter BodyData){
-    b2BodyDef Rect;
-    Rect.type = Type;
+    b2BodyDef BodyDef;
+    BodyDef.type = Type;
     auto Position = JEComponentManage::GetComponentData<JETransform>(EntityID).Position;
-    Rect.position.Set(Position.X,-1 * Position.Y);
-    b2Body * Data = Resource._Box2DWorld->CreateBody(&Rect,EntityID);
+    BodyDef.position.Set(Position.X,-1 * Position.Y);
+    b2Body * Data = Resource._Box2DWorld->CreateBody(&BodyDef,EntityID);
     b2PolygonShape RectBox;
     RectBox.SetAsBox(Size.W/2,Size.H/2);
     b2FixtureDef FixtureDef;
@@ -144,10 +145,10 @@ b2Body * JieEngine::JECreateCircleBody(float Radius,b2BodyType Type,JEUnInt Enti
 }
 
 b2Body * JieEngine::JECreateLineBody(JEPoint2D PointA,JEPoint2D PointB,b2BodyType Type,JEUnInt EntityID,JEBodyParameter BodyData){
-    b2BodyDef Line;
-    Line.type = Type;
-    Line.position.Set(0.0f,0.0f);
-    auto Data = Resource._Box2DWorld->CreateBody(&Line,EntityID);
+    b2BodyDef BodyDef;
+    BodyDef.type = Type;
+    BodyDef.position.Set(0.0f,0.0f);
+    auto Data = Resource._Box2DWorld->CreateBody(&BodyDef,EntityID);
     b2EdgeShape LineShape;
     JEVec2 Vec2A(PointA.X,-1 * PointA.Y);
     JEVec2 Vec2B(PointB.X,-1 * PointB.Y);

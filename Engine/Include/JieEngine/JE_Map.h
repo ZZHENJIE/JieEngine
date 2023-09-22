@@ -14,8 +14,8 @@ public:
     JEMap();
     ~JEMap();
     template <typename T>
-    void AddEntity(T * Entity){
-        this->EntityManage.push_back(make_shared<T>(Entity));
+    void AddEntity(shared_ptr<T> Entity){
+        this->EntityManage.push_back(Entity);
         this->EntityManage.at(this->EntityManage.size() - 1)->_Lock = false;
     }
     template <typename T>

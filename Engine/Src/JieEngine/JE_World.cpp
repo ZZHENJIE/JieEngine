@@ -4,16 +4,20 @@
 
 using namespace JieEngine;
 
-JEWorld::JEWorld(JESize2D WorldSize,JEVec2 Gravity){
+JEWorld::JEWorld(JESize2D WorldSize,JEPoint2D Gravity){
     this->_WorldSize = WorldSize;
     this->_DebugDraw = new JEDebugDraw();
-    Resource._Box2DWorld = new b2World(Gravity);
+    JEVec2 _Gravity(Gravity.X, -1 * Gravity.Y);
+    Resource._Box2DWorld = new b2World(_Gravity);
     this->_WorldBorder = JECreateWorldBorder(WorldSize);
     Resource._Box2DWorld->SetDebugDraw(this->_DebugDraw);
 }
 
 JEWorld::~JEWorld(){
     delete this->_DebugDraw;
+    for(int Iterate = 0; Iterate < 4; Iterate++){
+        Resource._Box2DWorld->DestroyBody(_WorldBorder[Iterate]);
+    }
     delete [] _WorldBorder;
     SDL_DestroyWindow(this->_Window);
 }
@@ -57,6 +61,7 @@ void JEWorld::Booting(){
             Resource.FPS = 1000 / (SDL_GetTicks() - Begin);
         }
     }
+    this->~JEWorld();
 }
 
 JELog JEWorld::SetIcon(const char * FileName){

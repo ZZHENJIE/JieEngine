@@ -33,7 +33,9 @@ public:
 
     template <typename T>
     static void RemoveComponentData(JEUnInt EntityID){
-        (*_ComponentData[typeid(T).name()].Destroy)(EntityID);
+        if(_ComponentData[typeid(T).name()].Destroy != nullptr){
+            (*_ComponentData[typeid(T).name()].Destroy)(EntityID);
+        }
     }
 
     template <typename T>

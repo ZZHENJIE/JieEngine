@@ -28,8 +28,8 @@
 
 ```json
 "includePath": [
-    "${workspaceFolder}/JieEngine/Include/",
-    "${workspaceFolder}/Test/Include/"
+    "${workspaceFolder}/Engine/Include/",
+    "${workspaceFolder}/Include/"
 ]
 ```
 

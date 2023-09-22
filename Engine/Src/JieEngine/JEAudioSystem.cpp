@@ -18,6 +18,7 @@ JELog JieEngine::JECreateAudio(unordered_map<string,string> ChunkResource,JEAudi
     }
     Data->Volume = Volume;
     Data->Channel = MixerChannel.Add(1);
+    cout << Data->Channel << endl;
     MixerChannel[Data->Channel] = Data->Channel;
     Mix_Volume(Data->Channel,Data->Volume);
     return SUCCEED;

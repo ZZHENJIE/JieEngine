@@ -17,7 +17,7 @@ JEMap::~JEMap(){
 
 void JEMap::RemoveEntity(JEUnInt EntityID){
     for (auto Iterate = this->EntityManage.begin(); Iterate != this->EntityManage.end(); Iterate++) {
-        if ((*Iterate)->GetID() == EntityID) {
+        if((*Iterate)->GetID() == EntityID){
             this->EntityManage.erase(Iterate);
             break;
         }

@@ -26,8 +26,9 @@ public:
         JEAudio Audio;
         unordered_map<string,string> AudioFile;
         AudioFile["None"] = "Biu";
-        JECreateAudio(AudioFile,&Audio);
-        this->AddComponent<JEAudio>(Audio);
+        if(JECreateAudio(AudioFile,&Audio) == SUCCEED){
+            this->AddComponent<JEAudio>(Audio);
+        }
     }
 
     ~Player(){
@@ -43,27 +44,20 @@ private:
         if(Event.key.type == SDL_KEYDOWN){
             switch(Event.key.keysym.sym){
                 case SDLK_a:{
-                    b2Vec2 force(-500.0f,0.0f);
-                    auto Physics = this->GetComponent<JEPhysics>();
-                    Physics.Body->ApplyLinearImpulse(force, Physics.Body->GetWorldCenter(), true);
+                    JEBodyApplyLinearImpulse(this->GetComponent<JEPhysics>().Body,{-500.0f,0.0f});
                     break;
                 }
                 case SDLK_d:{
                     b2Vec2 force(500.0f,0.0f);
-                    auto Physics = this->GetComponent<JEPhysics>();
-                    Physics.Body->ApplyLinearImpulse(force, Physics.Body->GetWorldCenter(), true);
+                    JEBodyApplyLinearImpulse(this->GetComponent<JEPhysics>().Body,{500.0f,0.0f});
                     break;
                 }
                 case SDLK_w:{
-                    b2Vec2 force(0.0f,5000.0f);
-                    auto Physics = this->GetComponent<JEPhysics>();
-                    Physics.Body->ApplyLinearImpulse(force, Physics.Body->GetWorldCenter(), true);
+                    JEBodyApplyLinearImpulse(this->GetComponent<JEPhysics>().Body,{0.0f,-5000.0f});
                     break;
                 }
                 case SDLK_s:{
-                    b2Vec2 force(0.0f,-1000.0f);
-                    auto Physics = this->GetComponent<JEPhysics>();
-                    Physics.Body->ApplyLinearImpulse(force, Physics.Body->GetWorldCenter(), true);
+                    JEBodyApplyLinearImpulse(this->GetComponent<JEPhysics>().Body,{0.0f,1000.0f});
                     break;
                 }
                 case SDLK_x:{

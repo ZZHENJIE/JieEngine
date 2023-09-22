@@ -14,6 +14,8 @@ class JEEntity{
 public:
     JEEntity();
 
+    JEEntity(JEEntity * Ptr);
+
     ~JEEntity();
 
     template <typename T>
@@ -24,9 +26,9 @@ public:
 
     template <typename T>
     void RemoveComponent(){
-        for(int Iterate = 0;Iterate < ComponentList.size();Iterate++){
-            if(ComponentList.at(Iterate) == typeid(T).name()){
-                ComponentList.erase(ComponentList.begin() + Iterate);
+        for(auto Iterate = ComponentList.begin();Iterate != ComponentList.end();Iterate++){
+            if(*Iterate == typeid(T).name()){
+                ComponentList.erase(Iterate);
             }
         }
         JEComponentManage::RemoveComponentData<T>(this->ID);
