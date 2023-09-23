@@ -5,17 +5,17 @@
 
 using namespace JieEngine;
 
-JELog JieEngine::JECreateAnimationImage(const char * ImageName,JEUnInt Split,JEAnimationImage * Data,SDL_RendererFlip Flip){
+JELog JieEngine::JECreateAnimationImage(const char * ImageName,JEUnInt Split,JEAnimationImage & Data,SDL_RendererFlip Flip){
     SDL_Surface * Surface = Resource.ResourceFile->Image(ImageName);
     if(Surface != nullptr){
-        Data->Texture = SDL_CreateTextureFromSurface(Resource._Renderer,Surface);
-        Data->Split = Split;
-        Data->Size.W = (float)(Surface->w/Split);
-        Data->Size.H = (float)Surface->h;
-        Data->Flip = Flip;
-        Data->PlaySpeed = 5;
-        Data->_Split = 0;
-        Data->_PlaySpeed = 1;
+        Data.Texture = SDL_CreateTextureFromSurface(Resource._Renderer,Surface);
+        Data.Split = Split;
+        Data.Size.W = (float)(Surface->w/Split);
+        Data.Size.H = (float)Surface->h;
+        Data.Flip = Flip;
+        Data.PlaySpeed = 5;
+        Data._Split = 0;
+        Data._PlaySpeed = 1;
         SDL_FreeSurface(Surface);
         return SUCCEED;
     }

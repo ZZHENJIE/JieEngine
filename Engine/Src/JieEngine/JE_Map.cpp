@@ -5,7 +5,7 @@
 using namespace JieEngine;
 
 JEMap::JEMap(){
-    for(auto Iterate : JEComponentManage::_ComponentData ){
+    for(auto Iterate : JEComponentManage::_ComponentData){
         Iterate.second.Data.clear();
     }
     JEEntity::EntityIDAssignment.Clear();

@@ -16,17 +16,18 @@ public:
             
         });
         unordered_map<string,JEAnimationImage> Image;
-        JECreateAnimationImage("Player",4,&Image["None"]);
-        Image["None"].PlaySpeed = 1000;
-        this->AddComponent<JEAnimation>({
-            Image,
-            "None",
-            true
-        });
+        if(JECreateAnimationImage("Player",4,Image["None"]) == SUCCEED){
+            Image["None"].PlaySpeed = 1000;
+            this->AddComponent<JEAnimation>({
+                Image,
+                "None",
+                true
+            });
+        }
         JEAudio Audio;
         unordered_map<string,string> AudioFile;
         AudioFile["None"] = "Biu";
-        if(JECreateAudio(AudioFile,&Audio) == SUCCEED){
+        if(JECreateAudio(AudioFile,Audio) == SUCCEED){
             this->AddComponent<JEAudio>(Audio);
         }
     }

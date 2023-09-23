@@ -5,14 +5,14 @@
 
 using namespace JieEngine;
 
-JELog JieEngine::JECreateImage(const char * ImageName,JEImage * Data,SDL_RendererFlip Flip){
+JELog JieEngine::JECreateImage(const char * ImageName,JEImage & Data,SDL_RendererFlip Flip){
     SDL_Surface * Surface = Resource.ResourceFile->Image(ImageName);
     if(Surface != nullptr){
-        Data->Texture = SDL_CreateTextureFromSurface(Resource._Renderer,Surface);
-        Data->Size.W = (float)Surface->w;
-        Data->Size.H = (float)Surface->h;
-        Data->Enabled = true;
-        Data->Flip = Flip;
+        Data.Texture = SDL_CreateTextureFromSurface(Resource._Renderer,Surface);
+        Data.Size.W = (float)Surface->w;
+        Data.Size.H = (float)Surface->h;
+        Data.Enabled = true;
+        Data.Flip = Flip;
         SDL_FreeSurface(Surface);
         return SUCCEED;
     }

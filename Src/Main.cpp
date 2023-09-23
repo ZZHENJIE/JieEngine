@@ -7,7 +7,7 @@ int main(int argc,char * argv[]){
 
     JEInit();
 
-    Resource.ResourceFile = new JEUnpackData("Test.JieEngine");
+    Resource.ResourceFile = new JEUnpackData("./Test.JieEngine");
 
     JEChangeGameMap(new One());
     

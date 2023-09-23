@@ -10,11 +10,11 @@ class JEEntity;
 
 extern JEContainer<JEUnInt> MixerChannel;
 
-JELog JECreateImage(const char * ImageName,JEImage * Data,SDL_RendererFlip Flip = SDL_FLIP_NONE);
+JELog JECreateImage(const char * ImageName,JEImage & Data,SDL_RendererFlip Flip = SDL_FLIP_NONE);
 
-JELog JECreateAnimationImage(const char * ImageName,JEUnInt Split,JEAnimationImage * Data,SDL_RendererFlip Flip = SDL_FLIP_NONE);
+JELog JECreateAnimationImage(const char * ImageName,JEUnInt Split,JEAnimationImage & Data,SDL_RendererFlip Flip = SDL_FLIP_NONE);
 
-JELog JECreateAudio(unordered_map<string,string> ChunkResource,JEAudio * Data,JEUnInt Volume = 50);
+JELog JECreateAudio(unordered_map<string,string> ChunkResource,JEAudio & Data,JEUnInt Volume = 50);
 
 void JEImageSystem(JEUnInt EntityID);
 
