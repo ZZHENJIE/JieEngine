@@ -30,9 +30,9 @@ public:
 
     static void Update(vector<shared_ptr<JEEntity>> EntityManage);
 
-    static void AddFunction(void(*Function)(JEUnInt EntityID));
+    static void AddFunction(void(*Function)());
 
-    static void RemoveFunction(void(*Function)(JEUnInt EntityID));
+    static void RemoveFunction(void(*Function)());
 
     template <typename T>
     static void AddComponentFunction(void(*Function)(JEUnInt EntityID)){
@@ -46,7 +46,7 @@ public:
 
 private:
 
-    static vector<void(*)(JEUnInt EntityID)> _FunctionList;
+    static vector<void(*)()> _FunctionList;
 
     static unordered_map<string,void(*)(JEUnInt EntityID)> _ComponentSystemList;
 };
