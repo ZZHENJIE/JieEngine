@@ -3,7 +3,7 @@
 
 using namespace JieEngine;
 
-vector<void(*)(JEUnInt EntityID)> JESystemManage::_FunctionList;
+vector<void(*)()> JESystemManage::_FunctionList;
 
 unordered_map<string,void(*)(JEUnInt EntityID)> JESystemManage::_ComponentSystemList;
 
@@ -21,17 +21,15 @@ void JESystemManage::Update(vector<shared_ptr<JEEntity>> EntityManage){
         }
     }
     for(auto Iterate : _FunctionList){
-        for(auto EntityID : EntityManage){
-            (*Iterate)(EntityID->ID);
-        }
+        (*Iterate)();
     }
 }
 
-void JESystemManage::AddFunction(void(*Function)(JEUnInt EntityID)){
+void JESystemManage::AddFunction(void(*Function)()){
     _FunctionList.push_back(Function);
 }
 
-void JESystemManage::RemoveFunction(void(*Function)(JEUnInt EntityID)){
+void JESystemManage::RemoveFunction(void(*Function)()){
     for(auto Iterate = _FunctionList.begin();Iterate != _FunctionList.end();Iterate++){
         if((*Iterate) == Function){
             _FunctionList.erase(Iterate);
