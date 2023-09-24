@@ -4,7 +4,7 @@
 
 一个简单的2D C++游戏引擎 物理引擎采用[Box2D](https://box2d.org)
 
-<img src="https://zzhenjie.github.io/JieEngine-Document/Docs/Image/Logo.svg" style="width: 10%;">
+<img src="https://www.jieengine.cn/Docs/Image/Logo.svg" style="width: 10%;">
 
 <img src="https://box2d.org/images/logo.svg" style="width: 10%;">
 
@@ -33,4 +33,4 @@
 ]
 ```
 
-## [文档](https://zzhenjie.github.io/JieEngine-Document)
+## [文档](https://www.jieengine.cn/)
