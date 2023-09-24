@@ -5,7 +5,7 @@ using namespace JieEngine;
 
 JEGlobalResourceComponent JieEngine::Resource;
 
-unordered_map<string,JEComponent> JEComponentManage::_ComponentData;
+map<string,JEComponent> JEComponentManage::_ComponentData;
 
 void InitComponentAndSystem(){
     

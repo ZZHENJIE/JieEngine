@@ -51,7 +51,7 @@ private:
 
     friend JESystemManage;
 
-    static unordered_map<string,JEComponent> _ComponentData;
+    static map<string,JEComponent> _ComponentData;
 };
 
 };
