@@ -6,6 +6,8 @@ namespace JieEngine{
 
 using namespace std;
 
+class JEEntity;
+
 using JEPolygonPointVector = shared_ptr<vector<JEPoint2D>>;
 
 using JECollisionFunction = void (*)(b2Body * ObjectA,b2Body * ObjectB);
@@ -35,13 +37,13 @@ public:
 
 JEPolygonPointVector JECreateJEPolygonPointVector();
 
-b2Body * JECreateRectBody(JESize2D Size,b2BodyType Type,JEUnInt EntityID,JEBodyParameter BodyData = {0.0f,0.0f,0.0f});
+b2Body * JECreateRectBody(JESize2D Size,b2BodyType Type,JEEntity * Entity,JEBodyParameter BodyData = {0.0f,0.0f,0.0f});
 
-b2Body * JECreatePolygonBody(JEPolygonPointVector PointData,b2BodyType Type,JEUnInt EntityID,JEBodyParameter BodyData = {0.0f,0.0f,0.0f});
+b2Body * JECreatePolygonBody(JEPolygonPointVector PointData,b2BodyType Type,JEEntity * Entity,JEBodyParameter BodyData = {0.0f,0.0f,0.0f});
 
-b2Body * JECreateCircleBody(float Radius,b2BodyType Type,JEUnInt EntityID,JEBodyParameter BodyData = {0.0f,0.0f,0.0f});
+b2Body * JECreateCircleBody(float Radius,b2BodyType Type,JEEntity * Entity,JEBodyParameter BodyData = {0.0f,0.0f,0.0f});
 
-b2Body * JECreateLineBody(JEPoint2D PointA,JEPoint2D PointB,b2BodyType Type,JEUnInt EntityID,JEBodyParameter BodyData = {0.0f,0.0f,0.0f});
+b2Body * JECreateLineBody(JEPoint2D PointA,JEPoint2D PointB,b2BodyType Type,JEEntity * Entity,JEBodyParameter BodyData = {0.0f,0.0f,0.0f});
 
 b2Body ** JECreateWorldBorder(JESize2D WorldSize);
 

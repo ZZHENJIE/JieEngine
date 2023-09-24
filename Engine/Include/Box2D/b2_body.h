@@ -392,8 +392,8 @@ public:
 	/// Set the Body Title
 	void SetTitle(const char * title);
 
-	/// Get the Body ID
-	uint32_t GetID();
+	/// Get the Body Entity
+	void * GetEntity();
 
 	/// Set CollideFunction
 	void SetCollideFunction(void(*Function)(b2Body * MainBody,b2Body * DeputyBody));
@@ -460,7 +460,7 @@ private:
 	b2Body* m_prev;
 	b2Body* m_next;
 	const char * Title;
-	uint32_t ID;
+	void * Entity;
 
 	b2Fixture* m_fixtureList;
 	int32 m_fixtureCount;
@@ -909,8 +909,8 @@ inline void b2Body::SetTitle(const char * title){
 	Title = title;
 }
 
-inline uint32_t b2Body::GetID(){
-	return ID;
+inline void * b2Body::GetEntity(){
+	return Entity;
 }
 
 inline void b2Body::SetCollideFunction(void(*Function)(b2Body * MainBody,b2Body * DeputyBody)){

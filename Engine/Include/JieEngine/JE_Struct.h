@@ -1,6 +1,7 @@
 #pragma once
 
 #include <unordered_map>
+#include <map>
 #include <experimental/any>
 #include <typeinfo>
 #include <iostream>
@@ -51,7 +52,7 @@ struct JETransform final{
 };
 
 struct JEAudio final{
-    unordered_map<string,Mix_Chunk *> Sound;
+    Mix_Chunk * Sound;
     JEUnInt Channel;
     JEUnInt Volume;
 };
@@ -67,7 +68,7 @@ struct JEAnimationImage final{
 };
 
 struct JEAnimation final{
-    unordered_map<string,JEAnimationImage> Image;
+    map<string,JEAnimationImage> Image;
     string Status;
     bool Enabled;
 };
