@@ -9,7 +9,7 @@ public:
     Barrier(){
         this->GetComponent<JETransform>().Position = {150.0f,150.0f};
         this->AddComponent<JEPhysics>({
-            JECreateRectBody({20,20},b2_staticBody,this->GetID())
+            JECreateRectBody({20,20},b2_staticBody,this)
         });
         this->GetComponent<JEPhysics>().Body->SetTitle("Rect");
     }

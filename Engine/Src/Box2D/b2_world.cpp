@@ -112,7 +112,7 @@ void b2World::SetDebugDraw(b2Draw* debugDraw)
 	m_debugDraw = debugDraw;
 }
 
-b2Body* b2World::CreateBody(const b2BodyDef* def,uint32_t EntityId)
+b2Body* b2World::CreateBody(const b2BodyDef* def,void * Entity)
 {
 	b2Assert(IsLocked() == false);
 	if (IsLocked())
@@ -126,7 +126,7 @@ b2Body* b2World::CreateBody(const b2BodyDef* def,uint32_t EntityId)
 	// Add to world doubly linked list.
 	b->m_prev = nullptr;
 	b->m_next = m_bodyList;
-	b->ID = EntityId;
+	b->Entity = Entity;
 	if (m_bodyList)
 	{
 		m_bodyList->m_prev = b;

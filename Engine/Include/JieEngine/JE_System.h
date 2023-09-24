@@ -14,7 +14,9 @@ JELog JECreateImage(const char * ImageName,JEImage & Data,SDL_RendererFlip Flip 
 
 JELog JECreateAnimationImage(const char * ImageName,JEUnInt Split,JEAnimationImage & Data,SDL_RendererFlip Flip = SDL_FLIP_NONE);
 
-JELog JECreateAudio(unordered_map<string,string> ChunkResource,JEAudio & Data,JEUnInt Volume = 50);
+JELog JECreateAudio(const char * SoundName,JEAudio & Data,JEUnInt Volume = 50);
+
+void JEDestroyAudio(JEAudio & Data);
 
 void JEImageSystem(JEUnInt EntityID);
 
@@ -48,7 +50,7 @@ private:
 
     static vector<void(*)()> _FunctionList;
 
-    static unordered_map<string,void(*)(JEUnInt EntityID)> _ComponentSystemList;
+    static map<string,void(*)(JEUnInt EntityID)> _ComponentSystemList;
 };
 
 }

@@ -9,7 +9,7 @@ public:
     Test(){
         this->GetComponent<JETransform>().Position = {200.0f,150.0f};
         this->AddComponent<JEPhysics>({
-            JECreateRectBody({20,20},b2_dynamicBody,this->GetID(),{0.3f,0.3f,0.5f})
+            JECreateRectBody({20,20},b2_dynamicBody,this,{0.3f,0.3f,0.5f})
         });
         auto Body = this->GetComponent<JEPhysics>().Body;
         Body->SetTitle("Test");

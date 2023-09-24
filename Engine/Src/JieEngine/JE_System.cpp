@@ -5,7 +5,7 @@ using namespace JieEngine;
 
 vector<void(*)()> JESystemManage::_FunctionList;
 
-unordered_map<string,void(*)(JEUnInt EntityID)> JESystemManage::_ComponentSystemList;
+map<string,void(*)(JEUnInt EntityID)> JESystemManage::_ComponentSystemList;
 
 void JESystemManage::Init(){
     _FunctionList.clear();

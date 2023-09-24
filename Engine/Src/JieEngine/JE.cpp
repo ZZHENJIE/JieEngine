@@ -28,14 +28,6 @@ void InitComponentAndSystem(){
         }
     });
 
-    JEComponentManage::EnrollComponent<JEAudio>([](JEUnInt EntityID){
-        auto Audio = JEComponentManage::GetComponentData<JEAudio>(EntityID);
-        for(auto Iterate : Audio.Sound){
-            Mix_FreeChunk(Iterate.second);
-        }
-        MixerChannel.Remove(Audio.Channel);
-    });
-
     JEComponentManage::EnrollComponent<JETransform>(nullptr);
 
     JESystemManage::AddComponentFunction<JEPhysics>(JEPhysicsSystem);

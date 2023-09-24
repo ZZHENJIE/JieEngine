@@ -52,7 +52,7 @@ struct JETransform final{
 };
 
 struct JEAudio final{
-    map<string,Mix_Chunk *> Sound;
+    Mix_Chunk * Sound;
     JEUnInt Channel;
     JEUnInt Volume;
 };

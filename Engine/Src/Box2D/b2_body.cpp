@@ -104,7 +104,7 @@ b2Body::b2Body(const b2BodyDef* bd, b2World* world)
 	m_fixtureCount = 0;
 
 	Title = typeid(this).name();
-	ID = 0;
+	Entity = nullptr;
 	CollideFunction = nullptr;
 }
 
@@ -431,7 +431,8 @@ void b2Body::SetTransform(const b2Vec2& position, float angle)
 	}
 
 	m_xf.q.Set(angle);
-	m_xf.p = position;
+	m_xf.p.x = position.x;
+	m_xf.p.y = position.y * -1;
 
 	m_sweep.c = b2Mul(m_xf, m_sweep.localCenter);
 	m_sweep.a = angle;
