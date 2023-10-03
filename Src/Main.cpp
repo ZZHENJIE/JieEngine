@@ -7,8 +7,6 @@ int main(int argc,char * argv[]){
 
     JEInit();
 
-    Resource.ResourceFile = new JEUnpackData("./Test.JieEngine");
-
     JEChangeGameMap(new One());
     
     JEWorld * GameWorld = new JEWorld({640.0f,480.0f},{0.0f,10.0f});

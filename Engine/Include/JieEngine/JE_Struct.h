@@ -46,6 +46,48 @@ struct JESize2D final{
     float H;
 };
 
+struct JEUI {
+    JEPoint2D Position;
+    JESize2D Size;
+    bool Enabled;
+};
+
+struct JETitle : JEUI{
+    string Text;
+};
+
+struct JEButton : JEUI{
+    void (*Click)();
+    string Text;
+};
+
+struct JEUIImage : JEUI{
+    SDL_Texture * Texture;
+    SDL_RendererFlip Flip;
+    float Angle;
+};
+
+class JEInterface final{
+public:
+    JEInterface(JEPoint2D Position,JESize2D Size);
+    template<typename T>
+    JEInterface * AddControl(T Data){
+
+        return this;
+    }
+    template<typename T>
+    JEInterface * RemoveControl(T Data){
+        
+        return this;
+    }
+    void Exec();
+private:
+    map<string,vector<experimental::any>> UIData;
+    SDL_Event Event;
+    JEPoint2D Position;
+    JESize2D Size;
+};
+
 struct JETransform final{
     JEPoint2D Position;
     float Angle;
@@ -111,6 +153,8 @@ using JERect = SDL_Rect;
 using JERectF = SDL_FRect;
 
 using JEVec2 = b2Vec2;
+
+using JEColor = SDL_Color;
 
 extern JEGlobalResourceComponent Resource;
 

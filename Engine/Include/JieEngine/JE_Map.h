@@ -34,6 +34,9 @@ private:
     virtual void _MapUpdate() final;
     virtual void _MapEvent(SDL_Event Event) final;
     vector<shared_ptr<JEEntity>> EntityManage;
+
+protected:
+    map<string,vector<experimental::any>> UIData;
 };
 
 };

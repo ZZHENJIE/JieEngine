@@ -1,7 +1,6 @@
 #pragma once
 
 #include "JieEngine/JE_Entity.h"
-#include "Two.h"
 
 using namespace JieEngine;
 
@@ -15,24 +14,12 @@ public:
         this->GetComponent<JEPhysics>().Body->SetCollideFunction([](b2Body * MainBody,b2Body * DeputyBody){
             
         });
-        map<string,JEAnimationImage> Image;
-        if(JECreateAnimationImage("Player",4,Image["None"]) == SUCCEED){
-            Image["None"].PlaySpeed = 1000;
-            this->AddComponent<JEAnimation>({
-                Image,
-                "None",
-                true
-            });
-        }
-        JECreateAudio("Biu",Audio);
     }
     ~Player(){
-        JEDestroyAudio(Audio);
     }
 private:
     void Update(){
-        b2Vec2 Temp = this->GetComponent<JEPhysics>().Body->GetPosition();
-        SDL_RenderDrawPointF(Resource._Renderer,Temp.x,-1 * Temp.y);
+        
     }
 
     void Event(SDL_Event Event){
@@ -55,12 +42,7 @@ private:
                     JEBodyApplyLinearImpulse(this->GetComponent<JEPhysics>().Body,{0.0f,1000.0f});
                     break;
                 }
-                case SDLK_x:{
-                    Mix_PlayChannel(Audio.Channel,Audio.Sound,0);
-                    break;
-                }
             }
         }
     }
-    JEAudio Audio;
 };
